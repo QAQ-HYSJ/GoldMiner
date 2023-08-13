@@ -22,9 +22,11 @@ public partial class Hook : Marker2D
 	public override void _Ready()
 	{
 		GetNode<Timer>("Timer").Timeout += OnBack;
+		Global.hook = this;
 	}
 	public override void _Process(double delta)
 	{
+		QueueRedraw();
 		if (_hooking)
 		{
 			Position += (float)delta * _direction * 200f * (_goback ? 1 : -1);
@@ -53,4 +55,6 @@ public partial class Hook : Marker2D
 	{
 		_goback = false;
 	}
+
+
 }
