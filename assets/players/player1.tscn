@@ -1,0 +1,107 @@
+[gd_scene load_steps=13 format=3 uid="uid://f08nf10lwyqu"]
+
+[ext_resource type="Texture2D" uid="uid://c4nv4mskuue66" path="res://resources/images/miner_sheet.png" id="1_sj7xm"]
+[ext_resource type="Script" path="res://assets/players/Player1.cs" id="2_3xe7q"]
+[ext_resource type="Script" path="res://assets/players/Hook.cs" id="2_4ivpd"]
+[ext_resource type="Texture2D" uid="uid://cevv8a6445ev6" path="res://resources/images/hook_sheet.png" id="2_m4vy4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53scs"]
+atlas = ExtResource("1_sj7xm")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gp5k"]
+atlas = ExtResource("1_sj7xm")
+region = Rect2(32, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghwu1"]
+atlas = ExtResource("1_sj7xm")
+region = Rect2(64, 0, 32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kiv0h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53scs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gp5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghwu1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50lyd"]
+size = Vector2(12.9967, 5.05069)
+
+[sub_resource type="Animation" id="Animation_kkv3k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hook:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xnda2"]
+resource_name = "晃"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hook:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.55334, -1.49226, 1.55334]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xeqbq"]
+_data = {
+"RESET": SubResource("Animation_kkv3k"),
+"晃": SubResource("Animation_xnda2")
+}
+
+[node name="Player1" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_kiv0h")
+frame = 2
+frame_progress = 0.314812
+script = ExtResource("2_3xe7q")
+
+[node name="Hook" type="Marker2D" parent="."]
+position = Vector2(-7, 10)
+script = ExtResource("2_4ivpd")
+
+[node name="Sprite" type="Sprite2D" parent="Hook"]
+position = Vector2(0, 7)
+texture = ExtResource("2_m4vy4")
+hframes = 3
+
+[node name="HitBox" type="Area2D" parent="Hook"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook/HitBox"]
+position = Vector2(-0.00165462, 12.0253)
+shape = SubResource("RectangleShape2D_50lyd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hook"]
+root_node = NodePath("../..")
+autoplay = "晃"
+libraries = {
+"": SubResource("AnimationLibrary_xeqbq")
+}
+
+[node name="Timer" type="Timer" parent="Hook"]
+wait_time = 1.5
