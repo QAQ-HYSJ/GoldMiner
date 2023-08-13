@@ -8,5 +8,14 @@
 [node name="Player1" parent="." instance=ExtResource("1_d5mo4")]
 position = Vector2(225.61, 36.1225)
 
+[node name="GoadBig2" parent="." instance=ExtResource("2_vx5sv")]
+position = Vector2(134.109, 188.317)
+
+[node name="GoadBig3" parent="." instance=ExtResource("2_vx5sv")]
+position = Vector2(264.499, 194.954)
+
 [node name="GoadBig" parent="." instance=ExtResource("2_vx5sv")]
-position = Vector2(120.344, 156.211)
+position = Vector2(106.014, 77.7201)
+
+[node name="GoadBig4" parent="." instance=ExtResource("2_vx5sv")]
+position = Vector2(237.847, 94.2732)
