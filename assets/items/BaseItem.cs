@@ -5,6 +5,7 @@ using System;
 public partial class BaseItem : Area2D
 {
 	public bool holding = false;
+	[Export] public ItemProperties Properties;
 	public override void _Ready()
 	{
 		this.AreaEntered += (area) => OnHookHit(area);
@@ -21,5 +22,6 @@ public partial class BaseItem : Area2D
 	private void OnHookHit(Area2D area)
 	{
 		holding = true;
+		Global.hook.Weight = Properties.Weight;
 	}
 }

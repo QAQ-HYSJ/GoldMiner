@@ -3,6 +3,7 @@ using System;
 
 public partial class Hook : Marker2D
 {
+	public int Weight = 0;
 	private bool _goback = true;
 	private Vector2 _direction;
 	private bool _hooking;
@@ -29,7 +30,15 @@ public partial class Hook : Marker2D
 		QueueRedraw();
 		if (_hooking)
 		{
-			Position += (float)delta * _direction * 200f * (_goback ? 1 : -1);
+			if(_goback)  // 出钩
+			{
+				Position += (float)delta * _direction * 200f;
+			}
+			else   		 // 回钩
+			{
+				Position += -(float)delta * _direction * (200f - Weight);
+			}
+
 			if (hit())
 			{
 				_goback = false;
@@ -39,6 +48,7 @@ public partial class Hook : Marker2D
 				Position = new Vector2(-7, 10);      // 勾子原点
 				GetNode<AnimationPlayer>("AnimationPlayer").Play();
 				_hooking = false;
+				Weight = 0;
 			}
 		}
 	}
