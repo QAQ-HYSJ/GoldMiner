@@ -15,7 +15,7 @@ public partial class BaseItem : Area2D
 	{
 		if (holding)
 			GlobalPosition = Global.hook.GetNode<CollisionShape2D>("HitBox/CollisionShape2D").GlobalPosition;
-		if (Position.Y <= 60)
+		if ((GlobalPosition - Global.player1.GlobalPosition).Length() <= 30)
 			QueueFree();
 	}
 

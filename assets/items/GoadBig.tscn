@@ -14,6 +14,7 @@ radius = 9.76734
 height = 19.5347
 
 [node name="GoadBig" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_tgul7")
 Properties = SubResource("Resource_v4euq")
 

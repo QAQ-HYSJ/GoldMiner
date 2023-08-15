@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://y1ach7tjluc6"]
+[gd_scene load_steps=4 format=3 uid="uid://y1ach7tjluc6"]
 
 [ext_resource type="PackedScene" uid="uid://f08nf10lwyqu" path="res://assets/players/player1.tscn" id="1_d5mo4"]
 [ext_resource type="PackedScene" uid="uid://btau1yy4oit0g" path="res://assets/items/GoadBig.tscn" id="2_vx5sv"]
+[ext_resource type="PackedScene" uid="uid://cgmll1ddhs1db" path="res://assets/items/StoneBig.tscn" id="3_ijdk0"]
 
 [node name="test" type="Node2D"]
 
@@ -19,3 +20,6 @@ position = Vector2(106.014, 77.7201)
 
 [node name="GoadBig4" parent="." instance=ExtResource("2_vx5sv")]
 position = Vector2(237.847, 94.2732)
+
+[node name="RockBig" parent="." instance=ExtResource("3_ijdk0")]
+position = Vector2(150.169, 108.789)

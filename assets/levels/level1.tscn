@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2njf3miu6viu"]
+
+[ext_resource type="Texture2D" uid="uid://bddgn8gik00p7" path="res://resources/images/bg_level_A.png" id="1_nstg7"]
+[ext_resource type="Texture2D" uid="uid://bgnttcoyhks8l" path="res://resources/images/bg_top.png" id="2_4jgcr"]
+[ext_resource type="PackedScene" uid="uid://f08nf10lwyqu" path="res://assets/players/player1.tscn" id="3_equ66"]
+[ext_resource type="PackedScene" uid="uid://btau1yy4oit0g" path="res://assets/items/GoadBig.tscn" id="4_7wl0j"]
+[ext_resource type="PackedScene" uid="uid://cgmll1ddhs1db" path="res://assets/items/StoneBig.tscn" id="5_nkrx8"]
+
+[node name="level1" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = 73.0
+offset_right = 576.0
+offset_bottom = 324.0
+texture = ExtResource("1_nstg7")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_right = 576.0
+offset_bottom = 73.0
+texture = ExtResource("2_4jgcr")
+
+[node name="Player1" parent="." instance=ExtResource("3_equ66")]
+position = Vector2(294.822, 45.9871)
+
+[node name="GoadBig" parent="." instance=ExtResource("4_7wl0j")]
+position = Vector2(180.054, 154.838)
+
+[node name="GoadBig2" parent="." instance=ExtResource("4_7wl0j")]
+position = Vector2(257.108, 134.676)
+
+[node name="GoadBig3" parent="." instance=ExtResource("4_7wl0j")]
+position = Vector2(202.054, 101.338)
+
+[node name="GoadBig4" parent="." instance=ExtResource("4_7wl0j")]
+position = Vector2(357.608, 116.676)
+
+[node name="RockBig" parent="." instance=ExtResource("5_nkrx8")]
+position = Vector2(156.23, 129.142)
+
+[node name="RockBig2" parent="." instance=ExtResource("5_nkrx8")]
+position = Vector2(337.029, 178.279)
+
+[node name="RockBig4" parent="." instance=ExtResource("5_nkrx8")]
+position = Vector2(278.314, 190.807)
+
+[node name="RockBig3" parent="." instance=ExtResource("5_nkrx8")]
+position = Vector2(377.457, 148.044)
+
+[node name="RockBig5" parent="." instance=ExtResource("5_nkrx8")]
+position = Vector2(316.355, 102.706)

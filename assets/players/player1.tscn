@@ -91,6 +91,7 @@ texture = ExtResource("2_m4vy4")
 hframes = 3
 
 [node name="HitBox" type="Area2D" parent="Hook"]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hook/HitBox"]
 position = Vector2(-0.00165462, 12.0253)
