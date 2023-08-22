@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class GoadBig : BaseItem
+public partial class GoadBig : Item
 {
 	public override void _Ready()
 	{

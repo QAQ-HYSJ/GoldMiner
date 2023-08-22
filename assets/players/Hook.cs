@@ -7,7 +7,6 @@ public partial class Hook : Marker2D
 	private bool _goback = true;
 	private Vector2 _direction;
 	private bool _hooking;
-
 	public void GoHook()
 	{
 		if (!_hooking)
@@ -47,6 +46,7 @@ public partial class Hook : Marker2D
 			{
 				Position = new Vector2(-7, 10);      // 勾子原点
 				GetNode<AnimationPlayer>("AnimationPlayer").Play();
+				GetNode<Event>("/root/Event").EmitSignal(Event.SignalName.BackHook);
 				_hooking = false;
 				Weight = 0;
 			}

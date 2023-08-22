@@ -1,21 +1,21 @@
 [gd_scene load_steps=6 format=3 uid="uid://cgmll1ddhs1db"]
 
-[ext_resource type="Script" path="res://assets/items/BaseItem.cs" id="1_x6dyh"]
+[ext_resource type="Script" path="res://assets/items/StoneBig.cs" id="1_dmot0"]
 [ext_resource type="Texture2D" uid="uid://b63dplydefesl" path="res://resources/images/rock_big.png" id="2_nu30i"]
 [ext_resource type="Script" path="res://assets/items/ItemProperties.cs" id="2_wr1xl"]
 
-[sub_resource type="Resource" id="Resource_3rvf3"]
+[sub_resource type="Resource" id="Resource_pa16b"]
 script = ExtResource("2_wr1xl")
-Weight = 180
-Value = 20
+Weight = 130
+Value = 70
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1oub"]
 size = Vector2(31.8198, 27.9334)
 
 [node name="RockBig" type="Area2D"]
 collision_mask = 2
-script = ExtResource("1_x6dyh")
-Properties = SubResource("Resource_3rvf3")
+script = ExtResource("1_dmot0")
+Properties = SubResource("Resource_pa16b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 7.85723)
