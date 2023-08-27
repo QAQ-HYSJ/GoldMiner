@@ -29,6 +29,7 @@ public partial class Item : Area2D
 		if(holding)
 		{
 			GetNode<Event>("/root/Event").BackHook -= OnBackHook;
+			Global.player1.GetNode<Score>("CanvasLayer/Score").CurrentScore += Properties.Value;
 			QueueFree();	
 		}	
 	}

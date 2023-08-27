@@ -22,6 +22,7 @@ public partial class Hook : Marker2D
 	public override void _Ready()
 	{
 		GetNode<Timer>("Timer").Timeout += OnBack;
+		GetNode<Area2D>("HitBox").AreaEntered += (@object) => OnAreaEntered(@object);
 		Global.hook = this;
 	}
 	public override void _Process(double delta)
@@ -38,10 +39,6 @@ public partial class Hook : Marker2D
 				Position += -(float)delta * _direction * (200f - Weight);
 			}
 
-			if (hit())
-			{
-				_goback = false;
-			}
 			if (Position.Y <= 10)
 			{
 				Position = new Vector2(-7, 10);      // 勾子原点
@@ -52,19 +49,13 @@ public partial class Hook : Marker2D
 			}
 		}
 	}
-	private bool hit()
+	private void OnAreaEntered(Area2D @object)
 	{
-		if (GetNode<Area2D>("HitBox").HasOverlappingAreas())
-		{
-			return true;
-		}
-		return false;
+		_goback = false;
 	}
 
 	private void OnBack()
 	{
 		_goback = false;
 	}
-
-
 }

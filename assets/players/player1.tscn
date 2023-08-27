@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://f08nf10lwyqu"]
+[gd_scene load_steps=14 format=3 uid="uid://f08nf10lwyqu"]
 
 [ext_resource type="Texture2D" uid="uid://c4nv4mskuue66" path="res://resources/images/miner_sheet.png" id="1_sj7xm"]
 [ext_resource type="Script" path="res://assets/players/Player1.cs" id="2_3xe7q"]
 [ext_resource type="Script" path="res://assets/players/Hook.cs" id="2_4ivpd"]
 [ext_resource type="Texture2D" uid="uid://cevv8a6445ev6" path="res://resources/images/hook_sheet.png" id="2_m4vy4"]
+[ext_resource type="Script" path="res://assets/players/Score.cs" id="5_x6lnl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_53scs"]
 atlas = ExtResource("1_sj7xm")
@@ -106,3 +107,12 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="Hook"]
 wait_time = 1.5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+offset_left = 10.7029
+offset_top = 9.81095
+offset_right = 50.7029
+offset_bottom = 32.811
+script = ExtResource("5_x6lnl")

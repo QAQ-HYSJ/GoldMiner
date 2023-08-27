@@ -1,50 +1,62 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2njf3miu6viu"]
+[gd_scene load_steps=8 format=3 uid="uid://c2njf3miu6viu"]
 
-[ext_resource type="Texture2D" uid="uid://bddgn8gik00p7" path="res://resources/images/bg_level_A.png" id="1_nstg7"]
-[ext_resource type="Texture2D" uid="uid://bgnttcoyhks8l" path="res://resources/images/bg_top.png" id="2_4jgcr"]
-[ext_resource type="PackedScene" uid="uid://f08nf10lwyqu" path="res://assets/players/player1.tscn" id="3_equ66"]
-[ext_resource type="PackedScene" uid="uid://btau1yy4oit0g" path="res://assets/items/GoadBig.tscn" id="4_7wl0j"]
-[ext_resource type="PackedScene" uid="uid://cgmll1ddhs1db" path="res://assets/items/StoneBig.tscn" id="5_nkrx8"]
+[ext_resource type="Script" path="res://assets/levels/Level1.cs" id="1_32pnn"]
+[ext_resource type="Texture2D" uid="uid://bddgn8gik00p7" path="res://resources/images/bg_level_A.png" id="2_0lrx4"]
+[ext_resource type="Texture2D" uid="uid://bgnttcoyhks8l" path="res://resources/images/bg_top.png" id="3_iqr08"]
+[ext_resource type="PackedScene" uid="uid://f08nf10lwyqu" path="res://assets/players/player1.tscn" id="4_5b4da"]
+[ext_resource type="PackedScene" uid="uid://btau1yy4oit0g" path="res://assets/items/GoadBig.tscn" id="5_diakl"]
+[ext_resource type="PackedScene" uid="uid://cgmll1ddhs1db" path="res://assets/items/StoneBig.tscn" id="6_pyoa4"]
+[ext_resource type="PackedScene" uid="uid://bi7qtdruhy27f" path="res://assets/levels/HUD.tscn" id="7_g7wkg"]
 
-[node name="level1" type="Node2D"]
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_32pnn")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_top = 73.0
-offset_right = 576.0
-offset_bottom = 324.0
-texture = ExtResource("1_nstg7")
+offset_top = 40.0
+offset_right = 320.0
+offset_bottom = 240.0
+texture = ExtResource("2_0lrx4")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
-offset_right = 576.0
-offset_bottom = 73.0
-texture = ExtResource("2_4jgcr")
+offset_right = 320.0
+offset_bottom = 40.0
+texture = ExtResource("3_iqr08")
 
-[node name="Player1" parent="." instance=ExtResource("3_equ66")]
-position = Vector2(294.822, 45.9871)
+[node name="Player1" parent="." instance=ExtResource("4_5b4da")]
+position = Vector2(163.623, 16.727)
 
-[node name="GoadBig" parent="." instance=ExtResource("4_7wl0j")]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="HUD" parent="Timer" instance=ExtResource("7_g7wkg")]
+
+[node name="Contents" type="Node2D" parent="."]
+
+[node name="GoadBig" parent="Contents" instance=ExtResource("5_diakl")]
 position = Vector2(180.054, 154.838)
 
-[node name="GoadBig2" parent="." instance=ExtResource("4_7wl0j")]
+[node name="GoadBig2" parent="Contents" instance=ExtResource("5_diakl")]
 position = Vector2(257.108, 134.676)
 
-[node name="GoadBig3" parent="." instance=ExtResource("4_7wl0j")]
-position = Vector2(202.054, 101.338)
+[node name="GoadBig3" parent="Contents" instance=ExtResource("5_diakl")]
+position = Vector2(123.24, 66.4146)
 
-[node name="GoadBig4" parent="." instance=ExtResource("4_7wl0j")]
-position = Vector2(357.608, 116.676)
+[node name="GoadBig4" parent="Contents" instance=ExtResource("5_diakl")]
+position = Vector2(251.894, 100.63)
 
-[node name="RockBig" parent="." instance=ExtResource("5_nkrx8")]
-position = Vector2(156.23, 129.142)
+[node name="RockBig" parent="Contents" instance=ExtResource("6_pyoa4")]
+position = Vector2(78.3604, 95.1625)
 
-[node name="RockBig2" parent="." instance=ExtResource("5_nkrx8")]
-position = Vector2(337.029, 178.279)
+[node name="RockBig2" parent="Contents" instance=ExtResource("6_pyoa4")]
+position = Vector2(228.955, 192.909)
 
-[node name="RockBig4" parent="." instance=ExtResource("5_nkrx8")]
-position = Vector2(278.314, 190.807)
+[node name="RockBig4" parent="Contents" instance=ExtResource("6_pyoa4")]
+position = Vector2(56.5036, 164.379)
 
-[node name="RockBig3" parent="." instance=ExtResource("5_nkrx8")]
-position = Vector2(377.457, 148.044)
+[node name="RockBig3" parent="Contents" instance=ExtResource("6_pyoa4")]
+position = Vector2(133.465, 182.495)
 
-[node name="RockBig5" parent="." instance=ExtResource("5_nkrx8")]
-position = Vector2(316.355, 102.706)
+[node name="RockBig5" parent="Contents" instance=ExtResource("6_pyoa4")]
+position = Vector2(202.146, 87.604)

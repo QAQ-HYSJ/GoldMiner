@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7dt0rrakds48"]
+
+[ext_resource type="Script" path="res://assets/levels/Level2.cs" id="1_v8qk1"]
+[ext_resource type="Texture2D" uid="uid://dc252o6fu2ad2" path="res://resources/images/bg_level_B.png" id="1_wg1gl"]
+[ext_resource type="Texture2D" uid="uid://bgnttcoyhks8l" path="res://resources/images/bg_top.png" id="2_7luau"]
+[ext_resource type="PackedScene" uid="uid://f08nf10lwyqu" path="res://assets/players/player1.tscn" id="3_s843r"]
+[ext_resource type="PackedScene" uid="uid://bi7qtdruhy27f" path="res://assets/levels/HUD.tscn" id="4_8u3e0"]
+[ext_resource type="PackedScene" uid="uid://btau1yy4oit0g" path="res://assets/items/GoadBig.tscn" id="5_vjkgt"]
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_v8qk1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_top = 40.0
+offset_right = 320.0
+offset_bottom = 240.0
+texture = ExtResource("1_wg1gl")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_right = 320.0
+offset_bottom = 40.0
+texture = ExtResource("2_7luau")
+
+[node name="Player1" parent="." instance=ExtResource("3_s843r")]
+position = Vector2(168.148, 15.0009)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="HUD" parent="Timer" instance=ExtResource("4_8u3e0")]
+
+[node name="Contents" type="Node2D" parent="."]
+
+[node name="GoadBig" parent="Contents" instance=ExtResource("5_vjkgt")]
+position = Vector2(192.449, 160.571)
+
+[node name="GoadBig2" parent="Contents" instance=ExtResource("5_vjkgt")]
+position = Vector2(177.019, 99.5338)
+
+[node name="GoadBig3" parent="Contents" instance=ExtResource("5_vjkgt")]
+position = Vector2(61.2574, 86.9698)
+
+[node name="GoadBig4" parent="Contents" instance=ExtResource("5_vjkgt")]
+position = Vector2(265.444, 112.706)
