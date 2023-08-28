@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://v5cde17fsqw7"]
+
+[ext_resource type="Texture2D" uid="uid://8l3i7wi8qd2j" path="res://resources/images/bg_start_menu.png" id="1_t117x"]
+[ext_resource type="Script" path="res://assets/scenes/Menu.cs" id="2_wpwyk"]
+
+[node name="Menu" type="TextureRect"]
+texture = ExtResource("1_t117x")
+script = ExtResource("2_wpwyk")
+
+[node name="SingleGame" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.012
+anchor_bottom = 0.017
+offset_left = 11.7295
+offset_top = 142.324
+offset_right = 97.8895
+offset_bottom = 176.244
+text = "单人游戏"
+
+[node name="DoubleGame" type="Button" parent="."]
+layout_mode = 0
+offset_left = 20.027
+offset_top = 182.351
+offset_right = 93.027
+offset_bottom = 213.351
+text = "双人游戏"

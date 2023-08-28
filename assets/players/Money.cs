@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public partial class Score : Label
+public partial class Money : Label
 {
-	public int CurrentScore = 0;
+	public int CurrentMoney = 0;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -12,6 +12,6 @@ public partial class Score : Label
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Text = "当前得分：" + CurrentScore;
+		Text = "当前：$" + CurrentMoney;
 	}
 }

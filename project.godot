@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="黄金旷工"
-run/main_scene="res://assets/levels/Level1.tscn"
+run/main_scene="res://assets/scenes/Menu.tscn"
 config/features=PackedStringArray("4.1", "C#", "Mobile")
 config/icon="res://icon.svg"
 

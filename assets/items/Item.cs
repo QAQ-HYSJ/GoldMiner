@@ -29,7 +29,7 @@ public partial class Item : Area2D
 		if(holding)
 		{
 			GetNode<Event>("/root/Event").BackHook -= OnBackHook;
-			Global.player1.GetNode<Score>("CanvasLayer/Score").CurrentScore += Properties.Value;
+			Global.player1.GetNode<Money>("CanvasLayer/Money").CurrentMoney += Properties.Value;
 			QueueFree();	
 		}	
 	}
