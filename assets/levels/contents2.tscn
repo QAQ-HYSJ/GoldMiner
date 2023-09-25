@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://ih0byw6h0ds7"]
+
+[ext_resource type="PackedScene" uid="uid://btau1yy4oit0g" path="res://assets/items/GoadBig.tscn" id="1_2o8yf"]
+
+[node name="Contents" type="Node2D"]
+
+[node name="GoadBig" parent="." instance=ExtResource("1_2o8yf")]
+position = Vector2(49.9467, 95.1366)
+
+[node name="GoadBig2" parent="." instance=ExtResource("1_2o8yf")]
+position = Vector2(112.38, 92.1635)
+
+[node name="GoadBig3" parent="." instance=ExtResource("1_2o8yf")]
+position = Vector2(112.127, 144.83)
+
+[node name="GoadBig4" parent="." instance=ExtResource("1_2o8yf")]
+position = Vector2(175.531, 118.801)

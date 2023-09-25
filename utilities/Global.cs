@@ -6,5 +6,5 @@ public partial class Global : Node
 	public static Player1 player1 = null;
 	public static Hook hook = null;
 	public static int goal = 0;
-	public static int nextLevel = 1;
+	public static int CurrentLevel = 1;
 }

@@ -11,6 +11,6 @@ public partial class End : TextureRect
 
 	private	void OnBgmFinished()
 	{
-		
+		GetTree().ChangeSceneToFile("res://assets/scenes/Shop.tscn");
 	}
 }

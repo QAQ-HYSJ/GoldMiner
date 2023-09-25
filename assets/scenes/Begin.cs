@@ -13,14 +13,6 @@ public partial class Begin : TextureRect
 
 	private void OnTimeout()
 	{
-		switch (Global.nextLevel)
-		{
-			case 1:
-				GetTree().ChangeSceneToFile("res://assets/levels/Level1.tscn");
-				break;
-			case 2:
-				GetTree().ChangeSceneToFile("res://assets/levels/Level2.tscn");
-				break;
-		}
+		GetTree().ChangeSceneToFile("res://assets/levels/Level.tscn");
 	}
 }
