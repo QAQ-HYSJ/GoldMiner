@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctseg11o2oskj"]
+
+[ext_resource type="Texture2D" uid="uid://bp4tlnsw6eqp2" path="res://resources/images/bg_goal.png" id="1_kporp"]
+[ext_resource type="Script" path="res://assets/scenes/End.cs" id="2_vnw6d"]
+[ext_resource type="Texture2D" uid="uid://c017g1xpdnlqd" path="res://resources/images/panel.png" id="3_8cf3d"]
+[ext_resource type="Texture2D" uid="uid://bed06wyayibi3" path="res://resources/images/text_goldminer.png" id="4_1ejrv"]
+[ext_resource type="AudioStream" uid="uid://bryuwjuqdk07" path="res://resources/audios/made_goal.mp3" id="5_y4x8g"]
+
+[node name="End" type="TextureRect"]
+texture = ExtResource("1_kporp")
+script = ExtResource("2_vnw6d")
+
+[node name="Panel" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 29.6985
+offset_top = 105.359
+offset_right = 295.698
+offset_bottom = 225.359
+texture = ExtResource("3_8cf3d")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 54.0203
+offset_top = 32.0248
+offset_right = 214.02
+offset_bottom = 107.025
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "您已完成"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 56.5685
+offset_top = 25.4558
+offset_right = 268.569
+offset_bottom = 68.4558
+texture = ExtResource("4_1ejrv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_y4x8g")
+autoplay = true

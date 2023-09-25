@@ -8,6 +8,7 @@ public partial class Level1 : Node2D
 	{
 		GetNode<Timer>("Timer").Timeout += OnTimeout;
 		AddChild(Global.player1);
+		Global.player1.GetNode<Hook>("Hook").Reset();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,9 +17,9 @@ public partial class Level1 : Node2D
 	}
 	private void OnTimeout()
 	{
-		GD.Print("时间到");
+		GetNode<Event>("/root/Event").EmitSignal(Event.SignalName.Timeout);
 		Global.nextLevel = 2;
 		RemoveChild(Global.player1);
-		GetTree().ChangeSceneToFile("res://assets/scenes/Begin.tscn");
+		GetTree().ChangeSceneToFile("res://assets/scenes/End.tscn");
 	}
 }

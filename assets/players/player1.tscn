@@ -117,6 +117,7 @@ offset_left = 10.7029
 offset_top = 9.81095
 offset_right = 50.7029
 offset_bottom = 32.811
+theme_override_colors/font_color = Color(1, 1, 0, 1)
 text = "当前"
 script = ExtResource("5_6dbdm")
 
@@ -125,5 +126,6 @@ offset_left = 10.2453
 offset_top = 40.0904
 offset_right = 50.2453
 offset_bottom = 65.0904
+theme_override_colors/font_color = Color(1, 1, 0, 1)
 text = "目标"
 script = ExtResource("6_jflhc")

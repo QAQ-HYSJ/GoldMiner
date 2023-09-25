@@ -58,4 +58,11 @@ public partial class Hook : Marker2D
 	{
 		_goback = false;
 	}
+
+	public void Reset()
+	{
+		GetNode<AnimationPlayer>("AnimationPlayer").ClearCaches();
+		Position = new Vector2(-7, 10);
+		GetNode<AnimationPlayer>("AnimationPlayer").Play();
+	}
 }

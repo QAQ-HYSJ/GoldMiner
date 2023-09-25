@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://xbl8ug218pkk"]
+
+[ext_resource type="Texture2D" uid="uid://bft57pmj5fpb0" path="res://resources/images/bg_shop.png" id="1_qum5y"]
+[ext_resource type="Texture2D" uid="uid://dkhstxu1hgkro" path="res://resources/images/shop_table.png" id="2_gcq21"]
+[ext_resource type="Texture2D" uid="uid://5fehvn2pb5lg" path="res://resources/images/shopkeeper_sheet.png" id="3_231xh"]
+[ext_resource type="Texture2D" uid="uid://bed06wyayibi3" path="res://resources/images/text_goldminer.png" id="4_veaok"]
+
+[node name="Shop" type="TextureRect"]
+texture = ExtResource("1_qum5y")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 176.0
+offset_right = 313.0
+offset_bottom = 242.0
+texture = ExtResource("2_gcq21")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(257.709, 137.844)
+texture = ExtResource("3_231xh")
+hframes = 2
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 57.6848
+offset_top = 15.7322
+offset_right = 269.685
+offset_bottom = 58.7322
+texture = ExtResource("4_veaok")

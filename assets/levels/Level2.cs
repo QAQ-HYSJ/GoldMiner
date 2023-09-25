@@ -11,6 +11,7 @@ public partial class Level2 : Node2D
 		// #endif
 		GetNode<Timer>("Timer").Timeout += OnTimeout;
 		AddChild(Global.player1);
+		Global.player1.GetNode<Hook>("Hook").Reset();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
