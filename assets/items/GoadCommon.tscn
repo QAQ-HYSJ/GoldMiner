@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c720ctiyelq7"]
+
+[ext_resource type="Script" path="res://assets/items/GoadCommon.cs" id="1_fnqo1"]
+[ext_resource type="Texture2D" uid="uid://c4xxpuq6engr2" path="res://resources/images/gold_normal.png" id="2_s35rk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_daqvx"]
+radius = 7.46815
+
+[node name="GoadCommon" type="Area2D"]
+script = ExtResource("1_fnqo1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_s35rk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_daqvx")

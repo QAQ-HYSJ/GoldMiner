@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="黄金旷工"
+config/name="GoadMiner"
 run/main_scene="res://assets/scenes/Menu.tscn"
 config/features=PackedStringArray("4.1", "C#", "Mobile")
 config/icon="res://icon.svg"
@@ -29,7 +29,7 @@ window/stretch/mode="canvas_items"
 
 [dotnet]
 
-project/assembly_name="黄金旷工"
+project/assembly_name="GoadMiner"
 
 [rendering]
 
