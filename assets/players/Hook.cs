@@ -53,11 +53,11 @@ public partial class Hook : Marker2D
 				GetNode<AudioStreamPlayer>("GrabBack").Stop();
 				GetParent<Player1>().Pause();
 				GetParent<Player1>().Frame = 0;
-				_hooking = false;
 				Weight = 0;
 
-				//await GetTree().CreateTimer(1.0).ToSignal("Timeout");
+				await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
 				GetNode<AnimationPlayer>("AnimationPlayer").Play();
+				_hooking = false;
 			}
 		}
 	}

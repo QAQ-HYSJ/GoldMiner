@@ -32,12 +32,13 @@ public partial class Item : Area2D
 		Global.hook.Weight = Properties.Weight;
 	}
 
-	private void OnBackHook()
+	private async void OnBackHook()
 	{
 		if (holding)
 		{
 			// GetNode<Event>("/root/Event").BackHook -= OnBackHook;
 			Global.player1.GetNode<Money>("CanvasLayer/Money").CurrentMoney += Properties.Value;
+			await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
 			QueueFree();
 		}
 	}
