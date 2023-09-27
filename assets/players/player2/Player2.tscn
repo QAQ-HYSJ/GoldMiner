@@ -1,0 +1,110 @@
+[gd_scene load_steps=13 format=3 uid="uid://dubgw2s0w8tsh"]
+
+[ext_resource type="Texture2D" uid="uid://c4nv4mskuue66" path="res://resources/images/miner_sheet.png" id="1_bx2yo"]
+[ext_resource type="Script" path="res://assets/players/player2/Player2.cs" id="2_p3vdd"]
+[ext_resource type="Script" path="res://assets/players/player2/Hook.cs" id="3_dfaha"]
+[ext_resource type="Texture2D" uid="uid://cevv8a6445ev6" path="res://resources/images/hook_sheet.png" id="4_kuxk8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts4mk"]
+atlas = ExtResource("1_bx2yo")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3ehl"]
+atlas = ExtResource("1_bx2yo")
+region = Rect2(32, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lo2kp"]
+atlas = ExtResource("1_bx2yo")
+region = Rect2(64, 0, 32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3x0fo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts4mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3ehl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lo2kp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0yvf"]
+size = Vector2(14, 8)
+
+[sub_resource type="Animation" id="Animation_4604f"]
+resource_name = "wave"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.55334, -1.55334, 1.55334]
+}
+
+[sub_resource type="Animation" id="Animation_ppmkr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.55334]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kqsi4"]
+_data = {
+"RESET": SubResource("Animation_ppmkr"),
+"wave": SubResource("Animation_4604f")
+}
+
+[node name="Player2" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_3x0fo")
+frame_progress = 0.372856
+script = ExtResource("2_p3vdd")
+
+[node name="Hook" type="Node2D" parent="."]
+position = Vector2(-7, 11)
+rotation = -1.55334
+script = ExtResource("3_dfaha")
+
+[node name="HitBox" type="Area2D" parent="Hook"]
+position = Vector2(0, 11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook/HitBox"]
+shape = SubResource("RectangleShape2D_f0yvf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hook"]
+position = Vector2(0, 7)
+texture = ExtResource("4_kuxk8")
+region_enabled = true
+region_rect = Rect2(0, 0, 13, 15)
+
+[node name="HookAnimation" type="AnimationPlayer" parent="Hook"]
+autoplay = "wave"
+libraries = {
+"": SubResource("AnimationLibrary_kqsi4")
+}
+
+[node name="Timer" type="Timer" parent="Hook"]
+autostart = true
+
+[connection signal="ModeChanged" from="Hook" to="Hook" method="_on_mode_changed"]
+[connection signal="timeout" from="Hook/Timer" to="Hook" method="_on_timer_timeout"]
