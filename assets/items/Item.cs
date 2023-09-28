@@ -37,8 +37,8 @@ public partial class Item : Area2D
 		if (holding)
 		{
 			// GetNode<Event>("/root/Event").BackHook -= OnBackHook;
-			Global.player1.GetNode<Money>("CanvasLayer/Money").CurrentMoney += Properties.Value;
-			await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
+			Global.player1.Money += Properties.Value;
+			//await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
 			QueueFree();
 		}
 	}

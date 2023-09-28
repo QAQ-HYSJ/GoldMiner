@@ -37,6 +37,21 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0yvf"]
 size = Vector2(14, 8)
 
+[sub_resource type="Animation" id="Animation_ppmkr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.55334]
+}
+
 [sub_resource type="Animation" id="Animation_4604f"]
 resource_name = "wave"
 length = 4.0
@@ -54,21 +69,6 @@ tracks/0/keys = {
 "values": [1.55334, -1.55334, 1.55334]
 }
 
-[sub_resource type="Animation" id="Animation_ppmkr"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.55334]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kqsi4"]
 _data = {
 "RESET": SubResource("Animation_ppmkr"),
@@ -76,6 +76,7 @@ _data = {
 }
 
 [node name="Player2" type="AnimatedSprite2D"]
+position = Vector2(145, 72)
 sprite_frames = SubResource("SpriteFrames_3x0fo")
 frame_progress = 0.372856
 script = ExtResource("2_p3vdd")

@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://clfq2ti1f1vrb"]
+
+[ext_resource type="Script" path="res://assets/HUD/HUD.cs" id="1_gtf5p"]
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gtf5p")
+
+[node name="Money" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "当前："
+
+[node name="Goal" type="Label" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 38.0
+offset_right = 47.0
+offset_bottom = 63.0
+text = "目标："
+
+[node name="Level" type="Label" parent="."]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 3.0
+offset_right = 285.0
+offset_bottom = 29.0
+text = "第n关"
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 34.0
+offset_right = 293.0
+offset_bottom = 59.0
+text = "剩余时间"

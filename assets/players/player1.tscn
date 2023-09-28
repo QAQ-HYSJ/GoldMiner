@@ -1,13 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://f08nf10lwyqu"]
+[gd_scene load_steps=15 format=3 uid="uid://f08nf10lwyqu"]
 
 [ext_resource type="Texture2D" uid="uid://c4nv4mskuue66" path="res://resources/images/miner_sheet.png" id="1_sj7xm"]
 [ext_resource type="Script" path="res://assets/players/Player1.cs" id="2_3xe7q"]
 [ext_resource type="Script" path="res://assets/players/Hook.cs" id="2_4ivpd"]
 [ext_resource type="Texture2D" uid="uid://cevv8a6445ev6" path="res://resources/images/hook_sheet.png" id="2_m4vy4"]
-[ext_resource type="Script" path="res://assets/players/Money.cs" id="5_6dbdm"]
 [ext_resource type="AudioStream" uid="uid://c1sjndocw3dve" path="res://resources/audios/grab_start.mp3" id="5_a2c6r"]
 [ext_resource type="AudioStream" uid="uid://d3xbwtdy2t73a" path="res://resources/audios/grab_back.wav" id="6_gq3mu"]
-[ext_resource type="Script" path="res://assets/players/Goal.cs" id="6_jflhc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_53scs"]
 atlas = ExtResource("1_sj7xm")
@@ -117,23 +115,3 @@ stream = ExtResource("5_a2c6r")
 
 [node name="GrabBack" type="AudioStreamPlayer" parent="Hook"]
 stream = ExtResource("6_gq3mu")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Money" type="Label" parent="CanvasLayer"]
-offset_left = 10.7029
-offset_top = 9.81095
-offset_right = 50.7029
-offset_bottom = 32.811
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-text = "当前"
-script = ExtResource("5_6dbdm")
-
-[node name="Goal" type="Label" parent="CanvasLayer"]
-offset_left = 10.2453
-offset_top = 40.0904
-offset_right = 50.2453
-offset_bottom = 65.0904
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-text = "目标"
-script = ExtResource("6_jflhc")

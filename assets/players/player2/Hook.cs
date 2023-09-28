@@ -21,37 +21,36 @@ public partial class Hook : Node2D
 			ChangeMode(HookMode.go);
 	}
 
-	public override void _Process(double delta)
-	{
-		switch (HookStatus)
-		{
-			case HookMode.wave: HookWave(); break;
-			case HookMode.go: HookGo(delta); break;
-			case HookMode.back: HookBack(delta); break;
-		}
-	}
-
 	private void ChangeMode(HookMode status)
 	{
 		EmitSignal(SignalName.ModeChanged, new Variant[] { (int)HookStatus, (int)status });
 		HookStatus = status;
 	}
-	private void HookWave()   // wave状态处理
-	{
 
-	}
-	private void HookGo(double delta)  // go状态处理
+	public override void _Process(double delta)
 	{
-		Position += (float)delta * direction * 200f;
-	}
-	private void HookBack(double delta)    // back 状态处理
-	{
-		Position -= (float)delta * direction * 200f;
+		switch (HookStatus)
+		{
+			case HookMode.wave:
+				break;
+			case HookMode.go:
+				Position += (float)delta * direction * 200f;
+				break;
+			case HookMode.back:
+				Position -= (float)delta * direction * 200f;
+				break;
+		}
 	}
 	private void _on_mode_changed(HookMode from, HookMode to)
 	{
 		switch (from)  // 状态结术
 		{
+			case HookMode.wave:
+				break;
+			case HookMode.go:
+				break;
+			case HookMode.back:
+				break;
 		}
 		switch (to)    // 状态开始
 		{
@@ -61,6 +60,8 @@ public partial class Hook : Node2D
 			case HookMode.go:
 				direction = new Vector2((float)-Math.Sin(Rotation), (float)Math.Cos(Rotation)).Normalized();
 				GetNode<AnimationPlayer>("HookAnimation").Pause();
+				break;
+			case HookMode.back:
 				break;
 		}
 	}
