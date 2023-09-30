@@ -8,8 +8,10 @@ public enum HookMode { go, back, wave }
 public partial class Hook : Node2D
 {
 	[Signal] public delegate void ModeChangedEventHandler(HookMode from, HookMode to);
+
 	public HookMode HookStatus;
 	private Vector2 direction;
+	private Vector2 OriginPoint { get; } = new Vector2(-7, 11);
 	public override void _Ready()
 	{
 		HookStatus = HookMode.wave;
@@ -37,7 +39,13 @@ public partial class Hook : Node2D
 				Position += (float)delta * direction * 200f;
 				break;
 			case HookMode.back:
-				Position -= (float)delta * direction * 200f;
+				{
+					Position -= (float)delta * direction * 200f;
+					if (Position.Y <= OriginPoint.Y)
+					{
+						ChangeMode(HookMode.wave);
+					}
+				}
 				break;
 		}
 	}
@@ -50,16 +58,25 @@ public partial class Hook : Node2D
 			case HookMode.go:
 				break;
 			case HookMode.back:
+			{
+
+			}
 				break;
 		}
 		switch (to)    // 状态开始
 		{
 			case HookMode.wave:
-				GetNode<AnimationPlayer>("HookAnimation").Play();
+				{
+					Position = OriginPoint;
+					GetNode<AnimationPlayer>("HookAnimation").Play();
+				}
 				break;
 			case HookMode.go:
-				direction = new Vector2((float)-Math.Sin(Rotation), (float)Math.Cos(Rotation)).Normalized();
-				GetNode<AnimationPlayer>("HookAnimation").Pause();
+				{
+					GetNode<Timer>("Timer").Start();
+					direction = new Vector2((float)-Math.Sin(Rotation), (float)Math.Cos(Rotation)).Normalized();
+					GetNode<AnimationPlayer>("HookAnimation").Pause();
+				}
 				break;
 			case HookMode.back:
 				break;

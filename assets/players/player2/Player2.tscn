@@ -85,6 +85,7 @@ script = ExtResource("2_p3vdd")
 position = Vector2(-7, 11)
 rotation = -1.55334
 script = ExtResource("3_dfaha")
+metadata/_edit_group_ = true
 
 [node name="HitBox" type="Area2D" parent="Hook"]
 position = Vector2(0, 11)
@@ -105,7 +106,6 @@ libraries = {
 }
 
 [node name="Timer" type="Timer" parent="Hook"]
-autostart = true
 
 [connection signal="ModeChanged" from="Hook" to="Hook" method="_on_mode_changed"]
 [connection signal="timeout" from="Hook/Timer" to="Hook" method="_on_timer_timeout"]
