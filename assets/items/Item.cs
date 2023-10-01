@@ -23,13 +23,13 @@ public partial class Item : Area2D
 	public override void _Process(double delta)
 	{
 		if (holding)
-			GlobalPosition = Global.hook.GetNode<CollisionShape2D>("HitBox/CollisionShape2D").GlobalPosition;
+			GlobalPosition = Global.player1Hook.GetNode<CollisionShape2D>("HitBox/CollisionShape2D").GlobalPosition;
 	}
 
 	private void OnHookHit(Area2D area)
 	{
 		holding = true;
-		Global.hook.Weight = Properties.Weight;
+		Global.player1Hook.Weight = Properties.Weight;
 	}
 
 	private async void OnBackHook()

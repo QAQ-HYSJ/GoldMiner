@@ -1,6 +1,7 @@
 using Godot;
 using System;
 
+namespace spacePlayer1;
 public partial class Hook : Marker2D
 {
 	public int Weight = 0;
@@ -28,7 +29,7 @@ public partial class Hook : Marker2D
 	{
 		GetNode<Timer>("Timer").Timeout += OnBack;
 		GetNode<Area2D>("HitBox").AreaEntered += (@object) => OnAreaEntered(@object);
-		Global.hook = this;
+		Global.player1Hook = this;
 		GetParent<Player1>().Pause();
 		GetParent<Player1>().Frame = 0;
 	}

@@ -12,8 +12,10 @@ public partial class Hook : Node2D
 	public HookMode HookStatus;
 	private Vector2 direction;
 	private Vector2 OriginPoint { get; } = new Vector2(-7, 11);
+	private bool pause = false;
 	public override void _Ready()
 	{
+		Global.player2Hook = this;
 		HookStatus = HookMode.wave;
 	}
 
@@ -29,7 +31,7 @@ public partial class Hook : Node2D
 		HookStatus = status;
 	}
 
-	public override void _Process(double delta)
+	public override async void _Process(double delta)
 	{
 		switch (HookStatus)
 		{
@@ -40,10 +42,16 @@ public partial class Hook : Node2D
 				break;
 			case HookMode.back:
 				{
-					Position -= (float)delta * direction * 200f;
-					if (Position.Y <= OriginPoint.Y)
+					if (!pause)
 					{
-						ChangeMode(HookMode.wave);
+						Position -= (float)delta * direction * 200f;
+						if (Position.Y <= OriginPoint.Y)
+						{
+							pause = true;
+							await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
+							ChangeMode(HookMode.wave);
+							pause = false;
+						}
 					}
 				}
 				break;
@@ -58,9 +66,9 @@ public partial class Hook : Node2D
 			case HookMode.go:
 				break;
 			case HookMode.back:
-			{
+				{
 
-			}
+				}
 				break;
 		}
 		switch (to)    // 状态开始

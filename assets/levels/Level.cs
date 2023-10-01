@@ -9,7 +9,7 @@ public partial class Level : Node2D
 		Global.level = this;
 		GetNode<Timer>("Timer").Timeout += OnTimeout;
 		AddChild(Global.player1);
-		Global.player1.GetNode<Hook>("Hook").Reset();
+		Global.player1.GetNode<spacePlayer1.Hook>("Hook").Reset();
 		AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/contents1.tscn").Instantiate<Node2D>());
 		AddChild(ResourceLoader.Load<PackedScene>("res://assets/HUD/HUD.tscn").Instantiate<Control>());
 	}
