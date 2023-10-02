@@ -12,6 +12,7 @@ Value = 30
 [sub_resource type="CircleShape2D" id="CircleShape2D_vkbvp"]
 
 [node name="StoneCommon" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_xkgnm")
 Properties = SubResource("Resource_uq2s3")
 

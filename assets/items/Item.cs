@@ -16,7 +16,7 @@ public partial class Item : Area2D
 		// Connect(SignalName.AreaEntered, a);
 
 		// this.Connect(SignalName.AreaEntered, new Callable(this, "OnHookHit"));
-		this.Connect(SignalName.AreaEntered, Callable.From((Area2D area) => OnHookHit(area)));
+		// this.Connect(SignalName.AreaEntered, Callable.From((Area2D area) => OnHookHit(area)));
 		GetNode<Event>("/root/Event").Connect(Event.SignalName.BackHook, Callable.From(OnBackHook));
 	}
 
@@ -26,13 +26,13 @@ public partial class Item : Area2D
 			GlobalPosition = Global.player1Hook.GetNode<CollisionShape2D>("HitBox/CollisionShape2D").GlobalPosition;
 	}
 
-	private void OnHookHit(Area2D area)
-	{
-		holding = true;
-		Global.player1Hook.Weight = Properties.Weight;
-	}
+	// private void OnHookHit(Area2D area)
+	// {
+	// 	holding = true;
+	// 	Global.player1Hook.Weight = Properties.Weight;
+	// }
 
-	private async void OnBackHook()
+	private void OnBackHook()
 	{
 		if (holding)
 		{

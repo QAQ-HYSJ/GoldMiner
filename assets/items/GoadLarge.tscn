@@ -1,21 +1,21 @@
 [gd_scene load_steps=6 format=3 uid="uid://h00mb8b51o5y"]
 
-[ext_resource type="Script" path="res://assets/items/Item.cs" id="1_4xydt"]
+[ext_resource type="Script" path="res://assets/items/GoadLarge.cs" id="1_0mmpy"]
 [ext_resource type="Script" path="res://assets/items/ItemProperties.cs" id="2_2wofw"]
 [ext_resource type="Texture2D" uid="uid://dwxtoen10kdoi" path="res://resources/images/gold_big.png" id="3_eqjxn"]
 
-[sub_resource type="Resource" id="Resource_ouw17"]
+[sub_resource type="Resource" id="Resource_73gw0"]
 script = ExtResource("2_2wofw")
-Weight = 180
-Value = 500
+Weight = 150
+Value = 300
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_60u3m"]
 radius = 15.6793
 
 [node name="GoadLarge" type="Area2D"]
 collision_mask = 2
-script = ExtResource("1_4xydt")
-Properties = SubResource("Resource_ouw17")
+script = ExtResource("1_0mmpy")
+Properties = SubResource("Resource_73gw0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_eqjxn")

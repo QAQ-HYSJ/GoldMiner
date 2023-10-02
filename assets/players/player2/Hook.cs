@@ -95,4 +95,11 @@ public partial class Hook : Node2D
 		if (HookStatus == HookMode.go)
 			ChangeMode(HookMode.back);
 	}
+	private void _on_hit_box_area_entered(Area2D area)
+	{
+		Sprite2D sprite = new Sprite2D();
+		sprite.Texture = area.GetNode<Sprite2D>("Sprite2D").Texture;
+		area.QueueFree();
+		AddChild(sprite);
+	}
 }

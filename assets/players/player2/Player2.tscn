@@ -76,7 +76,7 @@ _data = {
 }
 
 [node name="Player2" type="AnimatedSprite2D"]
-position = Vector2(145, 72)
+position = Vector2(160, 20)
 sprite_frames = SubResource("SpriteFrames_3x0fo")
 frame_progress = 0.372856
 script = ExtResource("2_p3vdd")
@@ -89,6 +89,7 @@ metadata/_edit_group_ = true
 
 [node name="HitBox" type="Area2D" parent="Hook"]
 position = Vector2(0, 11)
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hook/HitBox"]
 shape = SubResource("RectangleShape2D_f0yvf")
@@ -108,4 +109,5 @@ libraries = {
 [node name="Timer" type="Timer" parent="Hook"]
 
 [connection signal="ModeChanged" from="Hook" to="Hook" method="_on_mode_changed"]
+[connection signal="area_entered" from="Hook/HitBox" to="Hook" method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="Hook/Timer" to="Hook" method="_on_timer_timeout"]
