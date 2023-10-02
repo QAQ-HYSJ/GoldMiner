@@ -1,22 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://f08nf10lwyqu"]
+[gd_scene load_steps=15 format=3 uid="uid://b2vso27ndhaib"]
 
-[ext_resource type="Texture2D" uid="uid://c4nv4mskuue66" path="res://resources/images/miner_sheet.png" id="1_sj7xm"]
-[ext_resource type="Script" path="res://assets/players/Player1.cs" id="2_3xe7q"]
-[ext_resource type="Script" path="res://assets/players/Hook.cs" id="2_4ivpd"]
-[ext_resource type="Texture2D" uid="uid://cevv8a6445ev6" path="res://resources/images/hook_sheet.png" id="2_m4vy4"]
-[ext_resource type="AudioStream" uid="uid://c1sjndocw3dve" path="res://resources/audios/grab_start.mp3" id="5_a2c6r"]
-[ext_resource type="AudioStream" uid="uid://d3xbwtdy2t73a" path="res://resources/audios/grab_back.wav" id="6_gq3mu"]
+[ext_resource type="Texture2D" uid="uid://c4nv4mskuue66" path="res://resources/images/miner_sheet.png" id="1_kb6u3"]
+[ext_resource type="Script" path="res://assets/players/player1/Player1.cs" id="2_jvn0j"]
+[ext_resource type="Script" path="res://assets/players/player1/Hook.cs" id="3_5ys1n"]
+[ext_resource type="Texture2D" uid="uid://cevv8a6445ev6" path="res://resources/images/hook_sheet.png" id="4_7vge3"]
+[ext_resource type="AudioStream" uid="uid://c1sjndocw3dve" path="res://resources/audios/grab_start.mp3" id="5_faxbe"]
+[ext_resource type="AudioStream" uid="uid://d3xbwtdy2t73a" path="res://resources/audios/grab_back.wav" id="6_rcwlb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_53scs"]
-atlas = ExtResource("1_sj7xm")
+atlas = ExtResource("1_kb6u3")
 region = Rect2(0, 0, 32, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gp5k"]
-atlas = ExtResource("1_sj7xm")
+atlas = ExtResource("1_kb6u3")
 region = Rect2(32, 0, 32, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ghwu1"]
-atlas = ExtResource("1_sj7xm")
+atlas = ExtResource("1_kb6u3")
 region = Rect2(64, 0, 32, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kiv0h"]
@@ -82,15 +82,15 @@ position = Vector2(160, 20)
 sprite_frames = SubResource("SpriteFrames_kiv0h")
 frame = 2
 frame_progress = 0.400866
-script = ExtResource("2_3xe7q")
+script = ExtResource("2_jvn0j")
 
 [node name="Hook" type="Marker2D" parent="."]
 position = Vector2(-7, 10)
-script = ExtResource("2_4ivpd")
+script = ExtResource("3_5ys1n")
 
 [node name="Sprite" type="Sprite2D" parent="Hook"]
 position = Vector2(0, 7)
-texture = ExtResource("2_m4vy4")
+texture = ExtResource("4_7vge3")
 hframes = 3
 
 [node name="HitBox" type="Area2D" parent="Hook"]
@@ -111,7 +111,7 @@ libraries = {
 wait_time = 1.5
 
 [node name="GrabStart" type="AudioStreamPlayer" parent="Hook"]
-stream = ExtResource("5_a2c6r")
+stream = ExtResource("5_faxbe")
 
 [node name="GrabBack" type="AudioStreamPlayer" parent="Hook"]
-stream = ExtResource("6_gq3mu")
+stream = ExtResource("6_rcwlb")

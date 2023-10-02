@@ -31,6 +31,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="GoadMiner"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 player1Go={
