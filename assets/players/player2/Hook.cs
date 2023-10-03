@@ -56,6 +56,7 @@ public partial class Hook : Node2D
 							pause = true;
 							Player.Pause();
 							Player.Frame = 0;
+							GetNode<AudioStreamPlayer>("BackHook").Stop();
 							await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
 							SwitchMode(HookMode.wave);
 							pause = false;
@@ -81,6 +82,7 @@ public partial class Hook : Node2D
 					{
 						x.QueueFree();
 					}
+					GetNode<AudioStreamPlayer>("BackHook");
 				}
 				break;
 		}
@@ -103,11 +105,13 @@ public partial class Hook : Node2D
 					GetNode<AnimationPlayer>("HookAnimation").Pause();
 					Player.Pause();
 					Player.Frame = 2;
+					GetNode<AudioStreamPlayer>("GoHook").Play();
 				}
 				break;
 			case HookMode.back:
 				{
 					Player.Play();
+					GetNode<AudioStreamPlayer>("BackHook").Play();
 				}
 				break;
 		}
