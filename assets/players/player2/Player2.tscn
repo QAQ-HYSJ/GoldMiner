@@ -108,6 +108,9 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="Hook"]
 
+[node name="ItemSlot" type="Node2D" parent="Hook"]
+position = Vector2(0.261833, 14.9977)
+
 [connection signal="ModeChanged" from="Hook" to="Hook" method="_on_mode_changed"]
 [connection signal="area_entered" from="Hook/HitBox" to="Hook" method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="Hook/Timer" to="Hook" method="_on_timer_timeout"]

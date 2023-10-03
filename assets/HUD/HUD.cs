@@ -17,7 +17,7 @@ public partial class HUD : Control
 
 	public override void _Process(double delta)
 	{
-		money.Text = "当前：$" + Global.player1.Money;
+		money.Text = "当前：$" + Global.player2.Money;
 		goal.Text = "目标：$" + Global.goal;
 		level.Text = "第" + Global.currentLevel + "关";
 		time.Text = "剩余时间：" + (int)Global.level.LeftTime;

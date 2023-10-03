@@ -13,19 +13,25 @@ public partial class Hook : Node2D
 	private Vector2 direction;
 	private Vector2 OriginPoint { get; } = new Vector2(-7, 11);
 	private bool pause = false;
+	private Node2D ItemSlot;
+	private bool HookHasItem = false;
+	private int ItemValue = 0;
+	private Player2 Player;
 	public override void _Ready()
 	{
 		Global.player2Hook = this;
 		HookStatus = HookMode.wave;
+		ItemSlot = GetNode<Node2D>("ItemSlot");
+		Player = GetParent<Player2>();
 	}
 
 	public void GoHook()   // 出钩
 	{
 		if (HookStatus == HookMode.wave)
-			ChangeMode(HookMode.go);
+			SwitchMode(HookMode.go);
 	}
 
-	private void ChangeMode(HookMode status)
+	private void SwitchMode(HookMode status)
 	{
 		EmitSignal(SignalName.ModeChanged, new Variant[] { (int)HookStatus, (int)status });
 		HookStatus = status;
@@ -49,7 +55,7 @@ public partial class Hook : Node2D
 						{
 							pause = true;
 							await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
-							ChangeMode(HookMode.wave);
+							SwitchMode(HookMode.wave);
 							pause = false;
 						}
 					}
@@ -67,7 +73,12 @@ public partial class Hook : Node2D
 				break;
 			case HookMode.back:
 				{
-
+					if (HookHasItem)
+						Player.Money += ItemValue;
+					foreach (Node x in ItemSlot.GetChildren())
+					{
+						x.QueueFree();
+					}
 				}
 				break;
 		}
@@ -77,6 +88,8 @@ public partial class Hook : Node2D
 				{
 					Position = OriginPoint;
 					GetNode<AnimationPlayer>("HookAnimation").Play();
+					HookHasItem = false;
+					ItemValue = 0;
 				}
 				break;
 			case HookMode.go:
@@ -93,13 +106,16 @@ public partial class Hook : Node2D
 	private void _on_timer_timeout()
 	{
 		if (HookStatus == HookMode.go)
-			ChangeMode(HookMode.back);
+			SwitchMode(HookMode.back);
 	}
 	private void _on_hit_box_area_entered(Area2D area)
 	{
 		Sprite2D sprite = new Sprite2D();
 		sprite.Texture = area.GetNode<Sprite2D>("Sprite2D").Texture;
 		area.QueueFree();
-		AddChild(sprite);
+		ItemSlot.AddChild(sprite);
+		SwitchMode(HookMode.back);
+		HookHasItem = true;
+		ItemValue = (area as Item).Properties.Value;
 	}
 }
