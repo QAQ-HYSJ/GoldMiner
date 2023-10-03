@@ -44,16 +44,18 @@ public partial class Hook : Node2D
 			case HookMode.wave:
 				break;
 			case HookMode.go:
-				Position += (float)delta * direction * 200f;
+				Position += (float)delta * direction * 150f;
 				break;
 			case HookMode.back:
 				{
 					if (!pause)
 					{
-						Position -= (float)delta * direction * 200f;
+						Position -= (float)delta * direction * 40f;
 						if (Position.Y <= OriginPoint.Y)
 						{
 							pause = true;
+							Player.Pause();
+							Player.Frame = 0;
 							await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
 							SwitchMode(HookMode.wave);
 							pause = false;
@@ -90,6 +92,8 @@ public partial class Hook : Node2D
 					GetNode<AnimationPlayer>("HookAnimation").Play();
 					HookHasItem = false;
 					ItemValue = 0;
+					Player.Pause();
+					Player.Frame = 0;
 				}
 				break;
 			case HookMode.go:
@@ -97,9 +101,14 @@ public partial class Hook : Node2D
 					GetNode<Timer>("Timer").Start();
 					direction = new Vector2((float)-Math.Sin(Rotation), (float)Math.Cos(Rotation)).Normalized();
 					GetNode<AnimationPlayer>("HookAnimation").Pause();
+					Player.Pause();
+					Player.Frame = 2;
 				}
 				break;
 			case HookMode.back:
+				{
+					Player.Play();
+				}
 				break;
 		}
 	}

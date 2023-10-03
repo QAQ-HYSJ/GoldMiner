@@ -23,7 +23,7 @@ public partial class Level : Node2D
 	private void OnTimeout()
 	{
 		GetNode<Event>("/root/Event").EmitSignal(Event.SignalName.Timeout);
-		RemoveChild(Global.player1);
+		RemoveChild(Global.player2);
 		GetTree().ChangeSceneToFile("res://assets/scenes/End.tscn");
 	}
 }
