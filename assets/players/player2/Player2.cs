@@ -7,12 +7,12 @@ public partial class Player2 : AnimatedSprite2D
 	{
 		if (Input.IsActionJustPressed("player2Go"))
 		{
-			GetNode<SpacePlayer2.Hook>("Hook").GoHook();
+			GetNode<Hook>("Hook").GoHook();
 		}
 		QueueRedraw();
 	}
 	public override void _Draw()
 	{
-		DrawLine(new Vector2(-7, 11), GetNode<SpacePlayer2.Hook>("Hook").Position, new Color(0.2f, 0.2f, 0.2f), 1.0f);
+		DrawLine(new Vector2(-7, 11), GetNode<Hook>("Hook").Position, new Color(0.2f, 0.2f, 0.2f), 1.0f);
 	}
 }

@@ -1,8 +1,6 @@
 using Godot;
 using System;
 
-namespace SpacePlayer1;
-
 public enum HookMode { go, back, wave }
 
 public partial class Hook : Node2D
@@ -22,13 +20,12 @@ public partial class Hook : Node2D
 		set { _itemWeight = Mathf.Clamp(value, 0, 100); }
 		get { return _itemWeight; }
 	}
-	private Player1 Player;
+	private AnimatedSprite2D Player;
 	public override void _Ready()
 	{
-		Global.player1Hook = this;
 		HookStatus = HookMode.wave;
 		ItemSlot = GetNode<Node2D>("ItemSlot");
-		Player = GetParent<Player1>();
+		Player = GetParent<AnimatedSprite2D>();
 	}
 
 	public void GoHook()   // 出钩

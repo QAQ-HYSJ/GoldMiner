@@ -19,12 +19,12 @@ public partial class Level : Node2D
 		// 重置玩家状态
 		if (Global.gameMode)
 		{
-			Global.player2Hook.Reset();
-			Global.player1Hook.Reset();
+			Global.player2.GetNode<Hook>("Hook").Reset();
+			Global.player1.GetNode<Hook>("Hook").Reset();
 		}
 		else
 		{
-			Global.player1Hook.Reset();
+			Global.player1.GetNode<Hook>("Hook").Reset();
 		}
 	}
 	public override void _Process(double delta)

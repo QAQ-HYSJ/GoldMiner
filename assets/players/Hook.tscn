@@ -1,0 +1,106 @@
+[gd_scene load_steps=14 format=3 uid="uid://bo5hh41a8iu4i"]
+
+[ext_resource type="Script" path="res://assets/players/Hook.cs" id="1_8fydp"]
+[ext_resource type="Texture2D" uid="uid://cevv8a6445ev6" path="res://resources/images/hook_sheet.png" id="2_mh50k"]
+[ext_resource type="AudioStream" uid="uid://c1sjndocw3dve" path="res://resources/audios/grab_start.mp3" id="3_haa40"]
+[ext_resource type="AudioStream" uid="uid://d3xbwtdy2t73a" path="res://resources/audios/grab_back.wav" id="4_0kt7b"]
+[ext_resource type="AudioStream" uid="uid://ddrgkut0t2ohp" path="res://resources/audios/low_value.wav" id="5_etl5e"]
+[ext_resource type="AudioStream" uid="uid://5bv0ilwf6t3h" path="res://resources/audios/normal_value.wav" id="6_pf1he"]
+[ext_resource type="AudioStream" uid="uid://vaeyjpcrcmvp" path="res://resources/audios/high_value.wav" id="7_qagtp"]
+[ext_resource type="AudioStream" uid="uid://dfu7s1dw783x0" path="res://resources/audios/hook_reset.wav" id="8_qlwak"]
+[ext_resource type="AudioStream" uid="uid://fwuwx7m6h833" path="res://resources/audios/money.wav" id="9_kidpn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50lyd"]
+size = Vector2(12.9967, 5.05069)
+
+[sub_resource type="Animation" id="Animation_kkv3k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hook:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xnda2"]
+resource_name = "晃"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hook:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.55334, -1.55334, 1.55334]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xeqbq"]
+_data = {
+"RESET": SubResource("Animation_kkv3k"),
+"晃": SubResource("Animation_xnda2")
+}
+
+[node name="Hook" type="Node2D"]
+position = Vector2(-7, 10)
+script = ExtResource("1_8fydp")
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 7)
+texture = ExtResource("2_mh50k")
+hframes = 3
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-0.00165462, 12.0253)
+shape = SubResource("RectangleShape2D_50lyd")
+
+[node name="HookAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+autoplay = "晃"
+libraries = {
+"": SubResource("AnimationLibrary_xeqbq")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="GoHook" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_haa40")
+
+[node name="BackHook" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_0kt7b")
+
+[node name="ItemSlot" type="Node2D" parent="."]
+
+[node name="LowValue" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_etl5e")
+
+[node name="MidValue" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_pf1he")
+
+[node name="HighValue" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_qagtp")
+
+[node name="HookReset" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_qlwak")
+
+[node name="MoneyGain" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_kidpn")
+
+[connection signal="ModeChanged" from="." to="." method="_on_mode_changed"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
