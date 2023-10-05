@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_pa16b"]
 script = ExtResource("2_wr1xl")
-Weight = 120
+Weight = 95
 Value = 70
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1oub"]

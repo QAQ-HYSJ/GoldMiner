@@ -16,6 +16,12 @@ public partial class Hook : Node2D
 	private Node2D ItemSlot;
 	private bool HookHasItem = false;
 	private int ItemValue = 0;
+	private int _itemWeight = 0;
+	private int ItemWeight
+	{
+		set { _itemWeight = Mathf.Clamp(value, 0, 100); }
+		get { return _itemWeight; }
+	}
 	private Player2 Player;
 	public override void _Ready()
 	{
@@ -50,7 +56,7 @@ public partial class Hook : Node2D
 				{
 					if (!pause)
 					{
-						Position -= (float)delta * direction * 40f;
+						Position -= (float)delta * direction * 150f * ((100 - ItemWeight) / 100f);
 						if (Position.Y <= OriginPoint.Y)
 						{
 							pause = true;
@@ -94,6 +100,7 @@ public partial class Hook : Node2D
 					GetNode<AnimationPlayer>("HookAnimation").Play();
 					HookHasItem = false;
 					ItemValue = 0;
+					ItemWeight = 0;
 					Player.Pause();
 					Player.Frame = 0;
 				}
@@ -130,5 +137,6 @@ public partial class Hook : Node2D
 		SwitchMode(HookMode.back);
 		HookHasItem = true;
 		ItemValue = (area as Item).Properties.Value;
+		ItemWeight = (area as Item).Properties.Weight;
 	}
 }

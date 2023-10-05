@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_v4euq"]
 script = ExtResource("2_irpyv")
-Weight = 130
+Weight = 85
 Value = 150
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4q0ki"]
