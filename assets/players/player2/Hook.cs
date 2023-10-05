@@ -63,7 +63,12 @@ public partial class Hook : Node2D
 							Player.Pause();
 							Player.Frame = 0;
 							GetNode<AudioStreamPlayer>("BackHook").Stop();
+							if(HookHasItem)
+							{
+								GetNode<AudioStreamPlayer>("MoneyGain").Play();
+							}
 							await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
+							GetNode<AudioStreamPlayer>("HookReset").Play();
 							SwitchMode(HookMode.wave);
 							pause = false;
 						}

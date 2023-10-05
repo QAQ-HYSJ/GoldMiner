@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dubgw2s0w8tsh"]
+[gd_scene load_steps=20 format=3 uid="uid://dubgw2s0w8tsh"]
 
 [ext_resource type="Texture2D" uid="uid://c4nv4mskuue66" path="res://resources/images/miner_sheet.png" id="1_bx2yo"]
 [ext_resource type="Script" path="res://assets/players/player2/Player2.cs" id="2_p3vdd"]
@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://ddrgkut0t2ohp" path="res://resources/audios/low_value.wav" id="7_6jjh8"]
 [ext_resource type="AudioStream" uid="uid://5bv0ilwf6t3h" path="res://resources/audios/normal_value.wav" id="8_n0mvr"]
 [ext_resource type="AudioStream" uid="uid://vaeyjpcrcmvp" path="res://resources/audios/high_value.wav" id="9_4c46l"]
+[ext_resource type="AudioStream" uid="uid://dfu7s1dw783x0" path="res://resources/audios/hook_reset.wav" id="10_mvx43"]
+[ext_resource type="AudioStream" uid="uid://fwuwx7m6h833" path="res://resources/audios/money.wav" id="11_6jnj2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ts4mk"]
 atlas = ExtResource("1_bx2yo")
@@ -131,6 +133,12 @@ stream = ExtResource("8_n0mvr")
 
 [node name="HighValue" type="AudioStreamPlayer" parent="Hook"]
 stream = ExtResource("9_4c46l")
+
+[node name="HookReset" type="AudioStreamPlayer" parent="Hook"]
+stream = ExtResource("10_mvx43")
+
+[node name="MoneyGain" type="AudioStreamPlayer" parent="Hook"]
+stream = ExtResource("11_6jnj2")
 
 [connection signal="ModeChanged" from="Hook" to="Hook" method="_on_mode_changed"]
 [connection signal="area_entered" from="Hook/HitBox" to="Hook" method="_on_hit_box_area_entered"]
