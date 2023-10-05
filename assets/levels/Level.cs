@@ -7,24 +7,34 @@ public partial class Level : Node2D
 	public override void _Ready()
 	{
 		Global.level = this;
-		GetNode<Timer>("Timer").Timeout += OnTimeout;
-		// AddChild(Global.player1);
-		// Global.player1.GetNode<spacePlayer1.Hook>("Hook").Reset();
-		AddChild(Global.player2);
-		AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/contents1.tscn").Instantiate<Node2D>());
-		AddChild(ResourceLoader.Load<PackedScene>("res://assets/HUD/HUD.tscn").Instantiate<Control>());
-		Global.player2Hook.Reset();
-	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
+		AddChild(Global.player1);
+
+		// 加载关卡内容
+		AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/contents1.tscn").Instantiate<Node2D>());
+
+		// 加载HUD
+		AddChild(ResourceLoader.Load<PackedScene>("res://assets/HUD/HUD.tscn").Instantiate<Control>());
+
+		// 重置玩家状态
+		if(Global.gameMode)
+		{
+			Global.player2Hook.Reset();
+			Global.player1Hook.Reset();
+		}
+		else
+		{
+			Global.player1Hook.Reset();
+		}
+	}
 	public override void _Process(double delta)
 	{
 		LeftTime = GetNode<Timer>("Timer").TimeLeft;
 	}
-	private void OnTimeout()
+	private void _on_timer_timeout()
 	{
 		GetNode<Event>("/root/Event").EmitSignal(Event.SignalName.Timeout);
-		RemoveChild(Global.player2);
+		RemoveChild(Global.player1);
 		GetTree().ChangeSceneToFile("res://assets/scenes/End.tscn");
 	}
 }

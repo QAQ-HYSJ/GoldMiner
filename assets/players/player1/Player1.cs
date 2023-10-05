@@ -3,7 +3,6 @@ using System;
 
 public partial class Player1 : AnimatedSprite2D
 {
-	public int Money {set; get;}
 	public override void _Ready()
 	{
 	}

@@ -22,3 +22,5 @@ texture = ExtResource("3_iqr08")
 wait_time = 60.0
 one_shot = true
 autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

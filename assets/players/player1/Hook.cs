@@ -87,7 +87,7 @@ public partial class Hook : Node2D
 			case HookMode.back:
 				{
 					if (HookHasItem)
-						Player.Money += ItemValue;
+						Global.Money += ItemValue;
 					foreach (Node x in ItemSlot.GetChildren())
 					{
 						x.QueueFree();

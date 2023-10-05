@@ -3,7 +3,6 @@ using System;
 
 public partial class Player2 : AnimatedSprite2D
 {
-	public int Money { get; set; }
 	public override void _Process(double delta)
 	{
 		if (Input.IsActionJustPressed("player2Go"))
