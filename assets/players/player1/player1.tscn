@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b2vso27ndhaib"]
+[gd_scene load_steps=20 format=3 uid="uid://b2vso27ndhaib"]
 
 [ext_resource type="Texture2D" uid="uid://c4nv4mskuue66" path="res://resources/images/miner_sheet.png" id="1_kb6u3"]
 [ext_resource type="Script" path="res://assets/players/player1/Player1.cs" id="2_jvn0j"]
@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://cevv8a6445ev6" path="res://resources/images/hook_sheet.png" id="4_7vge3"]
 [ext_resource type="AudioStream" uid="uid://c1sjndocw3dve" path="res://resources/audios/grab_start.mp3" id="5_faxbe"]
 [ext_resource type="AudioStream" uid="uid://d3xbwtdy2t73a" path="res://resources/audios/grab_back.wav" id="6_rcwlb"]
+[ext_resource type="AudioStream" uid="uid://ddrgkut0t2ohp" path="res://resources/audios/low_value.wav" id="7_prh7s"]
+[ext_resource type="AudioStream" uid="uid://5bv0ilwf6t3h" path="res://resources/audios/normal_value.wav" id="8_pdyp5"]
+[ext_resource type="AudioStream" uid="uid://vaeyjpcrcmvp" path="res://resources/audios/high_value.wav" id="9_ovfw0"]
+[ext_resource type="AudioStream" uid="uid://dfu7s1dw783x0" path="res://resources/audios/hook_reset.wav" id="10_7gu0a"]
+[ext_resource type="AudioStream" uid="uid://fwuwx7m6h833" path="res://resources/audios/money.wav" id="11_3xqmf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_53scs"]
 atlas = ExtResource("1_kb6u3")
@@ -84,9 +89,10 @@ frame = 2
 frame_progress = 0.400866
 script = ExtResource("2_jvn0j")
 
-[node name="Hook" type="Marker2D" parent="."]
+[node name="Hook" type="Node2D" parent="."]
 position = Vector2(-7, 10)
 script = ExtResource("3_5ys1n")
+metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="Hook"]
 position = Vector2(0, 7)
@@ -100,7 +106,7 @@ collision_layer = 2
 position = Vector2(-0.00165462, 12.0253)
 shape = SubResource("RectangleShape2D_50lyd")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Hook"]
+[node name="HookAnimation" type="AnimationPlayer" parent="Hook"]
 root_node = NodePath("../..")
 autoplay = "晃"
 libraries = {
@@ -108,10 +114,31 @@ libraries = {
 }
 
 [node name="Timer" type="Timer" parent="Hook"]
-wait_time = 1.5
+wait_time = 2.0
 
-[node name="GrabStart" type="AudioStreamPlayer" parent="Hook"]
+[node name="GoHook" type="AudioStreamPlayer" parent="Hook"]
 stream = ExtResource("5_faxbe")
 
-[node name="GrabBack" type="AudioStreamPlayer" parent="Hook"]
+[node name="BackHook" type="AudioStreamPlayer" parent="Hook"]
 stream = ExtResource("6_rcwlb")
+
+[node name="ItemSlot" type="Node2D" parent="Hook"]
+
+[node name="LowValue" type="AudioStreamPlayer" parent="Hook"]
+stream = ExtResource("7_prh7s")
+
+[node name="MidValue" type="AudioStreamPlayer" parent="Hook"]
+stream = ExtResource("8_pdyp5")
+
+[node name="HighValue" type="AudioStreamPlayer" parent="Hook"]
+stream = ExtResource("9_ovfw0")
+
+[node name="HookReset" type="AudioStreamPlayer" parent="Hook"]
+stream = ExtResource("10_7gu0a")
+
+[node name="MoneyGain" type="AudioStreamPlayer" parent="Hook"]
+stream = ExtResource("11_3xqmf")
+
+[connection signal="ModeChanged" from="Hook" to="Hook" method="_on_mode_changed"]
+[connection signal="area_entered" from="Hook/HitBox" to="Hook" method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="Hook/Timer" to="Hook" method="_on_timer_timeout"]

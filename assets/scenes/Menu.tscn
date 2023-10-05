@@ -25,3 +25,6 @@ offset_top = 182.351
 offset_right = 93.027
 offset_bottom = 213.351
 text = "双人游戏"
+
+[connection signal="pressed" from="SingleGame" to="." method="_on_single_game_pressed"]
+[connection signal="pressed" from="DoubleGame" to="." method="_on_double_game_pressed"]

@@ -1,89 +1,170 @@
 using Godot;
 using System;
 
-namespace spacePlayer1;
-public partial class Hook : Marker2D
+namespace SpacePlayer1;
+
+public enum HookMode { go, back, wave }
+
+public partial class Hook : Node2D
 {
-	public int Weight = 0;
-	private bool _goback = true;
-	private Vector2 _direction;
-	private bool _hooking;
-	public void GoHook()  // 出钩
+	[Signal] public delegate void ModeChangedEventHandler(HookMode from, HookMode to);
+
+	public HookMode HookStatus;
+	private Vector2 direction;
+	private Vector2 OriginPoint { get; } = new Vector2(-7, 11);
+	private bool pause = false;
+	private Node2D ItemSlot;
+	private bool HookHasItem = false;
+	private int ItemValue = 0;
+	private int _itemWeight = 0;
+	private int ItemWeight
 	{
-		if (!_hooking)
-		{
-			_direction = new Vector2((float)-Math.Sin(Rotation), (float)Math.Cos(Rotation)).Normalized();
-			_hooking = true;
-			_goback = true;
-
-			GetParent<Player1>().Pause();
-			GetParent<Player1>().Frame = 2;
-			GetNode<AnimationPlayer>("AnimationPlayer").Pause();
-			GetNode<Timer>("Timer").Start();
-
-			GetNode<AudioStreamPlayer>("GrabStart").Play();
-		}
+		set { _itemWeight = Mathf.Clamp(value, 0, 100); }
+		get { return _itemWeight; }
 	}
-
+	private Player1 Player;
 	public override void _Ready()
 	{
-		GetNode<Timer>("Timer").Timeout += OnBack;
-		GetNode<Area2D>("HitBox").AreaEntered += (@object) => OnAreaEntered(@object);
 		Global.player1Hook = this;
-		GetParent<Player1>().Pause();
-		GetParent<Player1>().Frame = 0;
+		HookStatus = HookMode.wave;
+		ItemSlot = GetNode<Node2D>("ItemSlot");
+		Player = GetParent<Player1>();
 	}
+
+	public void GoHook()   // 出钩
+	{
+		if (HookStatus == HookMode.wave)
+			SwitchMode(HookMode.go);
+	}
+
+	private void SwitchMode(HookMode status)
+	{
+		EmitSignal(SignalName.ModeChanged, new Variant[] { (int)HookStatus, (int)status });
+		HookStatus = status;
+	}
+
 	public override async void _Process(double delta)
 	{
-		QueueRedraw();
-		if (_hooking)
+		switch (HookStatus)
 		{
-			if (_goback)  // 出钩
-			{
-				Position += (float)delta * _direction * 200f;
-			}
-			else         // 回钩
-			{
-				Position += -(float)delta * _direction * (200f - Weight);
-			}
-
-			if (Position.Y <= 10)
-			{
-				Position = new Vector2(-7, 10);      // 勾子原点
-				GetNode<Event>("/root/Event").EmitSignal(Event.SignalName.BackHook);
-				GetNode<AudioStreamPlayer>("GrabBack").Stop();
-				GetParent<Player1>().Pause();
-				GetParent<Player1>().Frame = 0;
-				Weight = 0;
-
-				await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
-				GetNode<AnimationPlayer>("AnimationPlayer").Play();
-				_hooking = false;
-			}
+			case HookMode.wave:
+				break;
+			case HookMode.go:
+				Position += (float)delta * direction * 110f;
+				break;
+			case HookMode.back:
+				{
+					if (!pause)
+					{
+						Position -= (float)delta * direction * 110f * ((100 - ItemWeight) / 100f);
+						if (Position.Y <= OriginPoint.Y)
+						{
+							pause = true;
+							Player.Pause();
+							Player.Frame = 0;
+							GetNode<AudioStreamPlayer>("BackHook").Stop();
+							if (HookHasItem)
+							{
+								GetNode<AudioStreamPlayer>("MoneyGain").Play();
+							}
+							await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
+							SwitchMode(HookMode.wave);
+							pause = false;
+						}
+					}
+				}
+				break;
 		}
 	}
-	private void OnAreaEntered(Area2D @object)
+	private void _on_mode_changed(HookMode from, HookMode to)
 	{
-		_goback = false;
-		GetParent<Player1>().Play();
-		GetNode<AudioStreamPlayer>("GrabBack").Play();
-	}
-
-	private void OnBack()
-	{
-		if (_goback)
+		switch (from)  // 状态结术
 		{
-			GetParent<Player1>().Play();
-			GetNode<AudioStreamPlayer>("GrabBack").Play();
+			case HookMode.wave:
+				break;
+			case HookMode.go:
+				break;
+			case HookMode.back:
+				{
+					if (HookHasItem)
+						Player.Money += ItemValue;
+					foreach (Node x in ItemSlot.GetChildren())
+					{
+						x.QueueFree();
+					}
+					GetNode<AudioStreamPlayer>("BackHook").Stop();
+				}
+				break;
 		}
-		_goback = false;
-
+		switch (to)    // 状态开始
+		{
+			case HookMode.wave:
+				{
+					Position = OriginPoint;
+					GetNode<AnimationPlayer>("HookAnimation").Play();
+					GetNode<AudioStreamPlayer>("HookReset").Play();
+					HookHasItem = false;
+					ItemValue = 0;
+					ItemWeight = 0;
+					Player.Pause();
+					Player.Frame = 0;
+				}
+				break;
+			case HookMode.go:
+				{
+					GetNode<Timer>("Timer").Start();
+					direction = new Vector2((float)-Math.Sin(Rotation), (float)Math.Cos(Rotation)).Normalized();
+					GetNode<AnimationPlayer>("HookAnimation").Pause();
+					Player.Pause();
+					Player.Frame = 2;
+					GetNode<AudioStreamPlayer>("GoHook").Play();
+				}
+				break;
+			case HookMode.back:
+				{
+					Player.Play();
+					GetNode<AudioStreamPlayer>("BackHook").Play();
+				}
+				break;
+		}
 	}
-
-	public void Reset()
+	private void _on_timer_timeout()
 	{
-		GetNode<AnimationPlayer>("AnimationPlayer").ClearCaches();
-		Position = new Vector2(-7, 10);
-		GetNode<AnimationPlayer>("AnimationPlayer").Play();
+		if (HookStatus == HookMode.go)
+			SwitchMode(HookMode.back);
+	}
+	private void _on_hit_box_area_entered(Area2D area)
+	{
+		Sprite2D sprite = new Sprite2D();
+		sprite.Texture = area.GetNode<Sprite2D>("Sprite2D").Texture;
+		area.QueueFree();
+		ItemSlot.AddChild(sprite);
+		SwitchMode(HookMode.back);
+		HookHasItem = true;
+		ItemValue = (area as Item).Properties.Value;
+		ItemWeight = (area as Item).Properties.Weight;
+		switch ((area as Item).Properties.valueLevel)
+		{
+			case ItemProperties.ValueLevel.low: GetNode<AudioStreamPlayer>("LowValue").Play(); break;
+			case ItemProperties.ValueLevel.mid: GetNode<AudioStreamPlayer>("MidValue").Play(); break;
+			case ItemProperties.ValueLevel.high: GetNode<AudioStreamPlayer>("HighValue").Play(); break;
+		}
+	}
+	public void Reset()  // 重置钩子，避免切换关卡时保留上一关卡状态
+	{
+		foreach (Node x in ItemSlot.GetChildren())   // 清除钩子上的东西
+		{
+			x.QueueFree();
+		}
+		GetNode<AnimationPlayer>("HookAnimation").ClearCaches();      // 然后则是初始化操作
+		GetNode<AudioStreamPlayer>("HookReset").Play();
+		HookStatus = HookMode.wave;
+		Position = OriginPoint;
+		GetNode<AnimationPlayer>("HookAnimation").Play();
+		HookHasItem = false;
+		ItemValue = 0;
+		ItemWeight = 0;
+		Player.Pause();
+		Player.Frame = 0;
 	}
 }
