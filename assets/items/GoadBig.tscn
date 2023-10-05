@@ -8,6 +8,7 @@
 script = ExtResource("2_irpyv")
 Weight = 85
 Value = 150
+valueLevel = 1
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4q0ki"]
 radius = 9.76734

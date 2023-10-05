@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://sfq7p2l6sb0p"]
+[gd_scene load_steps=4 format=3 uid="uid://sfq7p2l6sb0p"]
 
 [ext_resource type="PackedScene" uid="uid://btau1yy4oit0g" path="res://assets/items/GoadBig.tscn" id="1_ngmqq"]
 [ext_resource type="PackedScene" uid="uid://cgmll1ddhs1db" path="res://assets/items/StoneBig.tscn" id="2_fjr17"]
+[ext_resource type="PackedScene" uid="uid://h00mb8b51o5y" path="res://assets/items/GoadLarge.tscn" id="3_2aekd"]
 
 [node name="Contents" type="Node2D"]
 
@@ -12,13 +13,13 @@ position = Vector2(180.054, 154.838)
 position = Vector2(257.108, 134.676)
 
 [node name="GoadBig3" parent="." instance=ExtResource("1_ngmqq")]
-position = Vector2(123.24, 66.4146)
+position = Vector2(135, 114)
 
 [node name="GoadBig4" parent="." instance=ExtResource("1_ngmqq")]
 position = Vector2(251.894, 100.63)
 
 [node name="RockBig" parent="." instance=ExtResource("2_fjr17")]
-position = Vector2(78.3604, 95.1625)
+position = Vector2(55, 113)
 
 [node name="RockBig2" parent="." instance=ExtResource("2_fjr17")]
 position = Vector2(228.955, 192.909)
@@ -30,4 +31,10 @@ position = Vector2(56.5036, 164.379)
 position = Vector2(133.465, 182.495)
 
 [node name="RockBig5" parent="." instance=ExtResource("2_fjr17")]
-position = Vector2(202.146, 87.604)
+position = Vector2(299, 83)
+
+[node name="GoadLarge" parent="." instance=ExtResource("3_2aekd")]
+position = Vector2(22, 96)
+
+[node name="GoadLarge2" parent="." instance=ExtResource("3_2aekd")]
+position = Vector2(93, 147)

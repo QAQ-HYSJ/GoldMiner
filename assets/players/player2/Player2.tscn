@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dubgw2s0w8tsh"]
+[gd_scene load_steps=18 format=3 uid="uid://dubgw2s0w8tsh"]
 
 [ext_resource type="Texture2D" uid="uid://c4nv4mskuue66" path="res://resources/images/miner_sheet.png" id="1_bx2yo"]
 [ext_resource type="Script" path="res://assets/players/player2/Player2.cs" id="2_p3vdd"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cevv8a6445ev6" path="res://resources/images/hook_sheet.png" id="4_kuxk8"]
 [ext_resource type="AudioStream" uid="uid://c1sjndocw3dve" path="res://resources/audios/grab_start.mp3" id="5_jnoeo"]
 [ext_resource type="AudioStream" uid="uid://d3xbwtdy2t73a" path="res://resources/audios/grab_back.wav" id="6_yik5n"]
+[ext_resource type="AudioStream" uid="uid://ddrgkut0t2ohp" path="res://resources/audios/low_value.wav" id="7_6jjh8"]
+[ext_resource type="AudioStream" uid="uid://5bv0ilwf6t3h" path="res://resources/audios/normal_value.wav" id="8_n0mvr"]
+[ext_resource type="AudioStream" uid="uid://vaeyjpcrcmvp" path="res://resources/audios/high_value.wav" id="9_4c46l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ts4mk"]
 atlas = ExtResource("1_bx2yo")
@@ -109,6 +112,7 @@ libraries = {
 }
 
 [node name="Timer" type="Timer" parent="Hook"]
+wait_time = 2.0
 
 [node name="ItemSlot" type="Node2D" parent="Hook"]
 position = Vector2(0, 15)
@@ -118,6 +122,15 @@ stream = ExtResource("5_jnoeo")
 
 [node name="BackHook" type="AudioStreamPlayer" parent="Hook"]
 stream = ExtResource("6_yik5n")
+
+[node name="LowValue" type="AudioStreamPlayer" parent="Hook"]
+stream = ExtResource("7_6jjh8")
+
+[node name="MidValue" type="AudioStreamPlayer" parent="Hook"]
+stream = ExtResource("8_n0mvr")
+
+[node name="HighValue" type="AudioStreamPlayer" parent="Hook"]
+stream = ExtResource("9_4c46l")
 
 [connection signal="ModeChanged" from="Hook" to="Hook" method="_on_mode_changed"]
 [connection signal="area_entered" from="Hook/HitBox" to="Hook" method="_on_hit_box_area_entered"]

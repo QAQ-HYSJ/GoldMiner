@@ -8,6 +8,7 @@
 script = ExtResource("2_37p5x")
 Weight = 90
 Value = 30
+valueLevel = 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vkbvp"]
 

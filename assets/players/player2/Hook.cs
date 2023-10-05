@@ -50,13 +50,13 @@ public partial class Hook : Node2D
 			case HookMode.wave:
 				break;
 			case HookMode.go:
-				Position += (float)delta * direction * 150f;
+				Position += (float)delta * direction * 110f;
 				break;
 			case HookMode.back:
 				{
 					if (!pause)
 					{
-						Position -= (float)delta * direction * 150f * ((100 - ItemWeight) / 100f);
+						Position -= (float)delta * direction * 110f * ((100 - ItemWeight) / 100f);
 						if (Position.Y <= OriginPoint.Y)
 						{
 							pause = true;
@@ -138,5 +138,11 @@ public partial class Hook : Node2D
 		HookHasItem = true;
 		ItemValue = (area as Item).Properties.Value;
 		ItemWeight = (area as Item).Properties.Weight;
+		switch ((area as Item).Properties.valueLevel)
+		{
+			case ItemProperties.ValueLevel.low: GetNode<AudioStreamPlayer>("LowValue").Play(); break;
+			case ItemProperties.ValueLevel.mid: GetNode<AudioStreamPlayer>("MidValue").Play(); break;
+			case ItemProperties.ValueLevel.high: GetNode<AudioStreamPlayer>("HighValue").Play(); break;
+		}
 	}
 }

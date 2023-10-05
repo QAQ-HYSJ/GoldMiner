@@ -6,8 +6,9 @@
 
 [sub_resource type="Resource" id="Resource_73gw0"]
 script = ExtResource("2_2wofw")
-Weight = 150
+Weight = 85
 Value = 300
+valueLevel = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_60u3m"]
 radius = 15.6793
