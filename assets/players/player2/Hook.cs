@@ -63,12 +63,11 @@ public partial class Hook : Node2D
 							Player.Pause();
 							Player.Frame = 0;
 							GetNode<AudioStreamPlayer>("BackHook").Stop();
-							if(HookHasItem)
+							if (HookHasItem)
 							{
 								GetNode<AudioStreamPlayer>("MoneyGain").Play();
 							}
 							await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
-							GetNode<AudioStreamPlayer>("HookReset").Play();
 							SwitchMode(HookMode.wave);
 							pause = false;
 						}
@@ -93,7 +92,7 @@ public partial class Hook : Node2D
 					{
 						x.QueueFree();
 					}
-					GetNode<AudioStreamPlayer>("BackHook");
+					GetNode<AudioStreamPlayer>("BackHook").Stop();
 				}
 				break;
 		}
@@ -103,6 +102,7 @@ public partial class Hook : Node2D
 				{
 					Position = OriginPoint;
 					GetNode<AnimationPlayer>("HookAnimation").Play();
+					GetNode<AudioStreamPlayer>("HookReset").Play();
 					HookHasItem = false;
 					ItemValue = 0;
 					ItemWeight = 0;
@@ -149,5 +149,22 @@ public partial class Hook : Node2D
 			case ItemProperties.ValueLevel.mid: GetNode<AudioStreamPlayer>("MidValue").Play(); break;
 			case ItemProperties.ValueLevel.high: GetNode<AudioStreamPlayer>("HighValue").Play(); break;
 		}
+	}
+	public void Reset()  // 重置钩子，避免切换关卡时保留上一关卡状态
+	{
+		foreach (Node x in ItemSlot.GetChildren())   // 清除钩子上的东西
+		{
+			x.QueueFree();
+		}
+		GetNode<AnimationPlayer>("HookAnimation").ClearCaches();      // 然后则是初始化操作
+		GetNode<AudioStreamPlayer>("HookReset").Play();
+		HookStatus = HookMode.wave;
+		Position = OriginPoint;
+		GetNode<AnimationPlayer>("HookAnimation").Play();
+		HookHasItem = false;
+		ItemValue = 0;
+		ItemWeight = 0;
+		Player.Pause();
+		Player.Frame = 0;
 	}
 }

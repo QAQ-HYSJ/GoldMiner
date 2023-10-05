@@ -13,6 +13,7 @@ public partial class Level : Node2D
 		AddChild(Global.player2);
 		AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/contents1.tscn").Instantiate<Node2D>());
 		AddChild(ResourceLoader.Load<PackedScene>("res://assets/HUD/HUD.tscn").Instantiate<Control>());
+		Global.player2Hook.Reset();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
