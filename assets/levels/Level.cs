@@ -17,7 +17,7 @@ public partial class Level : Node2D
 		AddChild(ResourceLoader.Load<PackedScene>("res://assets/HUD/HUD.tscn").Instantiate<Control>());
 
 		// 重置玩家状态
-		if(Global.gameMode)
+		if (Global.gameMode)
 		{
 			Global.player2Hook.Reset();
 			Global.player1Hook.Reset();
@@ -34,7 +34,16 @@ public partial class Level : Node2D
 	private void _on_timer_timeout()
 	{
 		GetNode<Event>("/root/Event").EmitSignal(Event.SignalName.Timeout);
-		RemoveChild(Global.player1);
+		
+		if (Global.gameMode)
+		{
+			RemoveChild(Global.player2);
+			RemoveChild(Global.player1);
+		}
+		else
+		{
+			RemoveChild(Global.player1);
+		}
 		GetTree().ChangeSceneToFile("res://assets/scenes/End.tscn");
 	}
 }

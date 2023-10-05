@@ -166,5 +166,6 @@ public partial class Hook : Node2D
 		ItemWeight = 0;
 		Player.Pause();
 		Player.Frame = 0;
+		GetNode<AudioStreamPlayer>("BackHook").Stop();
 	}
 }
