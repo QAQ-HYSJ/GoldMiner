@@ -7,9 +7,15 @@ public partial class Level : Node2D
 	public override void _Ready()
 	{
 		Global.level = this;
-
-		AddChild(Global.player1);
-
+		if (Global.gameMode)
+		{
+			AddChild(Global.player2);
+			AddChild(Global.player1);
+		}
+		else
+		{
+			AddChild(Global.player1);
+		}
 		// 加载关卡内容
 		AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/contents1.tscn").Instantiate<Node2D>());
 
@@ -34,7 +40,7 @@ public partial class Level : Node2D
 	private void _on_timer_timeout()
 	{
 		GetNode<Event>("/root/Event").EmitSignal(Event.SignalName.Timeout);
-		
+
 		if (Global.gameMode)
 		{
 			RemoveChild(Global.player2);

@@ -19,7 +19,10 @@ public partial class Menu : TextureRect
 	private void _on_double_game_pressed()
 	{
 		Global.gameMode = true;
-		// Global.player2 = ResourceLoader.Load<PackedScene>("res://assets/players/player2/Player2.tscn").Instantiate<Player2>();
-		GD.Print("double");
+		Global.player1 = ResourceLoader.Load<PackedScene>("res://assets/players/player1/player1.tscn").Instantiate<Player1>();
+		Global.player2 = ResourceLoader.Load<PackedScene>("res://assets/players/player2/Player2.tscn").Instantiate<Player2>();
+		Global.player1.Position = new Vector2(120, 20);
+		Global.player2.Position = new Vector2(200, 20);
+		GetTree().ChangeSceneToFile("res://assets/scenes/Begin.tscn");
 	}
 }
