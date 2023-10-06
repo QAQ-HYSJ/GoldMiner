@@ -4,26 +4,25 @@
 [ext_resource type="Script" path="res://assets/scenes/Menu.cs" id="2_wpwyk"]
 
 [node name="Menu" type="TextureRect"]
+offset_right = 320.0
+offset_bottom = 240.0
 texture = ExtResource("1_t117x")
 script = ExtResource("2_wpwyk")
 
 [node name="SingleGame" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.012
-anchor_bottom = 0.017
-offset_left = 11.7295
-offset_top = 142.324
-offset_right = 97.8895
-offset_bottom = 176.244
+layout_mode = 0
+offset_left = 20.0
+offset_top = 150.0
+offset_right = 100.0
+offset_bottom = 185.0
 text = "单人游戏"
 
 [node name="DoubleGame" type="Button" parent="."]
 layout_mode = 0
-offset_left = 20.027
-offset_top = 182.351
-offset_right = 93.027
-offset_bottom = 213.351
+offset_left = 20.0
+offset_top = 190.0
+offset_right = 100.0
+offset_bottom = 225.0
 text = "双人游戏"
 
 [connection signal="pressed" from="SingleGame" to="." method="_on_single_game_pressed"]

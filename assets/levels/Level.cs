@@ -32,6 +32,15 @@ public partial class Level : Node2D
 		{
 			Global.player1.GetNode<Hook>("Hook").Reset();
 		}
+		if(Global.gameMode)
+		{
+			GetNode<Timer>("Timer").WaitTime = 30;
+		}
+		else
+		{
+			GetNode<Timer>("Timer").WaitTime = 60;
+		}
+		GetNode<Timer>("Timer").Start();
 	}
 	public override void _Process(double delta)
 	{

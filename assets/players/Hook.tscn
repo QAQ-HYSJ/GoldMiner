@@ -18,7 +18,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Hook:rotation")
+tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,14 +28,14 @@ tracks/0/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_xnda2"]
-resource_name = "晃"
+[sub_resource type="Animation" id="Animation_r64di"]
+resource_name = "wave"
 length = 4.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Hook:rotation")
+tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -48,7 +48,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xeqbq"]
 _data = {
 "RESET": SubResource("Animation_kkv3k"),
-"晃": SubResource("Animation_xnda2")
+"wave": SubResource("Animation_r64di")
 }
 
 [node name="Hook" type="Node2D"]
@@ -69,8 +69,7 @@ position = Vector2(-0.00165462, 12.0253)
 shape = SubResource("RectangleShape2D_50lyd")
 
 [node name="HookAnimation" type="AnimationPlayer" parent="."]
-root_node = NodePath("../..")
-autoplay = "晃"
+autoplay = "wave"
 libraries = {
 "": SubResource("AnimationLibrary_xeqbq")
 }
@@ -85,6 +84,7 @@ stream = ExtResource("3_haa40")
 stream = ExtResource("4_0kt7b")
 
 [node name="ItemSlot" type="Node2D" parent="."]
+position = Vector2(0, 20)
 
 [node name="LowValue" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_etl5e")
