@@ -84,7 +84,7 @@ stream = ExtResource("3_haa40")
 stream = ExtResource("4_0kt7b")
 
 [node name="ItemSlot" type="Node2D" parent="."]
-position = Vector2(0, 20)
+position = Vector2(0, 8)
 
 [node name="LowValue" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_etl5e")

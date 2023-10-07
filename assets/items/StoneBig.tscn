@@ -9,6 +9,8 @@ script = ExtResource("2_wr1xl")
 Weight = 85
 Value = 70
 valueLevel = 0
+Offect = Vector2(0, 0)
+sizeLevel = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1oub"]
 size = Vector2(31.8198, 27.9334)

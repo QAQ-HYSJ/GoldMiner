@@ -105,6 +105,7 @@ public partial class Hook : Node2D
 					ItemWeight = 0;
 					Player.Pause();
 					Player.Frame = 0;
+					GetNode<Sprite2D>("Sprite").Frame = 0;
 				}
 				break;
 			case HookMode.go:
@@ -132,20 +133,31 @@ public partial class Hook : Node2D
 	}
 	private void _on_hit_box_area_entered(Area2D area)
 	{
-		Sprite2D sprite = new Sprite2D();
-		sprite.Texture = area.GetNode<Sprite2D>("Sprite2D").Texture;
-		area.QueueFree();
+		Item item = area as Item;
+		Sprite2D sprite = new Sprite2D
+		{
+			Texture = area.GetNode<Sprite2D>("Sprite2D").Texture,
+			Position = item.Properties.Offect,
+			ZIndex = -1
+		};
 		ItemSlot.AddChild(sprite);
 		SwitchMode(HookMode.back);
 		HookHasItem = true;
-		ItemValue = (area as Item).Properties.Value;
-		ItemWeight = (area as Item).Properties.Weight;
-		switch ((area as Item).Properties.valueLevel)
+		ItemValue = item.Properties.Value;
+		ItemWeight = item.Properties.Weight;
+		switch (item.Properties.valueLevel)
 		{
 			case ItemProperties.ValueLevel.low: GetNode<AudioStreamPlayer>("LowValue").Play(); break;
 			case ItemProperties.ValueLevel.mid: GetNode<AudioStreamPlayer>("MidValue").Play(); break;
 			case ItemProperties.ValueLevel.high: GetNode<AudioStreamPlayer>("HighValue").Play(); break;
 		}
+		switch (item.Properties.sizeLevel)
+		{
+			case ItemProperties.SizeLevel.big: GetNode<Sprite2D>("Sprite").Frame = 1; break;
+			case ItemProperties.SizeLevel.small: GetNode<Sprite2D>("Sprite").Frame = 2; break;
+		}
+
+		area.QueueFree();
 	}
 	public void Reset()  // 重置钩子，避免切换关卡时保留上一关卡状态
 	{
@@ -164,5 +176,6 @@ public partial class Hook : Node2D
 		Player.Pause();
 		Player.Frame = 0;
 		GetNode<AudioStreamPlayer>("BackHook").Stop();
+		GetNode<Sprite2D>("Sprite").Frame = 0;
 	}
 }

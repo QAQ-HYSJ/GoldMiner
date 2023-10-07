@@ -9,6 +9,8 @@ script = ExtResource("2_2pskg")
 Weight = 30
 Value = 80
 valueLevel = 1
+Offect = Vector2(0, 5)
+sizeLevel = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_daqvx"]
 radius = 7.46815

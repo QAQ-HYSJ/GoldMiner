@@ -9,6 +9,8 @@ script = ExtResource("2_2wofw")
 Weight = 85
 Value = 300
 valueLevel = 2
+Offect = Vector2(0, 15)
+sizeLevel = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_60u3m"]
 radius = 15.6793

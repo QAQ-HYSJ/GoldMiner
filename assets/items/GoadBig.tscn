@@ -9,6 +9,8 @@ script = ExtResource("2_irpyv")
 Weight = 85
 Value = 150
 valueLevel = 1
+Offect = Vector2(0, 7)
+sizeLevel = 1
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4q0ki"]
 radius = 9.76734
@@ -20,9 +22,7 @@ script = ExtResource("1_tgul7")
 Properties = SubResource("Resource_v4euq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 6.62913)
 texture = ExtResource("1_tgty8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.111359, 6.4064)
 shape = SubResource("CapsuleShape2D_4q0ki")
