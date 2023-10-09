@@ -9,7 +9,7 @@ public partial class Hook : Node2D
 
 	public HookMode HookStatus;
 	private Vector2 direction;
-	private Vector2 OriginPoint { get; } = new Vector2(-7, 11);
+	public Vector2 OriginPoint { get; } = new Vector2(-7, 11);
 	private bool pause = false;
 	private Node2D ItemSlot;
 	private bool HookHasItem = false;
@@ -158,24 +158,5 @@ public partial class Hook : Node2D
 		}
 
 		area.QueueFree();
-	}
-	public void Reset()  // 重置钩子，避免切换关卡时保留上一关卡状态
-	{
-		foreach (Node x in ItemSlot.GetChildren())   // 清除钩子上的东西
-		{
-			x.QueueFree();
-		}
-		GetNode<AnimationPlayer>("HookAnimation").ClearCaches();      // 然后则是初始化操作
-		GetNode<AudioStreamPlayer>("HookReset").Play();
-		HookStatus = HookMode.wave;
-		Position = OriginPoint;
-		GetNode<AnimationPlayer>("HookAnimation").Play();
-		HookHasItem = false;
-		ItemValue = 0;
-		ItemWeight = 0;
-		Player.Pause();
-		Player.Frame = 0;
-		GetNode<AudioStreamPlayer>("BackHook").Stop();
-		GetNode<Sprite2D>("Sprite").Frame = 0;
 	}
 }

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b2vso27ndhaib"]
 
 [ext_resource type="Texture2D" uid="uid://c4nv4mskuue66" path="res://resources/images/miner_sheet.png" id="1_kb6u3"]
-[ext_resource type="Script" path="res://assets/Player1.cs" id="2_jvn0j"]
+[ext_resource type="Script" path="res://assets/players/Player1.cs" id="2_jvn0j"]
 [ext_resource type="PackedScene" uid="uid://bo5hh41a8iu4i" path="res://assets/players/Hook.tscn" id="3_5oxbe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_53scs"]

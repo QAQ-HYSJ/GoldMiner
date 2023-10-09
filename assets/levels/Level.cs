@@ -7,14 +7,19 @@ public partial class Level : Node2D
 	public override void _Ready()
 	{
 		Global.level = this;
+		// 加载玩家
 		if (Global.gameMode)
 		{
-			AddChild(Global.player2);
-			AddChild(Global.player1);
+			Player1 player1 = ResourceLoader.Load<PackedScene>("res://assets/players/player1.tscn").Instantiate<Player1>();
+			Player2 player2 = ResourceLoader.Load<PackedScene>("res://assets/players/Player2.tscn").Instantiate<Player2>();
+			player1.Position = new Vector2(120, 20);
+			player2.Position = new Vector2(200, 20);
+			AddChild(player1);
+			AddChild(player2);
 		}
 		else
 		{
-			AddChild(Global.player1);
+			AddChild(ResourceLoader.Load<PackedScene>("res://assets/players/player1.tscn").Instantiate<Player1>());
 		}
 		// 加载关卡内容
 		AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/contents1.tscn").Instantiate<Node2D>());
@@ -22,17 +27,7 @@ public partial class Level : Node2D
 		// 加载HUD
 		AddChild(ResourceLoader.Load<PackedScene>("res://assets/HUD/HUD.tscn").Instantiate<Control>());
 
-		// 重置玩家状态
 		if (Global.gameMode)
-		{
-			Global.player2.GetNode<Hook>("Hook").Reset();
-			Global.player1.GetNode<Hook>("Hook").Reset();
-		}
-		else
-		{
-			Global.player1.GetNode<Hook>("Hook").Reset();
-		}
-		if(Global.gameMode)
 		{
 			GetNode<Timer>("Timer").WaitTime = 30;
 		}
@@ -49,16 +44,6 @@ public partial class Level : Node2D
 	private void _on_timer_timeout()
 	{
 		GetNode<Event>("/root/Event").EmitSignal(Event.SignalName.Timeout);
-
-		if (Global.gameMode)
-		{
-			RemoveChild(Global.player2);
-			RemoveChild(Global.player1);
-		}
-		else
-		{
-			RemoveChild(Global.player1);
-		}
 		GetTree().ChangeSceneToFile("res://assets/scenes/End.tscn");
 	}
 }
