@@ -32,6 +32,12 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="GoadMiner"
 
+[editor]
+
+naming/default_signal_callback_name="On_{NodeName}_{SignalName}"
+naming/default_signal_callback_to_self_name="On_{SignalName}"
+naming/scene_name_casing=1
+
 [filesystem]
 
 import/blender/enabled=false
