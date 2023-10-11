@@ -48,4 +48,4 @@ text = "$650"
 stream = ExtResource("5_hkikj")
 autoplay = true
 
-[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="On_AudioStreamPlayer_Finished"]

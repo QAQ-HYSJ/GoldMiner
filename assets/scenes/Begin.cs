@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 
 public partial class Begin : TextureRect
@@ -8,16 +9,12 @@ public partial class Begin : TextureRect
 		Global.InShope = false;
 		Global.goal += 650;
 		GetNode<Label>("Pannel/Money").Text = "$" + Global.goal;
-		//Save.LoadGame();
-		Save.SaveGame(1, newGame: true);
-		Save.SaveGame(2, newGame: true);
-		Save.SaveGame(3, newGame: true);
-		Save.SaveGame(4, newGame: true);
-		Save.SaveGame(5, newGame: true);
-		Save.SaveGame(6, newGame: true);
+
+		Dictionary<string, Variant> data = Save.LoadGame(1);
+		// Global.Money = (int)data["Money"];
 	}
 
-	private void _on_audio_stream_player_finished()
+	private void On_AudioStreamPlayer_Finished()
 	{
 		GetTree().ChangeSceneToFile("res://assets/levels/Level.tscn");
 	}

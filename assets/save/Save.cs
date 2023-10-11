@@ -19,7 +19,7 @@ public partial class Save : GodotObject
             GD.Print($"JSON Parse Error: {json.GetErrorMessage()} in {jsonString} at line {json.GetErrorLine()}");
         }
 
-        Dictionary<string, Dictionary<string, Variant>> data = new Dictionary<string, Dictionary<string, Variant>>((Dictionary)json.Data);   
+        Dictionary<string, Dictionary<string, Variant>> data = new Dictionary<string, Dictionary<string, Variant>>((Dictionary)json.Data);
         saveFile.Close();
 
         // 以上是读取存档，并转换为字典
@@ -31,17 +31,27 @@ public partial class Save : GodotObject
         {
             data[numb.ToString()] = new Dictionary<string, Variant>();
         }
+        else
+        {
+            Dictionary<string, Variant> temp = new Dictionary<string, Variant>()
+            {
+                {"Money", Global.Money},
+                {"Level", Global.currentLevel},
+                {"InShop", Global.InShope}
+            };
+            data[numb.ToString()] = temp;
+        }
 
         string jsonStr = Json.Stringify(data);
         saveFile.StoreString(jsonStr);
         saveFile.Close();
         GD.Print(jsonStr);
     }
-    static public void LoadGame()
+    static public Dictionary<string, Variant> LoadGame(int numb)
     {
         if (!FileAccess.FileExists("user://game.save"))
         {
-            return; // Error! We don't have a save to load.
+            return null; // Error! We don't have a save to load.
         }
         FileAccess saveFile = FileAccess.Open("user://game.save", FileAccess.ModeFlags.Read);
         string jsonString = saveFile.GetAsText();
@@ -54,9 +64,6 @@ public partial class Save : GodotObject
 
         Dictionary<string, Variant> data = new Dictionary<string, Variant>((Dictionary)json.Data);
         saveFile.Close();
-        GD.Print(data);
-        GD.Print(data["InShop"]);
-        GD.Print(data["Money"]);
-        GD.Print(data["Level"]);
+        return (Dictionary<string, Variant>)data[numb.ToString()];
     }
 }

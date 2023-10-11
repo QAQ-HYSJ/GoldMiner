@@ -73,7 +73,7 @@ public partial class Hook : Node2D
 				break;
 		}
 	}
-	private void _on_mode_changed(HookMode from, HookMode to)
+	private void On_ModeChanged(HookMode from, HookMode to)
 	{
 		switch (from)  // 状态结术
 		{
@@ -126,12 +126,12 @@ public partial class Hook : Node2D
 				break;
 		}
 	}
-	private void _on_timer_timeout()
+	private void On_Timer_Timeout()
 	{
 		if (HookStatus == HookMode.go)
 			SwitchMode(HookMode.back);
 	}
-	private void _on_hit_box_area_entered(Area2D area)
+	private void On_HitBox_AreaEntered(Area2D area)
 	{
 		Item item = area as Item;
 		Sprite2D sprite = new Sprite2D

@@ -22,4 +22,8 @@ public partial class HUD : Control
 		level.Text = "第" + Global.currentLevel + "关";
 		time.Text = "剩余时间：" + (int)Global.level.LeftTime;
 	}
+	private void On_Pause_Pressed()
+	{
+		GetTree().Paused = !GetTree().Paused;
+	}
 }

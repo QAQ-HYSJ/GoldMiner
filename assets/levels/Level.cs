@@ -41,7 +41,7 @@ public partial class Level : Node2D
 	{
 		LeftTime = GetNode<Timer>("Timer").TimeLeft;
 	}
-	private void _on_timer_timeout()
+	private void On_Timer_Timeout()
 	{
 		GetNode<Event>("/root/Event").EmitSignal(Event.SignalName.Timeout);
 		GetTree().ChangeSceneToFile("res://assets/scenes/End.tscn");

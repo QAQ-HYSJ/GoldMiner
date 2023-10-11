@@ -145,5 +145,5 @@ offset_right = 30.0
 offset_bottom = 20.0
 grow_horizontal = 0
 
-[connection signal="pressed" from="SingleGame" to="." method="_on_single_game_pressed"]
-[connection signal="pressed" from="DoubleGame" to="." method="_on_double_game_pressed"]
+[connection signal="pressed" from="SingleGame" to="." method="On_SingleGame_Pressed"]
+[connection signal="pressed" from="DoubleGame" to="." method="On_DoubleGame_Pressed"]

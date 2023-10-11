@@ -9,7 +9,7 @@ public partial class Shop : TextureRect
 		Global.InShope = true;
 	}
 
-	private void _on_button_pressed()
+	private void On_Button_Pressed()
 	{
 		GetTree().ChangeSceneToFile("res://assets/scenes/Begin.tscn");
 	}

@@ -40,4 +40,4 @@ texture = ExtResource("4_1ejrv")
 stream = ExtResource("5_y4x8g")
 autoplay = true
 
-[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="On_AudioStreamPlayer_Finished"]

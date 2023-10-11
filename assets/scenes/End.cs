@@ -8,7 +8,7 @@ public partial class End : TextureRect
 		Save.SaveGame(1, true);
 	}
 
-	private	void _on_audio_stream_player_finished()
+	private	void On_AudioStreamPlayer_Finished()
 	{
 		GetTree().ChangeSceneToFile("res://assets/scenes/Shop.tscn");
 	}

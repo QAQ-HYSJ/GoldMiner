@@ -39,4 +39,4 @@ offset_right = 291.706
 offset_bottom = 232.697
 text = "下一关"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="On_Button_Pressed"]
