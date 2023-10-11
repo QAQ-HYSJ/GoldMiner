@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://v5cde17fsqw7"]
+[gd_scene load_steps=8 format=3 uid="uid://v5cde17fsqw7"]
 
 [ext_resource type="Texture2D" uid="uid://8l3i7wi8qd2j" path="res://resources/images/bg_start_menu.png" id="1_t117x"]
 [ext_resource type="Script" path="res://assets/scenes/Menu.cs" id="2_wpwyk"]
+[ext_resource type="Script" path="res://assets/scenes/Select.cs" id="3_5b5eg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bma5v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_git46"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_310ss"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_54mlm"]
 
 [node name="Menu" type="TextureRect"]
 anchors_preset = 15
@@ -12,23 +21,21 @@ grow_vertical = 2
 texture = ExtResource("1_t117x")
 script = ExtResource("2_wpwyk")
 
-[node name="SingleGame" type="Button" parent="."]
+[node name="Begin" type="Button" parent="."]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 150.0
-offset_right = 100.0
-offset_bottom = 185.0
-text = "单人游戏"
+offset_left = 23.0
+offset_top = 50.0
+offset_right = 96.0
+offset_bottom = 94.0
+theme_override_colors/font_color = Color(1, 0.4, 0, 1)
+theme_override_colors/font_hover_color = Color(0.611765, 0.517647, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bma5v")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_git46")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_310ss")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_54mlm")
+text = "开始游戏"
 
-[node name="DoubleGame" type="Button" parent="."]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 190.0
-offset_right = 100.0
-offset_bottom = 225.0
-text = "双人游戏"
-
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Select" type="ColorRect" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -37,8 +44,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.545098, 0.439216, 0.337255, 1)
+script = ExtResource("3_5b5eg")
 
-[node name="Label" type="Label" parent="ColorRect"]
+[node name="Label" type="Label" parent="Select"]
 layout_mode = 0
 offset_left = 127.0
 offset_top = 31.0
@@ -46,26 +54,27 @@ offset_right = 214.0
 offset_bottom = 54.0
 text = "选择存档"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
-custom_minimum_size = Vector2(10, 50)
+[node name="VBoxContainer" type="VBoxContainer" parent="Select"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -20.0
-offset_right = 60.0
-offset_bottom = 80.0
+offset_left = -106.0
+offset_top = -51.0
+offset_right = 83.0
+offset_bottom = 101.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+[node name="Button" type="Button" parent="Select/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "空"
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Button"]
+[node name="Button" type="Button" parent="Select/VBoxContainer/Button"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -74,12 +83,16 @@ offset_left = 10.0
 offset_right = 30.0
 offset_bottom = 20.0
 grow_horizontal = 0
+theme_override_font_sizes/font_size = 10
+text = "+"
 
-[node name="Button2" type="Button" parent="ColorRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+[node name="Button2" type="Button" parent="Select/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "空"
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Button2"]
+[node name="Button" type="Button" parent="Select/VBoxContainer/Button2"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -88,12 +101,16 @@ offset_left = 10.0
 offset_right = 30.0
 offset_bottom = 20.0
 grow_horizontal = 0
+theme_override_font_sizes/font_size = 10
+text = "+"
 
-[node name="Button3" type="Button" parent="ColorRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+[node name="Button3" type="Button" parent="Select/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "空"
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Button3"]
+[node name="Button" type="Button" parent="Select/VBoxContainer/Button3"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -102,12 +119,16 @@ offset_left = 10.0
 offset_right = 30.0
 offset_bottom = 20.0
 grow_horizontal = 0
+theme_override_font_sizes/font_size = 10
+text = "+"
 
-[node name="Button4" type="Button" parent="ColorRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+[node name="Button4" type="Button" parent="Select/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "空"
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Button4"]
+[node name="Button" type="Button" parent="Select/VBoxContainer/Button4"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -116,12 +137,16 @@ offset_left = 10.0
 offset_right = 30.0
 offset_bottom = 20.0
 grow_horizontal = 0
+theme_override_font_sizes/font_size = 10
+text = "+"
 
-[node name="Button5" type="Button" parent="ColorRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+[node name="Button5" type="Button" parent="Select/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "空"
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Button5"]
+[node name="Button" type="Button" parent="Select/VBoxContainer/Button5"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -130,12 +155,16 @@ offset_left = 10.0
 offset_right = 30.0
 offset_bottom = 20.0
 grow_horizontal = 0
+theme_override_font_sizes/font_size = 10
+text = "+"
 
-[node name="Button6" type="Button" parent="ColorRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+[node name="Button6" type="Button" parent="Select/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "空"
 
-[node name="Button" type="Button" parent="ColorRect/VBoxContainer/Button6"]
+[node name="Button" type="Button" parent="Select/VBoxContainer/Button6"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -144,6 +173,7 @@ offset_left = 10.0
 offset_right = 30.0
 offset_bottom = 20.0
 grow_horizontal = 0
+theme_override_font_sizes/font_size = 10
+text = "+"
 
-[connection signal="pressed" from="SingleGame" to="." method="On_SingleGame_Pressed"]
-[connection signal="pressed" from="DoubleGame" to="." method="On_DoubleGame_Pressed"]
+[connection signal="pressed" from="Begin" to="." method="On_Begin_Pressed"]

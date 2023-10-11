@@ -11,7 +11,15 @@ public partial class Begin : TextureRect
 		GetNode<Label>("Pannel/Money").Text = "$" + Global.goal;
 
 		Dictionary<string, Variant> data = Save.LoadGame(1);
-		// Global.Money = (int)data["Money"];
+		if(data.Count == 0)
+		{
+			GD.Print("空档");
+		}
+		else
+		{
+            data.TryGetValue("Money", out Variant money);
+            GD.Print(Global.Money = (int)money);
+		}
 	}
 
 	private void On_AudioStreamPlayer_Finished()
