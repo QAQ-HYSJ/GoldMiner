@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://v5cde17fsqw7"]
+[gd_scene load_steps=9 format=3 uid="uid://v5cde17fsqw7"]
 
 [ext_resource type="Texture2D" uid="uid://8l3i7wi8qd2j" path="res://resources/images/bg_start_menu.png" id="1_t117x"]
 [ext_resource type="Script" path="res://assets/scenes/Menu.cs" id="2_wpwyk"]
 [ext_resource type="Script" path="res://assets/scenes/Select.cs" id="3_5b5eg"]
+[ext_resource type="Script" path="res://assets/scenes/Dialog.cs" id="4_kw7o2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bma5v"]
 
@@ -36,7 +37,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_54mlm")
 text = "开始游戏"
 
 [node name="Select" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -176,4 +176,41 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 10
 text = "+"
 
+[node name="Dialog" type="ColorRect" parent="Select"]
+visible = false
+layout_mode = 0
+offset_left = 67.0
+offset_top = 91.0
+offset_right = 239.0
+offset_bottom = 186.0
+color = Color(0.709804, 0.568627, 0.184314, 1)
+script = ExtResource("4_kw7o2")
+
+[node name="Label" type="Label" parent="Select/Dialog"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 13.0
+offset_right = 100.0
+offset_bottom = 36.0
+text = "新建存档"
+
+[node name="Single" type="Button" parent="Select/Dialog"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 56.0
+offset_right = 78.0
+offset_bottom = 87.0
+text = "单人模式"
+
+[node name="Double" type="Button" parent="Select/Dialog"]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 56.0
+offset_right = 165.0
+offset_bottom = 87.0
+text = "双人模式"
+
 [connection signal="pressed" from="Begin" to="." method="On_Begin_Pressed"]
+[connection signal="focus_exited" from="Select/Dialog" to="Select/Dialog" method="On_FocusExited"]
+[connection signal="pressed" from="Select/Dialog/Single" to="Select/Dialog" method="On_Single_Pressed"]
+[connection signal="pressed" from="Select/Dialog/Double" to="Select/Dialog" method="On_Double_Pressed"]

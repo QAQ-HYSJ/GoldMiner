@@ -29,7 +29,12 @@ public partial class Save : GodotObject
 
         if (newGame)
         {
-            data[numb.ToString()] = new Dictionary<string, Variant>();
+            data[numb.ToString()] = new Dictionary<string, Variant>()
+            {
+                {"Money", 0},
+                {"Level", 1},
+                {"inShop", false}
+            };
         }
         else
         {
