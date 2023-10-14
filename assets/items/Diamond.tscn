@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://j603r58o2jpb"]
+
+[ext_resource type="Script" path="res://assets/items/Item.cs" id="1_nmh3y"]
+[ext_resource type="Script" path="res://assets/items/ItemProperties.cs" id="2_tuha6"]
+[ext_resource type="Texture2D" uid="uid://cog0gm5wldkuo" path="res://resources/images/diamond.png" id="3_u3xcv"]
+
+[sub_resource type="Resource" id="Resource_okrbu"]
+script = ExtResource("2_tuha6")
+Weight = 5
+Value = 600
+valueLevel = 2
+Offect = Vector2(0, 0)
+sizeLevel = 0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ved6w"]
+size = Vector2(10, 8)
+
+[node name="Diamond" type="Area2D"]
+script = ExtResource("1_nmh3y")
+Properties = SubResource("Resource_okrbu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_u3xcv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ved6w")

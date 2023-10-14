@@ -10,16 +10,16 @@ public partial class Begin : TextureRect
 		Global.goal += 650;
 		GetNode<Label>("Pannel/Money").Text = "$" + Global.goal;
 
-		Dictionary<string, Variant> data = Save.LoadGame(1);
-		if(data.Count == 0)
-		{
-			GD.Print("空档");
-		}
-		else
-		{
-            data.TryGetValue("Money", out Variant money);
-            GD.Print(Global.Money = (int)money);
-		}
+		// Dictionary<string, Variant> data = Save.LoadGame(1);
+		// if(data.Count == 0)
+		// {
+		// 	GD.Print("空档");
+		// }
+		// else
+		// {
+        //     data.TryGetValue("Money", out Variant money);
+        //     GD.Print(Global.Money = (int)money);
+		// }
 	}
 
 	private void On_AudioStreamPlayer_Finished()

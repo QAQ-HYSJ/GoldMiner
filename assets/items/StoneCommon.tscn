@@ -1,21 +1,23 @@
 [gd_scene load_steps=6 format=3 uid="uid://dei8arjquncaf"]
 
-[ext_resource type="Script" path="res://assets/items/StoneCommon.cs" id="1_xkgnm"]
+[ext_resource type="Script" path="res://assets/items/Item.cs" id="1_b067s"]
 [ext_resource type="Script" path="res://assets/items/ItemProperties.cs" id="2_37p5x"]
 [ext_resource type="Texture2D" uid="uid://w0i0ac2vqg6q" path="res://resources/images/rock_normal.png" id="2_x1pu6"]
 
-[sub_resource type="Resource" id="Resource_uq2s3"]
+[sub_resource type="Resource" id="Resource_j82pi"]
 script = ExtResource("2_37p5x")
-Weight = 90
-Value = 30
+Weight = 30
+Value = 0
 valueLevel = 0
+Offect = Vector2(0, 0)
+sizeLevel = 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vkbvp"]
 
 [node name="StoneCommon" type="Area2D"]
 collision_mask = 2
-script = ExtResource("1_xkgnm")
-Properties = SubResource("Resource_uq2s3")
+script = ExtResource("1_b067s")
+Properties = SubResource("Resource_j82pi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_x1pu6")
