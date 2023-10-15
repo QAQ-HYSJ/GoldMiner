@@ -131,27 +131,43 @@ public partial class Hook : Node2D
 		if (HookStatus == HookMode.go)
 			SwitchMode(HookMode.back);
 	}
-	private void On_HitBox_AreaEntered(Area2D area)
+	private void On_HitBox_AreaEntered(Area2D area)				// 抓到物体
 	{
 		Item item = area as Item;
-		Sprite2D sprite = new Sprite2D
+
+		if (area is Mouse)		// 如果是老鼠
 		{
-			Texture = area.GetNode<Sprite2D>("Sprite2D").Texture,
-			Position = item.Properties.Offect,
-			ZIndex = -1
-		};
-		ItemSlot.AddChild(sprite);
+			AnimatedSprite2D animatedSprite2D = new AnimatedSprite2D
+			{
+				SpriteFrames = area.GetNode<AnimatedSprite2D>("AnimatedSprite2D").SpriteFrames,
+				Animation = area.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Animation,
+				Position = item.Properties.Offect,
+				ZIndex = -1
+			};
+			ItemSlot.AddChild(animatedSprite2D);
+		}
+		else if (area is Item)	// 如果是普通物体
+		{
+			Sprite2D sprite = new Sprite2D
+			{
+				Texture = area.GetNode<Sprite2D>("Sprite2D").Texture,
+				Position = item.Properties.Offect,
+				ZIndex = -1
+			};
+			ItemSlot.AddChild(sprite);
+		}
+
 		SwitchMode(HookMode.back);
 		HookHasItem = true;
 		ItemValue = item.Properties.Value;
 		ItemWeight = item.Properties.Weight;
-		switch (item.Properties.valueLevel)
+		switch (item.Properties.valueLevel)		// 播放音效
 		{
 			case ItemProperties.ValueLevel.low: GetNode<AudioStreamPlayer>("LowValue").Play(); break;
 			case ItemProperties.ValueLevel.mid: GetNode<AudioStreamPlayer>("MidValue").Play(); break;
 			case ItemProperties.ValueLevel.high: GetNode<AudioStreamPlayer>("HighValue").Play(); break;
 		}
-		switch (item.Properties.sizeLevel)
+		switch (item.Properties.sizeLevel)		// 改变钩子形状
 		{
 			case ItemProperties.SizeLevel.big: GetNode<Sprite2D>("Sprite").Frame = 1; break;
 			case ItemProperties.SizeLevel.small: GetNode<Sprite2D>("Sprite").Frame = 2; break;

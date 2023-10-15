@@ -1,0 +1,88 @@
+[gd_scene load_steps=14 format=3 uid="uid://b76ibfyqebemd"]
+
+[ext_resource type="Script" path="res://assets/items/Mouse.cs" id="1_xpoi8"]
+[ext_resource type="Texture2D" uid="uid://dllh6uskvav1v" path="res://resources/images/mole_sheet.png" id="2_0ayp4"]
+[ext_resource type="Script" path="res://assets/items/ItemProperties.cs" id="2_vok3q"]
+
+[sub_resource type="Resource" id="Resource_4anpj"]
+script = ExtResource("2_vok3q")
+Weight = 5
+Value = 2
+valueLevel = 0
+Offect = Vector2(0, 0)
+sizeLevel = 0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjgbu"]
+atlas = ExtResource("2_0ayp4")
+region = Rect2(0, 0, 18, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4plwq"]
+atlas = ExtResource("2_0ayp4")
+region = Rect2(18, 0, 18, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmjk4"]
+atlas = ExtResource("2_0ayp4")
+region = Rect2(36, 0, 18, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pq0r"]
+atlas = ExtResource("2_0ayp4")
+region = Rect2(54, 0, 18, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocnne"]
+atlas = ExtResource("2_0ayp4")
+region = Rect2(72, 0, 18, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyj8v"]
+atlas = ExtResource("2_0ayp4")
+region = Rect2(90, 0, 18, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6d5h"]
+atlas = ExtResource("2_0ayp4")
+region = Rect2(108, 0, 18, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ud6cj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjgbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4plwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmjk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pq0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocnne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyj8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6d5h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cs88i"]
+
+[node name="Mouse" type="Area2D"]
+script = ExtResource("1_xpoi8")
+Properties = SubResource("Resource_4anpj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ud6cj")
+autoplay = "default"
+frame_progress = 0.185292
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cs88i")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="On_Timer_Timeout"]
