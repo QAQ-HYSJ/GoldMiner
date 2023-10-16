@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://sfq7p2l6sb0p"]
+[gd_scene load_steps=13 format=3 uid="uid://sfq7p2l6sb0p"]
 
 [ext_resource type="PackedScene" uid="uid://cy2p3hx224t6a" path="res://assets/items/Bone.tscn" id="1_4gdrd"]
 [ext_resource type="PackedScene" uid="uid://btau1yy4oit0g" path="res://assets/items/GoadBig.tscn" id="1_ngmqq"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dl3xcgmrrvu8g" path="res://assets/items/GoadSmall.tscn" id="7_emr0o"]
 [ext_resource type="PackedScene" uid="uid://dmweim5muyvbw" path="res://assets/items/StoneSmall.tscn" id="9_hxl3r"]
 [ext_resource type="PackedScene" uid="uid://b76ibfyqebemd" path="res://assets/items/Mouse.tscn" id="11_npqps"]
+[ext_resource type="PackedScene" uid="uid://dmjnsm8w0aod4" path="res://assets/items/TNT.tscn" id="12_ssw7i"]
 
 [node name="Contents" type="Node2D"]
 
@@ -46,3 +47,6 @@ position = Vector2(151, 139)
 
 [node name="Mouse" parent="." instance=ExtResource("11_npqps")]
 position = Vector2(179, 106)
+
+[node name="TNT" parent="." instance=ExtResource("12_ssw7i")]
+position = Vector2(110, 133)
