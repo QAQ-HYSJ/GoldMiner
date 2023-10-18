@@ -90,6 +90,8 @@ public partial class Hook : Node2D
 						x.QueueFree();
 					}
 					GetNode<AudioStreamPlayer>("BackHook").Stop();
+					GetNode<Area2D>("HitBox").Monitorable = true;
+					GetNode<Area2D>("HitBox").Monitoring = true;
 				}
 				break;
 		}
@@ -122,6 +124,7 @@ public partial class Hook : Node2D
 				{
 					Player.Play();
 					GetNode<AudioStreamPlayer>("BackHook").Play();
+					CallDeferred(MethodName.BokehHook);				// 延迟调用虚化钩子，否则碰撞时会报错
 				}
 				break;
 		}
@@ -184,5 +187,10 @@ public partial class Hook : Node2D
 		}
 
 		area.QueueFree();
+	}
+	private void BokehHook()    // 虚化钩子
+	{
+		GetNode<Area2D>("HitBox").Monitorable = false;
+		GetNode<Area2D>("HitBox").Monitoring = false;
 	}
 }

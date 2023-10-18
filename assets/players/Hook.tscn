@@ -63,6 +63,7 @@ hframes = 3
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 2
+collision_priority = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-0.00165462, 12.0253)
