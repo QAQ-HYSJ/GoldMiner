@@ -13,41 +13,51 @@ grow_vertical = 2
 script = ExtResource("1_gtf5p")
 
 [node name="Money" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+offset_left = 10.0
+offset_right = -10.0
+theme_override_font_sizes/font_size = 12
 text = "当前："
 
 [node name="Goal" type="Label" parent="."]
-layout_mode = 0
-offset_left = -1.0
-offset_top = 38.0
-offset_right = 47.0
-offset_bottom = 63.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+offset_left = 10.0
+offset_top = 17.0
+offset_right = -10.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 12
 text = "目标："
 
 [node name="Level" type="Label" parent="."]
 layout_mode = 0
-offset_left = 242.0
-offset_top = 3.0
-offset_right = 285.0
-offset_bottom = 29.0
+offset_left = 273.0
+offset_top = 1.0
+offset_right = 316.0
+offset_bottom = 27.0
+theme_override_font_sizes/font_size = 12
 text = "第n关"
 
 [node name="Time" type="Label" parent="."]
 layout_mode = 0
-offset_left = 229.0
-offset_top = 34.0
-offset_right = 293.0
-offset_bottom = 59.0
+offset_left = 235.0
+offset_top = 16.0
+offset_right = 299.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 12
 text = "剩余时间"
+horizontal_alignment = 2
 
 [node name="Pause" type="Button" parent="."]
 layout_mode = 0
-offset_left = 276.0
-offset_top = 4.0
-offset_right = 316.0
-offset_bottom = 35.0
+offset_left = 273.0
+offset_top = 39.0
+offset_right = 313.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 12
 text = "暂停"
 
 [connection signal="pressed" from="Pause" to="." method="On_Pause_Pressed"]

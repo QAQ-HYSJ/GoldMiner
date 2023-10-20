@@ -27,18 +27,23 @@ public partial class Mouse : Item
 		if (Counter % 4 == 0 || Counter % 4 == 2)
 		{
 			direction = Direction.idle;
+			GetNode<AnimatedSprite2D>("AnimatedSprite2D").Pause();
 			GetNode<Timer>("Timer").WaitTime = 2;
 			GetNode<Timer>("Timer").Start();
 		}
 		if (Counter % 4 == 1)
 		{
 			direction = Direction.left;
+			GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play();
+			GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = false;
 			GetNode<Timer>("Timer").WaitTime = 4;
 			GetNode<Timer>("Timer").Start();
 		}
 		if (Counter % 4 == 3)
 		{
 			direction = Direction.right;
+			GetNode<AnimatedSprite2D>("AnimatedSprite2D").Play();
+			GetNode<AnimatedSprite2D>("AnimatedSprite2D").FlipH = true;
 			GetNode<Timer>("Timer").WaitTime = 4;
 			GetNode<Timer>("Timer").Start();
 		}
