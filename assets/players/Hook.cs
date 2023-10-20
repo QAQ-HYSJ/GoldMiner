@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public enum HookMode { go, back, wave }
 
@@ -10,6 +11,7 @@ public partial class Hook : Node2D
 	public HookMode HookStatus;
 	private Vector2 direction;
 	public Vector2 OriginPoint { get; } = new Vector2(-7, 11);
+	private List<Item> items = new List<Item>();
 	private bool pause = false;
 	private Node2D ItemSlot;
 	private bool HookHasItem = false;
@@ -26,6 +28,7 @@ public partial class Hook : Node2D
 		HookStatus = HookMode.wave;
 		ItemSlot = GetNode<Node2D>("ItemSlot");
 		Player = GetParent<AnimatedSprite2D>();
+		//items.
 	}
 
 	public void GoHook()   // 出钩
@@ -47,7 +50,14 @@ public partial class Hook : Node2D
 			case HookMode.wave:
 				break;
 			case HookMode.go:
-				Position += (float)delta * direction * 110f;
+				{
+					Position += (float)delta * direction * 110f;
+					if (items.Count != 0)
+					{
+						HookThing(items[0]);
+						items.Clear();
+					}
+				}
 				break;
 			case HookMode.back:
 				{
@@ -137,7 +147,16 @@ public partial class Hook : Node2D
 	private void On_HitBox_AreaEntered(Area2D area)             // 抓到物体
 	{
 		Item item = area as Item;
-
+		items.Add(item);
+		//HookThing(item);
+	}
+	private void BokehHook()    // 虚化钩子
+	{
+		GetNode<Area2D>("HitBox").Monitorable = false;
+		GetNode<Area2D>("HitBox").Monitoring = false;
+	}
+	private void HookThing(Item item)   //钩中物品时的处理
+	{
 		if (item is Mouse)      // 如果是老鼠
 		{
 			AnimatedSprite2D animatedSprite2D = new AnimatedSprite2D
@@ -188,12 +207,7 @@ public partial class Hook : Node2D
 			case ItemProperties.SizeLevel.small: GetNode<Sprite2D>("Sprite").Frame = 2; break;
 		}
 
-		if (item is not TNT)					// 如果是tnt，则让它自己爆炸
+		if (item is not TNT)                    // 如果是tnt，则让它自己爆炸
 			item.QueueFree();
-	}
-	private void BokehHook()    // 虚化钩子
-	{
-		GetNode<Area2D>("HitBox").Monitorable = false;
-		GetNode<Area2D>("HitBox").Monitoring = false;
 	}
 }
