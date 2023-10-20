@@ -6,11 +6,11 @@
 
 [sub_resource type="Resource" id="Resource_5akxr"]
 script = ExtResource("2_us4qi")
-Weight = 30
+Weight = 50
 Value = 20
 valueLevel = 0
-Offect = Vector2(0, 0)
-sizeLevel = 0
+Offect = Vector2(0, 8)
+sizeLevel = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xaow5"]
 

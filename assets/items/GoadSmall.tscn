@@ -6,10 +6,10 @@
 
 [sub_resource type="Resource" id="Resource_4bpt4"]
 script = ExtResource("2_ndj1d")
-Weight = 30
-Value = 0
-valueLevel = 0
-Offect = Vector2(0, 0)
+Weight = 50
+Value = 50
+valueLevel = 1
+Offect = Vector2(0, 4)
 sizeLevel = 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f1co7"]

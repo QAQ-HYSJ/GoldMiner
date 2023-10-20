@@ -6,10 +6,10 @@
 
 [sub_resource type="Resource" id="Resource_41hh0"]
 script = ExtResource("2_2pskg")
-Weight = 60
-Value = 200
+Weight = 75
+Value = 100
 valueLevel = 1
-Offect = Vector2(0, 0)
+Offect = Vector2(0, 5)
 sizeLevel = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_daqvx"]

@@ -143,11 +143,12 @@ public partial class Hook : Node2D
 			AnimatedSprite2D animatedSprite2D = new AnimatedSprite2D
 			{
 				SpriteFrames = item.GetNode<AnimatedSprite2D>("AnimatedSprite2D").SpriteFrames,
-				Animation = item.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Animation,
 				Position = item.Properties.Offect,
 				ZIndex = -1
 			};
 			ItemSlot.AddChild(animatedSprite2D);
+			animatedSprite2D.SpriteFrames.SetAnimationSpeed("default", 30);
+			animatedSprite2D.Play();
 		}
 		else if (item is TNT tnt)   // 如果是炸药
 		{

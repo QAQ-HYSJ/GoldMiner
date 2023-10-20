@@ -1,5 +1,5 @@
-# GoadMiner
+# 黄金矿工
 使用Godot复刻黄金矿工
-当前Godot引擎版本为4.1.0，编辑游戏请看https://godotengine.org/
-代码Mit协议
-素材来源于https://github.com/zzxzzk115/GoldMiner-GameShell
+当前Godot引擎版本为4.1.2，编辑游戏请学习https://godotengine.org/
+游戏代码为Mit协议
+游戏素材来源于https://github.com/zzxzzk115/GoldMiner-GameShell

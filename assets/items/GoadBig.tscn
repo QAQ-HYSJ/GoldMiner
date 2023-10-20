@@ -6,10 +6,10 @@
 
 [sub_resource type="Resource" id="Resource_iocky"]
 script = ExtResource("2_irpyv")
-Weight = 70
-Value = 500
-valueLevel = 0
-Offect = Vector2(0, 0)
+Weight = 80
+Value = 250
+valueLevel = 1
+Offect = Vector2(0, 8)
 sizeLevel = 1
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4q0ki"]

@@ -6,11 +6,11 @@
 
 [sub_resource type="Resource" id="Resource_33cso"]
 script = ExtResource("2_t32qh")
-Weight = 30
-Value = 0
+Weight = 80
+Value = 11
 valueLevel = 0
-Offect = Vector2(0, 0)
-sizeLevel = 0
+Offect = Vector2(0, 5)
+sizeLevel = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5a674"]
 size = Vector2(15, 11)

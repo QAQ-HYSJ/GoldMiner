@@ -6,10 +6,10 @@
 
 [sub_resource type="Resource" id="Resource_okrbu"]
 script = ExtResource("2_tuha6")
-Weight = 5
+Weight = 30
 Value = 600
 valueLevel = 2
-Offect = Vector2(0, 0)
+Offect = Vector2(0, 5)
 sizeLevel = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ved6w"]
