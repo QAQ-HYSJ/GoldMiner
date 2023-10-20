@@ -124,7 +124,7 @@ public partial class Hook : Node2D
 				{
 					Player.Play();
 					GetNode<AudioStreamPlayer>("BackHook").Play();
-					CallDeferred(MethodName.BokehHook);				// 延迟调用虚化钩子，否则碰撞时会报错
+					CallDeferred(MethodName.BokehHook);             // 延迟调用虚化钩子，否则碰撞时会报错
 				}
 				break;
 		}
@@ -138,18 +138,18 @@ public partial class Hook : Node2D
 	{
 		Item item = area as Item;
 
-		if (area is Mouse)      // 如果是老鼠
+		if (item is Mouse)      // 如果是老鼠
 		{
 			AnimatedSprite2D animatedSprite2D = new AnimatedSprite2D
 			{
-				SpriteFrames = area.GetNode<AnimatedSprite2D>("AnimatedSprite2D").SpriteFrames,
-				Animation = area.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Animation,
+				SpriteFrames = item.GetNode<AnimatedSprite2D>("AnimatedSprite2D").SpriteFrames,
+				Animation = item.GetNode<AnimatedSprite2D>("AnimatedSprite2D").Animation,
 				Position = item.Properties.Offect,
 				ZIndex = -1
 			};
 			ItemSlot.AddChild(animatedSprite2D);
 		}
-		else if (area is TNT tnt)   // 如果是炸药
+		else if (item is TNT tnt)   // 如果是炸药
 		{
 			Sprite2D sprite = new Sprite2D
 			{
@@ -158,12 +158,13 @@ public partial class Hook : Node2D
 				ZIndex = -1
 			};
 			ItemSlot.AddChild(sprite);
+			tnt.Explosion();
 		}
-		else if (area is Item)  // 如果是普通物体
+		else if (item is Item)  // 如果是普通物体
 		{
 			Sprite2D sprite = new Sprite2D
 			{
-				Texture = area.GetNode<Sprite2D>("Sprite2D").Texture,
+				Texture = item.GetNode<Sprite2D>("Sprite2D").Texture,
 				Position = item.Properties.Offect,
 				ZIndex = -1
 			};
@@ -186,7 +187,8 @@ public partial class Hook : Node2D
 			case ItemProperties.SizeLevel.small: GetNode<Sprite2D>("Sprite").Frame = 2; break;
 		}
 
-		area.QueueFree();
+		if (item is not TNT)					// 如果是tnt，则让它自己爆炸
+			item.QueueFree();
 	}
 	private void BokehHook()    // 虚化钩子
 	{
