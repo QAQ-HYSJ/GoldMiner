@@ -11,7 +11,7 @@ public partial class Hook : Node2D
 	public HookMode HookStatus;
 	private Vector2 direction;
 	public Vector2 OriginPoint { get; } = new Vector2(-7, 11);
-	private List<Item> items = new List<Item>();
+	private List<Item> items = new List<Item>();				// 钩中了物品，将其加入列表中，再进行处理，防止钩中多个
 	private bool pause = false;
 	private Node2D ItemSlot;
 	private bool HookHasItem = false;
@@ -52,7 +52,7 @@ public partial class Hook : Node2D
 			case HookMode.go:
 				{
 					Position += (float)delta * direction * 110f;
-					if (items.Count != 0)
+					if (items.Count != 0)           		 // 绶存的列表中有钩中的物品则进行处理，不止一个则只处理一个
 					{
 						HookThing(items[0]);
 						items.Clear();
@@ -144,11 +144,10 @@ public partial class Hook : Node2D
 		if (HookStatus == HookMode.go)
 			SwitchMode(HookMode.back);
 	}
-	private void On_HitBox_AreaEntered(Area2D area)             // 抓到物体
+	private void On_HitBox_AreaEntered(Area2D area)             // 抓到物体，钩中的物体加入列表中，而不是直接处理，防止钩中多个物体
 	{
 		Item item = area as Item;
 		items.Add(item);
-		//HookThing(item);
 	}
 	private void BokehHook()    // 虚化钩子
 	{

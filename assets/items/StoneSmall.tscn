@@ -16,6 +16,7 @@ sizeLevel = 1
 size = Vector2(15, 11)
 
 [node name="StoneSmall" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_c0qa6")
 Properties = SubResource("Resource_33cso")
 

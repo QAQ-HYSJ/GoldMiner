@@ -16,6 +16,7 @@ sizeLevel = 0
 size = Vector2(10, 8)
 
 [node name="Diamond" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_nmh3y")
 Properties = SubResource("Resource_okrbu")
 

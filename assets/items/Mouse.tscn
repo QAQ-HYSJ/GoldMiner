@@ -72,6 +72,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cs88i"]
 
 [node name="Mouse" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_xpoi8")
 Properties = SubResource("Resource_4anpj")
 

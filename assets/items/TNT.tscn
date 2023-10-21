@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dmjnsm8w0aod4"]
+[gd_scene load_steps=23 format=3 uid="uid://dmjnsm8w0aod4"]
 
 [ext_resource type="Script" path="res://assets/items/TNT.cs" id="1_b3m0d"]
 [ext_resource type="Texture2D" uid="uid://b46sc6u134iyf" path="res://resources/images/tnt.png" id="1_fonyb"]
@@ -109,7 +109,11 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bdx5g"]
+radius = 57.1402
+
 [node name="TNT" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_b3m0d")
 texture = ExtResource("2_8fiiu")
 Properties = SubResource("Resource_iqn3a")
@@ -128,6 +132,16 @@ frame_progress = 1.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_y3y01")
+max_polyphony = 10
+
+[node name="ExplosionArea" type="Area2D" parent="."]
+collision_layer = 4
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
+shape = SubResource("CircleShape2D_bdx5g")
 
 [connection signal="animation_finished" from="Explosion" to="." method="On_Explosion_AnimationFinished"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="On_AudioStreamPlayer_Finished"]
+[connection signal="area_entered" from="ExplosionArea" to="." method="On_ExplosionArea_AreaEntered"]

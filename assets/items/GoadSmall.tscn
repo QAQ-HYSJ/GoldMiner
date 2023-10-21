@@ -16,6 +16,7 @@ sizeLevel = 0
 radius = 5.09902
 
 [node name="GoadSmall" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_w3xd2")
 Properties = SubResource("Resource_4bpt4")
 

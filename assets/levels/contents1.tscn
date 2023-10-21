@@ -50,3 +50,15 @@ position = Vector2(179, 106)
 
 [node name="TNT" parent="." instance=ExtResource("12_ssw7i")]
 position = Vector2(110, 133)
+
+[node name="TNT2" parent="." instance=ExtResource("12_ssw7i")]
+position = Vector2(156, 186)
+
+[node name="TNT3" parent="." instance=ExtResource("12_ssw7i")]
+position = Vector2(265, 169)
+
+[node name="TNT4" parent="." instance=ExtResource("12_ssw7i")]
+position = Vector2(216, 214)
+
+[node name="TNT5" parent="." instance=ExtResource("12_ssw7i")]
+position = Vector2(301, 112)
