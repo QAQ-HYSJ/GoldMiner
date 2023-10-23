@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://3bdr3t5eoxxt"]
+
+[ext_resource type="Script" path="res://assets/items/Bag.cs" id="1_cq0nn"]
+[ext_resource type="Script" path="res://assets/items/ItemProperties.cs" id="2_1t7ot"]
+[ext_resource type="Texture2D" uid="uid://bsw70wwwr1jrh" path="res://resources/images/question_bag.png" id="2_bhbh2"]
+
+[sub_resource type="Resource" id="Resource_ws43c"]
+script = ExtResource("2_1t7ot")
+Weight = 0
+Value = 0
+valueLevel = 0
+Offect = Vector2(0, 0)
+sizeLevel = 0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f5sfj"]
+
+[node name="Bag" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_cq0nn")
+Properties = SubResource("Resource_ws43c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bhbh2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_f5sfj")

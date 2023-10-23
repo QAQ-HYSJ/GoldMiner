@@ -5,7 +5,7 @@ public partial class End : TextureRect
 {
 	public override void _Ready()
 	{
-		Save.SaveGame(1, true);
+		// Save.SaveGame(1, true);
 	}
 
 	private	void On_AudioStreamPlayer_Finished()
