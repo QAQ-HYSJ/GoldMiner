@@ -1,0 +1,87 @@
+[gd_scene load_steps=14 format=3 uid="uid://tng7a313sw3p"]
+
+[ext_resource type="Script" path="res://assets/items/DiamondMouse.cs" id="1_vnna2"]
+[ext_resource type="Script" path="res://assets/items/ItemProperties.cs" id="2_hq83w"]
+[ext_resource type="Texture2D" uid="uid://dkkdwvd73d300" path="res://resources/images/mole_with_diamond_sheet.png" id="2_lohid"]
+
+[sub_resource type="Resource" id="Resource_rprq5"]
+script = ExtResource("2_hq83w")
+Weight = 30
+Value = 602
+valueLevel = 2
+Offect = Vector2(0, 5)
+sizeLevel = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hah5f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u0bt"]
+atlas = ExtResource("2_lohid")
+region = Rect2(0, 0, 18, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hlls"]
+atlas = ExtResource("2_lohid")
+region = Rect2(18, 0, 18, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh0lv"]
+atlas = ExtResource("2_lohid")
+region = Rect2(36, 0, 18, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ufhq"]
+atlas = ExtResource("2_lohid")
+region = Rect2(54, 0, 18, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phes2"]
+atlas = ExtResource("2_lohid")
+region = Rect2(72, 0, 18, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5yc0"]
+atlas = ExtResource("2_lohid")
+region = Rect2(90, 0, 18, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7x3w"]
+atlas = ExtResource("2_lohid")
+region = Rect2(108, 0, 18, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ageo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u0bt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hlls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh0lv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ufhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phes2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5yc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7x3w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="DiamondMouse" type="Area2D"]
+script = ExtResource("1_vnna2")
+Properties = SubResource("Resource_rprq5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hah5f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1ageo")
+frame_progress = 0.0113767
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="On_Timer_Timeout"]

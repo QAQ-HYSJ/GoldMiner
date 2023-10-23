@@ -167,6 +167,17 @@ public partial class Hook : Node2D
 			ItemSlot.AddChild(animatedSprite2D);
 			animatedSprite2D.SpriteFrames.SetAnimationSpeed("default", 30);
 			animatedSprite2D.Play();
+		}else if (item is DiamondMouse)      // 如果是老鼠
+		{
+			AnimatedSprite2D animatedSprite2D = new AnimatedSprite2D
+			{
+				SpriteFrames = item.GetNode<AnimatedSprite2D>("AnimatedSprite2D").SpriteFrames,
+				Position = item.Properties.Offect,
+				ZIndex = -1
+			};
+			ItemSlot.AddChild(animatedSprite2D);
+			animatedSprite2D.SpriteFrames.SetAnimationSpeed("default", 30);
+			animatedSprite2D.Play();
 		}
 		else if (item is TNT tnt)   // 如果是炸药
 		{
