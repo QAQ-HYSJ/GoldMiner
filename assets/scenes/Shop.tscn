@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://xbl8ug218pkk"]
+[gd_scene load_steps=11 format=3 uid="uid://xbl8ug218pkk"]
 
 [ext_resource type="Texture2D" uid="uid://bft57pmj5fpb0" path="res://resources/images/bg_shop.png" id="1_qum5y"]
 [ext_resource type="Script" path="res://assets/scenes/Shop.cs" id="2_4jwjg"]
 [ext_resource type="Texture2D" uid="uid://dkhstxu1hgkro" path="res://resources/images/shop_table.png" id="2_gcq21"]
 [ext_resource type="Texture2D" uid="uid://5fehvn2pb5lg" path="res://resources/images/shopkeeper_sheet.png" id="3_231xh"]
 [ext_resource type="Texture2D" uid="uid://bed06wyayibi3" path="res://resources/images/text_goldminer.png" id="4_veaok"]
+[ext_resource type="Texture2D" uid="uid://bfbcavc8dqdlx" path="res://resources/images/dynamite.png" id="6_uxxy7"]
+[ext_resource type="Texture2D" uid="uid://dxeqdchcr5sjg" path="res://resources/images/gem_polish.png" id="7_a2sue"]
+[ext_resource type="Texture2D" uid="uid://darmp42gheq6r" path="res://resources/images/lucky_clover.png" id="8_ls78k"]
+[ext_resource type="Texture2D" uid="uid://cswrprw5s8lfy" path="res://resources/images/rock_collectors_book.png" id="9_7trk3"]
+[ext_resource type="Texture2D" uid="uid://co782qge3uu6y" path="res://resources/images/strength_drink.png" id="10_8t125"]
 
 [node name="Shop" type="TextureRect"]
 texture = ExtResource("1_qum5y")
@@ -38,5 +43,47 @@ offset_top = 199.697
 offset_right = 291.706
 offset_bottom = 232.697
 text = "下一关"
+
+[node name="Goods" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 135.0
+offset_right = 224.0
+offset_bottom = 178.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Goods"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("6_uxxy7")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Goods"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("7_a2sue")
+stretch_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="Goods"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("8_ls78k")
+stretch_mode = 2
+
+[node name="TextureRect4" type="TextureRect" parent="Goods"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("9_7trk3")
+stretch_mode = 2
+
+[node name="TextureRect5" type="TextureRect" parent="Goods"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+texture = ExtResource("10_8t125")
+stretch_mode = 2
 
 [connection signal="pressed" from="Button" to="." method="On_Button_Pressed"]
