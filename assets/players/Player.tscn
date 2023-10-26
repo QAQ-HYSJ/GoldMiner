@@ -112,9 +112,6 @@ libraries = {
 "": SubResource("AnimationLibrary_xeqbq")
 }
 
-[node name="Timer" type="Timer" parent="Hook"]
-wait_time = 2.0
-
 [node name="GoHook" type="AudioStreamPlayer" parent="Hook"]
 stream = ExtResource("5_y5vxw")
 
@@ -141,4 +138,3 @@ stream = ExtResource("11_5pn3f")
 
 [connection signal="ModeChanged" from="Hook" to="Hook" method="On_ModeChanged" flags=18]
 [connection signal="area_entered" from="Hook/HitBox" to="Hook" method="On_HitBox_AreaEntered" flags=18]
-[connection signal="timeout" from="Hook/Timer" to="Hook" method="On_Timer_Timeout" flags=18]

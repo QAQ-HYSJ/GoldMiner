@@ -59,6 +59,11 @@ public partial class Hook : Node2D
 						HookThing(items[0]);
 						items.Clear();
 					}
+					
+					if((Position - OriginPoint).Length() >= 220)
+					{
+						SwitchMode(HookMode.back);
+					}
 				}
 				break;
 			case HookMode.back:
@@ -128,7 +133,6 @@ public partial class Hook : Node2D
 				break;
 			case HookMode.go:
 				{
-					GetNode<Timer>("Timer").Start();
 					direction = new Vector2((float)-Math.Sin(Rotation), (float)Math.Cos(Rotation)).Normalized();
 					GetNode<AnimationPlayer>("HookAnimation").Pause();
 					Player.Pause();
@@ -144,11 +148,6 @@ public partial class Hook : Node2D
 				}
 				break;
 		}
-	}
-	private void On_Timer_Timeout()
-	{
-		if (HookStatus == HookMode.go)
-			SwitchMode(HookMode.back);
 	}
 	private void On_HitBox_AreaEntered(Area2D area)             // 抓到物体，钩中的物体加入列表中，而不是直接处理，防止钩中多个物体
 	{
