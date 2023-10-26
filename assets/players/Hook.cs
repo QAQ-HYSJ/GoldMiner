@@ -161,7 +161,7 @@ public partial class Hook : Node2D
 			AnimatedSprite2D animatedSprite2D = new AnimatedSprite2D
 			{
 				SpriteFrames = item.GetNode<AnimatedSprite2D>("AnimatedSprite2D").SpriteFrames,
-				Position = item.Properties.Offect,
+				Position = item.Offect,
 				ZIndex = -1
 			};
 			ItemSlot.AddChild(animatedSprite2D);
@@ -172,7 +172,7 @@ public partial class Hook : Node2D
 			AnimatedSprite2D animatedSprite2D = new AnimatedSprite2D
 			{
 				SpriteFrames = item.GetNode<AnimatedSprite2D>("AnimatedSprite2D").SpriteFrames,
-				Position = item.Properties.Offect,
+				Position = item.Offect,
 				ZIndex = -1
 			};
 			ItemSlot.AddChild(animatedSprite2D);
@@ -184,7 +184,7 @@ public partial class Hook : Node2D
 			Sprite2D sprite = new Sprite2D
 			{
 				Texture = tnt.texture,
-				Position = item.Properties.Offect,
+				Position = item.Offect,
 				ZIndex = -1
 			};
 			ItemSlot.AddChild(sprite);
@@ -195,7 +195,7 @@ public partial class Hook : Node2D
 			Sprite2D sprite = new Sprite2D
 			{
 				Texture = item.GetNode<Sprite2D>("Sprite2D").Texture,
-				Position = item.Properties.Offect,
+				Position = item.Offect,
 				ZIndex = -1
 			};
 			ItemSlot.AddChild(sprite);
@@ -203,18 +203,18 @@ public partial class Hook : Node2D
 
 		SwitchMode(HookMode.back);
 		HookHasItem = true;
-		ItemValue = item.Properties.Value;
-		ItemWeight = item.Properties.Weight;
-		switch (item.Properties.valueLevel)     // 播放音效
+		ItemValue = item.Value;
+		ItemWeight = item.Weight;
+		switch (item.valueLevel)     // 播放音效
 		{
-			case ItemProperties.ValueLevel.low: GetNode<AudioStreamPlayer>("LowValue").Play(); break;
-			case ItemProperties.ValueLevel.mid: GetNode<AudioStreamPlayer>("MidValue").Play(); break;
-			case ItemProperties.ValueLevel.high: GetNode<AudioStreamPlayer>("HighValue").Play(); break;
+			case Item.ValueLevel.low: GetNode<AudioStreamPlayer>("LowValue").Play(); break;
+			case Item.ValueLevel.mid: GetNode<AudioStreamPlayer>("MidValue").Play(); break;
+			case Item.ValueLevel.high: GetNode<AudioStreamPlayer>("HighValue").Play(); break;
 		}
-		switch (item.Properties.sizeLevel)      // 改变钩子形状
+		switch (item.sizeLevel)      // 改变钩子形状
 		{
-			case ItemProperties.SizeLevel.big: GetNode<Sprite2D>("Sprite").Frame = 1; break;
-			case ItemProperties.SizeLevel.small: GetNode<Sprite2D>("Sprite").Frame = 2; break;
+			case Item.SizeLevel.big: GetNode<Sprite2D>("Sprite").Frame = 1; break;
+			case Item.SizeLevel.small: GetNode<Sprite2D>("Sprite").Frame = 2; break;
 		}
 
 		if (item is not TNT)                    // 如果是tnt，则让它自己爆炸

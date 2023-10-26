@@ -44,6 +44,14 @@ public partial class Goods : Control
             {
                 if (GetChild<TextureRect>(i).GetRect().HasPoint(inputEventMouseButton.Position) && GetChild<TextureRect>(i).Visible)  // 且可见
                 {
+                    switch (i)
+                    {
+                        case 0: break;
+                        case 1: break;
+                        case 2: break;
+                        case 3: Global.GemPolishBuff = true; break;
+                        case 4: Global.RockBuff = true; break;
+                    }
                     GetChild<TextureRect>(i).Visible = false;
                 }
             }

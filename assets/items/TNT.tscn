@@ -1,19 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://dmjnsm8w0aod4"]
+[gd_scene load_steps=21 format=3 uid="uid://dmjnsm8w0aod4"]
 
 [ext_resource type="Script" path="res://assets/items/TNT.cs" id="1_b3m0d"]
 [ext_resource type="Texture2D" uid="uid://b46sc6u134iyf" path="res://resources/images/tnt.png" id="1_fonyb"]
 [ext_resource type="Texture2D" uid="uid://bwsit21mynhdm" path="res://resources/images/tnt_destroyed.png" id="2_8fiiu"]
-[ext_resource type="Script" path="res://assets/items/ItemProperties.cs" id="2_y6k0r"]
 [ext_resource type="Texture2D" uid="uid://cs64phbkwxaa1" path="res://resources/images/bigger_explosive_fx_sheet.png" id="5_wrbn1"]
 [ext_resource type="AudioStream" uid="uid://bc4revbhb7lji" path="res://resources/audios/explosive.wav" id="6_y3y01"]
-
-[sub_resource type="Resource" id="Resource_iqn3a"]
-script = ExtResource("2_y6k0r")
-Weight = 5
-Value = 2
-valueLevel = 0
-Offect = Vector2(0, 7)
-sizeLevel = 1
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_grb80"]
 
@@ -116,7 +107,10 @@ radius = 57.1402
 collision_mask = 2
 script = ExtResource("1_b3m0d")
 texture = ExtResource("2_8fiiu")
-Properties = SubResource("Resource_iqn3a")
+Weight = 5
+Value = 1
+Offect = Vector2(0, 7)
+sizeLevel = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_fonyb")

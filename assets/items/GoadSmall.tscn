@@ -1,16 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl3xcgmrrvu8g"]
+[gd_scene load_steps=4 format=3 uid="uid://dl3xcgmrrvu8g"]
 
 [ext_resource type="Script" path="res://assets/items/Item.cs" id="1_w3xd2"]
-[ext_resource type="Script" path="res://assets/items/ItemProperties.cs" id="2_ndj1d"]
 [ext_resource type="Texture2D" uid="uid://eiin2jcv8gtt" path="res://resources/images/gold_mini.png" id="2_x0dmn"]
-
-[sub_resource type="Resource" id="Resource_4bpt4"]
-script = ExtResource("2_ndj1d")
-Weight = 50
-Value = 50
-valueLevel = 1
-Offect = Vector2(0, 4)
-sizeLevel = 0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f1co7"]
 radius = 5.09902
@@ -18,7 +9,10 @@ radius = 5.09902
 [node name="GoadSmall" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_w3xd2")
-Properties = SubResource("Resource_4bpt4")
+Weight = 50
+Value = 50
+valueLevel = 1
+Offect = Vector2(0, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_x0dmn")

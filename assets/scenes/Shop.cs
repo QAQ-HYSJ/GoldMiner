@@ -7,6 +7,9 @@ public partial class Shop : TextureRect
 	{
 		Global.currentLevel ++;
 		Global.InShope = true;
+
+		Global.GemPolishBuff = false;
+		Global.RockBuff = false;
 	}
 
 	private void On_Button_Pressed()

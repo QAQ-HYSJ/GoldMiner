@@ -1,24 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmweim5muyvbw"]
+[gd_scene load_steps=4 format=3 uid="uid://dmweim5muyvbw"]
 
-[ext_resource type="Script" path="res://assets/items/Item.cs" id="1_c0qa6"]
-[ext_resource type="Script" path="res://assets/items/ItemProperties.cs" id="2_t32qh"]
+[ext_resource type="Script" path="res://assets/items/StoneSmall.cs" id="1_tca1n"]
 [ext_resource type="Texture2D" uid="uid://dvkqhn0w167jd" path="res://resources/images/rock_mini.png" id="3_n60uo"]
-
-[sub_resource type="Resource" id="Resource_33cso"]
-script = ExtResource("2_t32qh")
-Weight = 80
-Value = 11
-valueLevel = 0
-Offect = Vector2(0, 5)
-sizeLevel = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5a674"]
 size = Vector2(15, 11)
 
 [node name="StoneSmall" type="Area2D"]
 collision_mask = 2
-script = ExtResource("1_c0qa6")
-Properties = SubResource("Resource_33cso")
+script = ExtResource("1_tca1n")
+Weight = 80
+Value = 11
+Offect = Vector2(0, 5)
+sizeLevel = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_n60uo")
