@@ -136,5 +136,4 @@ stream = ExtResource("10_rnm4o")
 [node name="MoneyGain" type="AudioStreamPlayer" parent="Hook"]
 stream = ExtResource("11_5pn3f")
 
-[connection signal="ModeChanged" from="Hook" to="Hook" method="On_ModeChanged" flags=18]
 [connection signal="area_entered" from="Hook/HitBox" to="Hook" method="On_HitBox_AreaEntered" flags=18]

@@ -6,7 +6,6 @@ public enum HookMode { go, back, wave }
 
 public partial class Hook : Node2D
 {
-	[Signal] public delegate void ModeChangedEventHandler(HookMode from, HookMode to);
 	public HookMode HookStatus;
 	private Vector2 direction;
 	public Vector2 OriginPoint { get; } = new Vector2(-7, 11);
@@ -35,11 +34,7 @@ public partial class Hook : Node2D
 			SwitchMode(HookMode.go);
 	}
 
-	private void SwitchMode(HookMode status)
-	{
-		EmitSignal(SignalName.ModeChanged, new Variant[] { (int)HookStatus, (int)status });
-		HookStatus = status;
-	}
+
 
 	public override async void _Process(double delta)
 	{
@@ -59,8 +54,8 @@ public partial class Hook : Node2D
 						HookThing(items[0]);
 						items.Clear();
 					}
-					
-					if((Position - OriginPoint).Length() >= 220)
+
+					if ((Position - OriginPoint).Length() >= 220)
 					{
 						SwitchMode(HookMode.back);
 					}
@@ -94,7 +89,12 @@ public partial class Hook : Node2D
 				break;
 		}
 	}
-	private void On_ModeChanged(HookMode from, HookMode to)
+	private void SwitchMode(HookMode status)
+	{
+		ModeChanged(HookStatus, status);
+		HookStatus = status;
+	}
+	private void ModeChanged(HookMode from, HookMode to)
 	{
 		switch (from)  // 状态结术
 		{
