@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://d3yvre2kspb32"]
 
-[ext_resource type="PackedScene" uid="uid://b2vso27ndhaib" path="res://assets/players/player1.tscn" id="1_ba61l"]
-[ext_resource type="PackedScene" uid="uid://dubgw2s0w8tsh" path="res://assets/players/Player2.tscn" id="2_aco6e"]
+[ext_resource type="PackedScene" uid="uid://b2vso27ndhaib" path="res://assets/players/Player.tscn" id="1_ba61l"]
+[ext_resource type="PackedScene" path="res://assets/players/Player2.tscn" id="2_aco6e"]
 [ext_resource type="PackedScene" uid="uid://sfq7p2l6sb0p" path="res://assets/levels/contents1.tscn" id="3_olm38"]
 [ext_resource type="PackedScene" uid="uid://j603r58o2jpb" path="res://assets/items/Diamond.tscn" id="4_as7t1"]
 [ext_resource type="PackedScene" uid="uid://dmweim5muyvbw" path="res://assets/items/StoneSmall.tscn" id="5_g8ja4"]

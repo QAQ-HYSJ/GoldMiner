@@ -1,11 +1,12 @@
 using Godot;
 using System;
 
-public partial class Player2 : AnimatedSprite2D
+public partial class Player : AnimatedSprite2D
 {
+	[Export] public string KeyCode = "player1Go";
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionJustPressed("player2Go"))
+		if (Input.IsActionJustPressed(KeyCode))
 		{
 			GetNode<Hook>("Hook").GoHook();
 		}

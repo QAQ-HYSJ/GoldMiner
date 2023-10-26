@@ -10,16 +10,19 @@ public partial class Level : Node2D
 		// 加载玩家
 		if (Global.gameMode)
 		{
-			Player1 player1 = ResourceLoader.Load<PackedScene>("res://assets/players/player1.tscn").Instantiate<Player1>();
-			Player2 player2 = ResourceLoader.Load<PackedScene>("res://assets/players/Player2.tscn").Instantiate<Player2>();
+			PackedScene PlayerTree = ResourceLoader.Load<PackedScene>("res://assets/players/Player.tscn");
+			Player player1 = PlayerTree.Instantiate<Player>();
+			Player player2 = PlayerTree.Instantiate<Player>();
 			player1.Position = new Vector2(120, 20);
 			player2.Position = new Vector2(200, 20);
+			player1.KeyCode = "player1Go";
+			player2.KeyCode = "player2Go";
 			AddChild(player1);
 			AddChild(player2);
 		}
 		else
 		{
-			AddChild(ResourceLoader.Load<PackedScene>("res://assets/players/player1.tscn").Instantiate<Player1>());
+			AddChild(ResourceLoader.Load<PackedScene>("res://assets/players/Player.tscn").Instantiate<Player>());
 		}
 		// 加载关卡内容
 		AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/contents1.tscn").Instantiate<Node2D>());

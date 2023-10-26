@@ -1,0 +1,145 @@
+[gd_scene load_steps=20 format=3 uid="uid://b2vso27ndhaib"]
+
+[ext_resource type="Texture2D" uid="uid://c4nv4mskuue66" path="res://resources/images/miner_sheet.png" id="1_tqxxm"]
+[ext_resource type="Script" path="res://assets/players/Player.cs" id="2_fu4jm"]
+[ext_resource type="Script" path="res://assets/players/Hook.cs" id="3_n0uo4"]
+[ext_resource type="Texture2D" uid="uid://cevv8a6445ev6" path="res://resources/images/hook_sheet.png" id="4_6iwql"]
+[ext_resource type="AudioStream" uid="uid://c1sjndocw3dve" path="res://resources/audios/grab_start.mp3" id="5_y5vxw"]
+[ext_resource type="AudioStream" uid="uid://d3xbwtdy2t73a" path="res://resources/audios/grab_back.wav" id="6_uy3df"]
+[ext_resource type="AudioStream" uid="uid://ddrgkut0t2ohp" path="res://resources/audios/low_value.wav" id="7_nnyxi"]
+[ext_resource type="AudioStream" uid="uid://5bv0ilwf6t3h" path="res://resources/audios/normal_value.wav" id="8_81e3p"]
+[ext_resource type="AudioStream" uid="uid://vaeyjpcrcmvp" path="res://resources/audios/high_value.wav" id="9_xih0d"]
+[ext_resource type="AudioStream" uid="uid://dfu7s1dw783x0" path="res://resources/audios/hook_reset.wav" id="10_rnm4o"]
+[ext_resource type="AudioStream" uid="uid://fwuwx7m6h833" path="res://resources/audios/money.wav" id="11_5pn3f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53scs"]
+atlas = ExtResource("1_tqxxm")
+region = Rect2(0, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gp5k"]
+atlas = ExtResource("1_tqxxm")
+region = Rect2(32, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghwu1"]
+atlas = ExtResource("1_tqxxm")
+region = Rect2(64, 0, 32, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kiv0h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53scs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gp5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghwu1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_50lyd"]
+size = Vector2(12.9967, 5.05069)
+
+[sub_resource type="Animation" id="Animation_kkv3k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_r64di"]
+resource_name = "wave"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.55334, -1.55334, 1.55334]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xeqbq"]
+_data = {
+"RESET": SubResource("Animation_kkv3k"),
+"wave": SubResource("Animation_r64di")
+}
+
+[node name="Player" type="AnimatedSprite2D"]
+position = Vector2(160, 20)
+sprite_frames = SubResource("SpriteFrames_kiv0h")
+frame = 2
+frame_progress = 0.400866
+script = ExtResource("2_fu4jm")
+KeyCode = "player1Go"
+
+[node name="Hook" type="Node2D" parent="."]
+position = Vector2(-7, 10)
+script = ExtResource("3_n0uo4")
+
+[node name="Sprite" type="Sprite2D" parent="Hook"]
+position = Vector2(0, 7)
+texture = ExtResource("4_6iwql")
+hframes = 3
+
+[node name="HitBox" type="Area2D" parent="Hook"]
+collision_layer = 2
+collision_priority = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hook/HitBox"]
+position = Vector2(-0.00165462, 12.0253)
+shape = SubResource("RectangleShape2D_50lyd")
+
+[node name="HookAnimation" type="AnimationPlayer" parent="Hook"]
+autoplay = "wave"
+libraries = {
+"": SubResource("AnimationLibrary_xeqbq")
+}
+
+[node name="Timer" type="Timer" parent="Hook"]
+wait_time = 2.0
+
+[node name="GoHook" type="AudioStreamPlayer" parent="Hook"]
+stream = ExtResource("5_y5vxw")
+
+[node name="BackHook" type="AudioStreamPlayer" parent="Hook"]
+stream = ExtResource("6_uy3df")
+
+[node name="ItemSlot" type="Node2D" parent="Hook"]
+position = Vector2(0, 8)
+
+[node name="LowValue" type="AudioStreamPlayer" parent="Hook"]
+stream = ExtResource("7_nnyxi")
+
+[node name="MidValue" type="AudioStreamPlayer" parent="Hook"]
+stream = ExtResource("8_81e3p")
+
+[node name="HighValue" type="AudioStreamPlayer" parent="Hook"]
+stream = ExtResource("9_xih0d")
+
+[node name="HookReset" type="AudioStreamPlayer" parent="Hook"]
+stream = ExtResource("10_rnm4o")
+
+[node name="MoneyGain" type="AudioStreamPlayer" parent="Hook"]
+stream = ExtResource("11_5pn3f")
+
+[connection signal="ModeChanged" from="Hook" to="Hook" method="On_ModeChanged" flags=18]
+[connection signal="area_entered" from="Hook/HitBox" to="Hook" method="On_HitBox_AreaEntered" flags=18]
+[connection signal="timeout" from="Hook/Timer" to="Hook" method="On_Timer_Timeout" flags=18]
