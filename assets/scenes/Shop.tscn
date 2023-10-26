@@ -58,6 +58,16 @@ offset_bottom = 178.0
 texture = ExtResource("6_uxxy7")
 stretch_mode = 2
 
+[node name="Label" type="Label" parent="Goods/TextureRect"]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 34.0
+offset_right = 34.0
+offset_bottom = 57.0
+theme_override_colors/font_color = Color(0, 1, 0.494118, 1)
+theme_override_font_sizes/font_size = 8
+text = "$xxx"
+
 [node name="TextureRect2" type="TextureRect" parent="Goods"]
 layout_mode = 0
 offset_left = 54.0
@@ -66,6 +76,15 @@ offset_right = 93.0
 offset_bottom = 178.0
 texture = ExtResource("10_8t125")
 stretch_mode = 2
+
+[node name="Label" type="Label" parent="Goods/TextureRect2"]
+offset_left = 4.0
+offset_top = 42.0
+offset_right = 44.0
+offset_bottom = 65.0
+theme_override_colors/font_color = Color(0, 1, 0.494118, 1)
+theme_override_font_sizes/font_size = 8
+text = "$xxx"
 
 [node name="TextureRect3" type="TextureRect" parent="Goods"]
 layout_mode = 0
@@ -76,6 +95,14 @@ offset_bottom = 178.0
 texture = ExtResource("8_ls78k")
 stretch_mode = 2
 
+[node name="Label" type="Label" parent="Goods/TextureRect3"]
+offset_top = 37.0
+offset_right = 40.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0, 1, 0.494118, 1)
+theme_override_font_sizes/font_size = 8
+text = "$xxx"
+
 [node name="TextureRect4" type="TextureRect" parent="Goods"]
 layout_mode = 0
 offset_left = 134.0
@@ -84,6 +111,15 @@ offset_right = 161.0
 offset_bottom = 177.0
 texture = ExtResource("7_a2sue")
 stretch_mode = 2
+
+[node name="Label" type="Label" parent="Goods/TextureRect4"]
+offset_left = 4.0
+offset_top = 32.0
+offset_right = 44.0
+offset_bottom = 55.0
+theme_override_colors/font_color = Color(0, 1, 0.494118, 1)
+theme_override_font_sizes/font_size = 8
+text = "$xxx"
 
 [node name="TextureRect5" type="TextureRect" parent="Goods"]
 layout_mode = 0
@@ -94,12 +130,24 @@ offset_bottom = 178.0
 texture = ExtResource("9_7trk3")
 stretch_mode = 2
 
+[node name="Label" type="Label" parent="Goods/TextureRect5"]
+offset_left = 5.0
+offset_top = 36.0
+offset_right = 45.0
+offset_bottom = 59.0
+theme_override_colors/font_color = Color(0, 1, 0.494118, 1)
+theme_override_font_sizes/font_size = 8
+text = "$xxx"
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 33.0
-offset_top = 200.0
-offset_right = 200.0
-offset_bottom = 223.0
+offset_left = 25.0
+offset_top = 197.0
+offset_right = 204.0
+offset_bottom = 235.0
+theme_override_font_sizes/font_size = 12
+text = "物品描述"
+autowrap_mode = 1
 
 [connection signal="pressed" from="Button" to="." method="On_Button_Pressed"]
 [connection signal="mouse_entered" from="Goods/TextureRect" to="Goods" method="On_TextureRect_MouseEntered" binds= [0]]
