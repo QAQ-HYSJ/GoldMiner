@@ -7,7 +7,7 @@ public enum HookMode { go, back, wave }
 public partial class Hook : Node2D
 {
 	[Signal] public delegate void ModeChangedEventHandler(HookMode from, HookMode to);
-
+	public bool StrengthBuff = false;
 	public HookMode HookStatus;
 	private Vector2 direction;
 	public Vector2 OriginPoint { get; } = new Vector2(-7, 11);
@@ -28,7 +28,6 @@ public partial class Hook : Node2D
 		HookStatus = HookMode.wave;
 		ItemSlot = GetNode<Node2D>("ItemSlot");
 		Player = GetParent<AnimatedSprite2D>();
-		//items.
 	}
 
 	public void GoHook()   // 出钩

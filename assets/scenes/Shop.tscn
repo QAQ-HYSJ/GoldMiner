@@ -151,6 +151,7 @@ offset_right = 204.0
 offset_bottom = 235.0
 theme_override_font_sizes/font_size = 12
 text = "物品描述"
+autowrap_mode = 3
 
 [connection signal="pressed" from="Button" to="." method="On_Button_Pressed"]
 [connection signal="mouse_entered" from="Goods/TextureRect" to="Goods" method="On_TextureRect_MouseEntered" binds= [0]]

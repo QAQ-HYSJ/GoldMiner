@@ -10,6 +10,7 @@ public partial class Shop : TextureRect
 
 		Global.GemPolishBuff = false;
 		Global.RockBuff = false;
+		Global.LuckyBuff = false;
 	}
 
 	private void On_Button_Pressed()

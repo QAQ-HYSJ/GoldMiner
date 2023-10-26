@@ -48,7 +48,7 @@ public partial class Goods : Control
                     {
                         case 0: break;
                         case 1: break;
-                        case 2: break;
+                        case 2: Global.LuckyBuff = true; break;
                         case 3: Global.GemPolishBuff = true; break;
                         case 4: Global.RockBuff = true; break;
                     }

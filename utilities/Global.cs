@@ -15,4 +15,5 @@ public partial class Global : Node
 	public static bool InShope { get; set; }
 	public static bool GemPolishBuff = false;
 	public static bool RockBuff = false;
+	public static bool LuckyBuff = false;
 }

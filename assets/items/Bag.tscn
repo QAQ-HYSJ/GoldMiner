@@ -8,6 +8,7 @@
 [node name="Bag" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_cq0nn")
+Offect = Vector2(0, 12)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_bhbh2")
