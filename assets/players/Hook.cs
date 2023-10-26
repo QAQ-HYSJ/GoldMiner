@@ -7,11 +7,10 @@ public enum HookMode { go, back, wave }
 public partial class Hook : Node2D
 {
 	[Signal] public delegate void ModeChangedEventHandler(HookMode from, HookMode to);
-	public bool StrengthBuff = false;
 	public HookMode HookStatus;
 	private Vector2 direction;
 	public Vector2 OriginPoint { get; } = new Vector2(-7, 11);
-	private List<Item> items = new List<Item>();				// 钩中了物品，将其加入列表中，再进行处理，防止钩中多个
+	private List<Item> items = new List<Item>();                // 钩中了物品，将其加入列表中，再进行处理，防止钩中多个
 	private bool pause = false;
 	private Node2D ItemSlot;
 	private bool HookHasItem = false;
@@ -50,8 +49,12 @@ public partial class Hook : Node2D
 				break;
 			case HookMode.go:
 				{
-					Position += (float)delta * direction * 110f;
-					if (items.Count != 0)           		 // 绶存的列表中有钩中的物品则进行处理，不止一个则只处理一个
+					if (GetParent<Player>().StrengthBuff)
+						Position += (float)delta * direction * 200f;
+					else
+						Position += (float)delta * direction * 110f;
+
+					if (items.Count != 0)                    // 绶存的列表中有钩中的物品则进行处理，不止一个则只处理一个
 					{
 						HookThing(items[0]);
 						items.Clear();
@@ -62,7 +65,11 @@ public partial class Hook : Node2D
 				{
 					if (!pause)
 					{
-						Position -= (float)delta * direction * 110f * ((100 - ItemWeight) / 100f);
+						if (GetParent<Player>().StrengthBuff)
+							Position -= (float)delta * direction * 200f * ((100 - ItemWeight) / 100f);
+						else
+							Position -= (float)delta * direction * 110f * ((100 - ItemWeight) / 100f);
+
 						if (Position.Y <= OriginPoint.Y)
 						{
 							pause = true;
@@ -166,7 +173,8 @@ public partial class Hook : Node2D
 			ItemSlot.AddChild(animatedSprite2D);
 			animatedSprite2D.SpriteFrames.SetAnimationSpeed("default", 30);
 			animatedSprite2D.Play();
-		}else if (item is DiamondMouse)      // 如果是老鼠
+		}
+		else if (item is DiamondMouse)      // 如果是老鼠
 		{
 			AnimatedSprite2D animatedSprite2D = new AnimatedSprite2D
 			{

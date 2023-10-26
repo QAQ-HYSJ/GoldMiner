@@ -19,6 +19,8 @@ public partial class Level : Node2D
 			player2.KeyCode = "player2Go";
 			AddChild(player1);
 			AddChild(player2);
+			// Global.player1 = player1;
+			// Global.player2 = player2;
 		}
 		else
 		{

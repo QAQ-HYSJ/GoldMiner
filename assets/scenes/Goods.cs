@@ -7,7 +7,7 @@ public partial class Goods : Control
     private string[] describes = new string[5]
     {
         "雷管：获得一个雷管",
-        "力量加强剂：下一关加快钩子速度",
+        "力量药剂：下一关加快钩子速度",
         "幸运草：下一关更高概率袋子中出现高价值物品",
         "宝石抛光剂：下一关钻石能卖出更高价值",
         "石头收藏书：下一关石头能卖出更高价值"
@@ -47,7 +47,7 @@ public partial class Goods : Control
                     switch (i)
                     {
                         case 0: break;
-                        case 1: break;
+                        case 1: Global.HasBuyStrengthBuff = true; break;
                         case 2: Global.LuckyBuff = true; break;
                         case 3: Global.GemPolishBuff = true; break;
                         case 4: Global.RockBuff = true; break;

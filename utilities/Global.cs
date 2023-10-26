@@ -4,6 +4,8 @@ using System;
 public partial class Global : Node
 {
 	public static Level level = null;
+	public static Player player1 = null;
+	public static Player player2 = null;
 	public static int Money { set; get; } = 0;
 	public static int goal = 0;
 	public static int currentLevel = 1;
@@ -16,4 +18,5 @@ public partial class Global : Node
 	public static bool GemPolishBuff = false;
 	public static bool RockBuff = false;
 	public static bool LuckyBuff = false;
+	public static bool HasBuyStrengthBuff = false;
 }

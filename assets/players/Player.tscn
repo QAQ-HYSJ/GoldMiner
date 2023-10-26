@@ -88,7 +88,6 @@ sprite_frames = SubResource("SpriteFrames_kiv0h")
 frame = 2
 frame_progress = 0.400866
 script = ExtResource("2_fu4jm")
-KeyCode = "player1Go"
 
 [node name="Hook" type="Node2D" parent="."]
 position = Vector2(-7, 10)
