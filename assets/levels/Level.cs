@@ -4,6 +4,8 @@ using System;
 public partial class Level : Node2D
 {
 	public double LeftTime;
+	private Player player1;
+	private Player player2;
 	public override void _Ready()
 	{
 		Global.level = this;
@@ -11,16 +13,16 @@ public partial class Level : Node2D
 		if (Global.gameMode)
 		{
 			PackedScene PlayerTree = ResourceLoader.Load<PackedScene>("res://assets/players/Player.tscn");
-			Player player1 = PlayerTree.Instantiate<Player>();
-			Player player2 = PlayerTree.Instantiate<Player>();
+			player1 = PlayerTree.Instantiate<Player>();
+			player2 = PlayerTree.Instantiate<Player>();
 			player1.Position = new Vector2(120, 20);
 			player2.Position = new Vector2(200, 20);
 			player1.KeyCode = "player1Go";
 			player2.KeyCode = "player2Go";
 			AddChild(player1);
 			AddChild(player2);
-			// Global.player1 = player1;
-			// Global.player2 = player2;
+			player1.DynamiteNum = Global.player1DynamiteNum;
+			player2.DynamiteNum = Global.player2DynamiteNum;
 		}
 		else
 		{
@@ -49,6 +51,8 @@ public partial class Level : Node2D
 	private void On_Timer_Timeout()
 	{
 		GetNode<Event>("/root/Event").EmitSignal(Event.SignalName.Timeout);
+		Global.player1DynamiteNum = player1.DynamiteNum;
+		Global.player2DynamiteNum = player2.DynamiteNum;
 		GetTree().ChangeSceneToFile("res://assets/scenes/End.tscn");
 	}
 }

@@ -46,7 +46,7 @@ public partial class Goods : Control
                 {
                     switch (i)
                     {
-                        case 0: break;
+                        case 0: Global.player1DynamiteNum++; if (Global.gameMode) Global.player2DynamiteNum++; break;
                         case 1: Global.HasBuyStrengthBuff = true; break;
                         case 2: Global.LuckyBuff = true; break;
                         case 3: Global.GemPolishBuff = true; break;

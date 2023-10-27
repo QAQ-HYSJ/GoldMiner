@@ -33,9 +33,6 @@ public partial class Hook : Node2D
 		if (HookStatus == HookMode.wave)
 			SwitchMode(HookMode.go);
 	}
-
-
-
 	public override async void _Process(double delta)
 	{
 		switch (HookStatus)

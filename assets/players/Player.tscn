@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b2vso27ndhaib"]
+[gd_scene load_steps=21 format=3 uid="uid://b2vso27ndhaib"]
 
 [ext_resource type="Texture2D" uid="uid://c4nv4mskuue66" path="res://resources/images/miner_sheet.png" id="1_tqxxm"]
 [ext_resource type="Script" path="res://assets/players/Player.cs" id="2_fu4jm"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://vaeyjpcrcmvp" path="res://resources/audios/high_value.wav" id="9_xih0d"]
 [ext_resource type="AudioStream" uid="uid://dfu7s1dw783x0" path="res://resources/audios/hook_reset.wav" id="10_rnm4o"]
 [ext_resource type="AudioStream" uid="uid://fwuwx7m6h833" path="res://resources/audios/money.wav" id="11_5pn3f"]
+[ext_resource type="Texture2D" uid="uid://qb7jvm14q343" path="res://resources/images/ui_dynamite.png" id="12_3wcis"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_53scs"]
 atlas = ExtResource("1_tqxxm")
@@ -135,5 +136,32 @@ stream = ExtResource("10_rnm4o")
 
 [node name="MoneyGain" type="AudioStreamPlayer" parent="Hook"]
 stream = ExtResource("11_5pn3f")
+
+[node name="Dynamite" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Dynamite"]
+visible = false
+position = Vector2(18, 13)
+texture = ExtResource("12_3wcis")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Dynamite"]
+visible = false
+position = Vector2(22, 13)
+texture = ExtResource("12_3wcis")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Dynamite"]
+visible = false
+position = Vector2(26, 13)
+texture = ExtResource("12_3wcis")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Dynamite"]
+visible = false
+position = Vector2(30, 13)
+texture = ExtResource("12_3wcis")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Dynamite"]
+visible = false
+position = Vector2(34, 13)
+texture = ExtResource("12_3wcis")
 
 [connection signal="area_entered" from="Hook/HitBox" to="Hook" method="On_HitBox_AreaEntered" flags=18]
