@@ -94,7 +94,36 @@ public partial class Hook : Node2D
 							GetNode<AudioStreamPlayer>("BackHook").Stop();
 							if (HookHasItem)
 							{
-								GetNode<AudioStreamPlayer>("MoneyGain").Play();
+								switch (itemType)
+								{
+									case Type.Dynamite:
+										{
+											GetParent<Player>().DynamiteNum++;
+										}
+										break;
+									case Type.Strength:
+										{
+											GetParent<Player>().StrengthBuff = true;
+										}
+										break;
+									default:
+										{
+											Global.Money += ItemValue;
+											GetNode<AudioStreamPlayer>("MoneyGain").Play();
+											Label label = new Label();
+											label.Text = "$" + ItemValue;
+											label.GlobalPosition = GlobalPosition;
+											label.Set("theme_override_colors/font_color", Colors.Green);
+											GetTree().CurrentScene.AddChild(label);
+											await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
+											Tween tween = GetTree().CreateTween();
+											tween.Parallel().TweenProperty(label, "scale", new Vector2(0, 0), 0.5);
+											tween.Parallel().TweenProperty(label, "global_position", new Vector2(10, 0), 0.5);
+											tween.TweenCallback(Callable.From(label.QueueFree));
+										}
+										break;   // 默认情况即itemType为Money
+								}
+
 							}
 							await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
 							SwitchMode(HookMode.wave);
@@ -120,15 +149,6 @@ public partial class Hook : Node2D
 				break;
 			case HookMode.back:
 				{
-					if (HookHasItem)
-					{
-						switch (itemType)
-						{
-							case Type.Dynamite: GetParent<Player>().DynamiteNum ++; break;
-							case Type.Strength: GetParent<Player>().StrengthBuff = true; break;
-							default: Global.Money += ItemValue; break;   // 默认情况即itemType为Money
-						}
-					}
 					foreach (Node x in ItemSlot.GetChildren())
 					{
 						x.QueueFree();
