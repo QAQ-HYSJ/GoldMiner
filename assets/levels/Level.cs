@@ -17,8 +17,10 @@ public partial class Level : Node2D
 			player2 = PlayerTree.Instantiate<Player>();
 			player1.Position = new Vector2(120, 20);
 			player2.Position = new Vector2(200, 20);
-			player1.KeyCode = "player1Go";
-			player2.KeyCode = "player2Go";
+			player1.HookKeyCode = "player1Go";
+			player1.DynamiteKeyCode = "player1Dynamite";
+			player2.HookKeyCode = "player2Go";
+			player2.DynamiteKeyCode = "player2Dynamite";
 			AddChild(player1);
 			AddChild(player2);
 			player1.DynamiteNum = Global.player1DynamiteNum;

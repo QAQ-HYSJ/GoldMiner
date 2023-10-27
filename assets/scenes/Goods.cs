@@ -52,7 +52,6 @@ public partial class Goods : Control
                         case 3: Global.GemPolishBuff = true; break;
                         case 4: Global.RockBuff = true; break;
                     }
-                    GetChild<TextureRect>(i).Visible = false;
                 }
             }
         }

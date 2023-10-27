@@ -21,17 +21,37 @@ public partial class Hook : Node2D
 		get { return _itemWeight; }
 	}
 	private AnimatedSprite2D Player;
+	private PackedScene ExplosionTree;
 	public override void _Ready()
 	{
 		HookStatus = HookMode.wave;
 		ItemSlot = GetNode<Node2D>("ItemSlot");
 		Player = GetParent<AnimatedSprite2D>();
+		ExplosionTree = ResourceLoader.Load<PackedScene>("res://assets/players/Explosion.tscn");
 	}
 
 	public void GoHook()   // 出钩
 	{
 		if (HookStatus == HookMode.wave)
 			SwitchMode(HookMode.go);
+	}
+	public async void ThrowDynamite()
+	{
+		if(HookStatus == HookMode.back && HookHasItem && GetParent<Player>().DynamiteNum > 0)
+		{
+			HookHasItem = false;
+			ItemValue = 0;
+			ItemWeight = 0;
+			ItemSlot.RemoveChild(ItemSlot.GetChild(0));
+			GetNode<Sprite2D>("Sprite").Frame = 0;
+			GetParent<Player>().DynamiteNum --;
+			GetNode<AudioStreamPlayer>("Explosion").Play();
+			AnimatedSprite2D ExplosionAnimation = ExplosionTree.Instantiate<AnimatedSprite2D>();
+			ExplosionAnimation.GlobalPosition = GlobalPosition;
+			GetTree().CurrentScene.AddChild(ExplosionAnimation);
+			await ToSignal(ExplosionAnimation, AnimatedSprite2D.SignalName.AnimationFinished);
+			ExplosionAnimation.QueueFree();
+		}
 	}
 	public override async void _Process(double delta)
 	{

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b2vso27ndhaib"]
+[gd_scene load_steps=22 format=3 uid="uid://b2vso27ndhaib"]
 
 [ext_resource type="Texture2D" uid="uid://c4nv4mskuue66" path="res://resources/images/miner_sheet.png" id="1_tqxxm"]
 [ext_resource type="Script" path="res://assets/players/Player.cs" id="2_fu4jm"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dfu7s1dw783x0" path="res://resources/audios/hook_reset.wav" id="10_rnm4o"]
 [ext_resource type="AudioStream" uid="uid://fwuwx7m6h833" path="res://resources/audios/money.wav" id="11_5pn3f"]
 [ext_resource type="Texture2D" uid="uid://qb7jvm14q343" path="res://resources/images/ui_dynamite.png" id="12_3wcis"]
+[ext_resource type="AudioStream" uid="uid://bc4revbhb7lji" path="res://resources/audios/explosive.wav" id="12_c2mtt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_53scs"]
 atlas = ExtResource("1_tqxxm")
@@ -93,6 +94,7 @@ script = ExtResource("2_fu4jm")
 [node name="Hook" type="Node2D" parent="."]
 position = Vector2(-7, 10)
 script = ExtResource("3_n0uo4")
+metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="Hook"]
 position = Vector2(0, 7)
@@ -136,6 +138,9 @@ stream = ExtResource("10_rnm4o")
 
 [node name="MoneyGain" type="AudioStreamPlayer" parent="Hook"]
 stream = ExtResource("11_5pn3f")
+
+[node name="Explosion" type="AudioStreamPlayer" parent="Hook"]
+stream = ExtResource("12_c2mtt")
 
 [node name="Dynamite" type="Node2D" parent="."]
 

@@ -3,7 +3,8 @@ using System;
 
 public partial class Player : AnimatedSprite2D
 {
-	[Export] public string KeyCode = "player1Go";
+	[Export] public string HookKeyCode = "player1Go";
+	[Export] public string DynamiteKeyCode = "player1Dynamite";
 	public bool StrengthBuff = false;
 	private int _dynamiteNum = 0;
 	public int DynamiteNum
@@ -19,9 +20,13 @@ public partial class Player : AnimatedSprite2D
 	}
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionJustPressed(KeyCode))
+		if (Input.IsActionJustPressed(HookKeyCode))
 		{
 			GetNode<Hook>("Hook").GoHook();
+		}
+		if (Input.IsActionJustPressed(DynamiteKeyCode))
+		{
+			GetNode<Hook>("Hook").ThrowDynamite();
 		}
 		QueueRedraw();
 	}
