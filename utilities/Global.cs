@@ -1,13 +1,15 @@
 using Godot;
 using System;
 
+public enum HookMode { go, back, wave }
+public enum Type { Dynamite, Strength, Money };
 public partial class Global : Node
 {
 	public static Level level = null;
 	public static int Money { set; get; } = 0;
 	public static int goal = 0;
 	public static int currentLevel = 1;
-	
+
 	/// <summary>
 	/// false单人模式 true双人模式
 	/// </summary>

@@ -2,8 +2,6 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public enum HookMode { go, back, wave }
-
 public partial class Hook : Node2D
 {
 	public HookMode HookStatus;
@@ -14,6 +12,7 @@ public partial class Hook : Node2D
 	private Node2D ItemSlot;
 	private bool HookHasItem = false;
 	private int ItemValue = 0;
+	private Type itemType;
 	private int _itemWeight = 0;
 	private int ItemWeight
 	{
@@ -37,14 +36,14 @@ public partial class Hook : Node2D
 	}
 	public async void ThrowDynamite()
 	{
-		if(HookStatus == HookMode.back && HookHasItem && GetParent<Player>().DynamiteNum > 0)
+		if (HookStatus == HookMode.back && HookHasItem && GetParent<Player>().DynamiteNum > 0)
 		{
 			HookHasItem = false;
 			ItemValue = 0;
 			ItemWeight = 0;
 			ItemSlot.RemoveChild(ItemSlot.GetChild(0));
 			GetNode<Sprite2D>("Sprite").Frame = 0;
-			GetParent<Player>().DynamiteNum --;
+			GetParent<Player>().DynamiteNum--;
 			GetNode<AudioStreamPlayer>("Explosion").Play();
 			AnimatedSprite2D ExplosionAnimation = ExplosionTree.Instantiate<AnimatedSprite2D>();
 			ExplosionAnimation.GlobalPosition = GlobalPosition;
@@ -122,7 +121,14 @@ public partial class Hook : Node2D
 			case HookMode.back:
 				{
 					if (HookHasItem)
-						Global.Money += ItemValue;
+					{
+						switch (itemType)
+						{
+							case Type.Dynamite: GetParent<Player>().DynamiteNum ++; break;
+							case Type.Strength: GetParent<Player>().StrengthBuff = true; break;
+							default: Global.Money += ItemValue; break;   // 默认情况即itemType为Money
+						}
+					}
 					foreach (Node x in ItemSlot.GetChildren())
 					{
 						x.QueueFree();
@@ -238,6 +244,15 @@ public partial class Hook : Node2D
 		{
 			case Item.SizeLevel.big: GetNode<Sprite2D>("Sprite").Frame = 1; break;
 			case Item.SizeLevel.small: GetNode<Sprite2D>("Sprite").Frame = 2; break;
+		}
+
+		if (item is Bag bag)
+		{
+			itemType = bag.type;
+		}
+		else
+		{
+			itemType = Type.Money;
 		}
 
 		if (item is not TNT)                    // 如果是tnt，则让它自己爆炸
