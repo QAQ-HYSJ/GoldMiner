@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b2vso27ndhaib"]
+[gd_scene load_steps=29 format=3 uid="uid://b2vso27ndhaib"]
 
 [ext_resource type="Texture2D" uid="uid://c4nv4mskuue66" path="res://resources/images/miner_sheet.png" id="1_tqxxm"]
 [ext_resource type="Script" path="res://assets/players/Player.cs" id="2_fu4jm"]
@@ -41,6 +41,18 @@ region = Rect2(192, 0, 32, 40)
 [sub_resource type="AtlasTexture" id="AtlasTexture_6cgda"]
 atlas = ExtResource("1_tqxxm")
 region = Rect2(224, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfih0"]
+atlas = ExtResource("1_tqxxm")
+region = Rect2(96, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gi2kc"]
+atlas = ExtResource("1_tqxxm")
+region = Rect2(128, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4bcxx"]
+atlas = ExtResource("1_tqxxm")
+region = Rect2(160, 0, 32, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kiv0h"]
 animations = [{
@@ -86,6 +98,20 @@ animations = [{
 "loop": false,
 "name": &"strength",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfih0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gi2kc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4bcxx")
+}],
+"loop": false,
+"name": &"throw_dynamite",
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_50lyd"]
@@ -132,6 +158,7 @@ _data = {
 [node name="Player" type="AnimatedSprite2D"]
 position = Vector2(160, 20)
 sprite_frames = SubResource("SpriteFrames_kiv0h")
+animation = &"throw_dynamite"
 script = ExtResource("2_fu4jm")
 
 [node name="Hook" type="Node2D" parent="."]

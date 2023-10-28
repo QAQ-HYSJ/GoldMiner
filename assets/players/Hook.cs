@@ -41,6 +41,7 @@ public partial class Hook : Node2D
 	{
 		if (HookStatus == HookMode.back && HookHasItem && GetParent<Player>().DynamiteNum > 0)
 		{
+			PlayThrowDynamiteAnimation();  // 因为有两个await所以放后面
 			HookHasItem = false;
 			ItemValue = 0;
 			ItemWeight = 0;
@@ -57,6 +58,12 @@ public partial class Hook : Node2D
 			await ToSignal(ExplosionAnimation, AnimatedSprite2D.SignalName.AnimationFinished);
 			ExplosionAnimation.QueueFree();
 		}
+	}
+	private async void PlayThrowDynamiteAnimation()
+	{
+		GetParent<Player>().Play("throw_dynamite");
+		await ToSignal(GetParent<Player>(), Player.SignalName.AnimationFinished);
+		GetParent<Player>().Animation = "default";
 	}
 	public override async void _Process(double delta)
 	{
@@ -168,7 +175,7 @@ public partial class Hook : Node2D
 					HookHasItem = false;
 					ItemValue = 0;
 					ItemWeight = 0;
-					if (GetParent<Player>().Animation == "strength")
+					if (GetParent<Player>().Animation != "default")
 					{
 						await ToSignal(GetParent<Player>(), Player.SignalName.AnimationFinished);
 					}
@@ -312,7 +319,6 @@ public partial class Hook : Node2D
 					GetParent().AddChild(sprite2D);
 					sprite2D.Position = new Vector2(-40, 0);
 					await ToSignal(GetParent<Player>(), Player.SignalName.AnimationFinished);
-					// await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
 					sprite2D.QueueFree();
 				}
 				break;
@@ -332,6 +338,6 @@ public partial class Hook : Node2D
 				}
 				break;   // 默认情况即itemType为Money
 		}
-
 	}
+
 }
