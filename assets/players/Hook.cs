@@ -19,16 +19,17 @@ public partial class Hook : Node2D
 		set { _itemWeight = Mathf.Clamp(value, 0, 100); }
 		get { return _itemWeight; }
 	}
-	private AnimatedSprite2D Player;
 	private PackedScene ExplosionTree;
 	private Texture2D DynamiteUI;
+	private Texture2D StrengthUI;
 	public override void _Ready()
 	{
+		GetParent<Player>().Animation = "default";
 		HookStatus = HookMode.wave;
 		ItemSlot = GetNode<Node2D>("ItemSlot");
-		Player = GetParent<AnimatedSprite2D>();
 		ExplosionTree = ResourceLoader.Load<PackedScene>("res://assets/players/Explosion.tscn");
 		DynamiteUI = ResourceLoader.Load<Texture2D>("res://resources/images/ui_dynamite.png");
+		StrengthUI = ResourceLoader.Load<Texture2D>("res://resources/images/text_strength.png");
 	}
 
 	public void GoHook()   // 出钩
@@ -94,50 +95,13 @@ public partial class Hook : Node2D
 						if (Position.Y <= OriginPoint.Y)
 						{
 							pause = true;
-							Player.Pause();
-							Player.Frame = 0;
+							GetParent<Player>().Animation = "default";
+							GetParent<Player>().Pause();
+							GetParent<Player>().Frame = 0;
 							GetNode<AudioStreamPlayer>("BackHook").Stop();
 							if (HookHasItem)
 							{
-								GetNode<AudioStreamPlayer>("MoneyGain").Play();
-								switch (itemType)
-								{
-									case Type.Dynamite:
-										{
-											Sprite2D sprite2D = new Sprite2D();
-											sprite2D.Texture = DynamiteUI;
-											sprite2D.Scale = new Vector2(1.5f, 1.5f);
-											AddChild(sprite2D);
-											sprite2D.Position = new Vector2(0, 20);
-											sprite2D.GlobalRotation = 0;
-											await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
-											Tween tween = GetTree().CreateTween();
-											tween.Parallel().TweenProperty(sprite2D, "scale", new Vector2(0.5f, 0.5f), 0.5);
-											tween.Parallel().TweenProperty(sprite2D, "global_position", GetParent<Node2D>().Position + new Vector2(18, 13), 0.5);
-											tween.TweenCallback(Callable.From(sprite2D.QueueFree));
-										}
-										break;
-									case Type.Strength:
-										{
-										}
-										break;
-									default:
-										{
-											Label label = new Label();
-											label.Text = "$" + ItemValue;
-											label.GlobalPosition = GlobalPosition - new Vector2(0, 10);
-											label.Set("theme_override_colors/font_color", Colors.Green);
-											label.Set("theme_override_font_sizes/font_size", 12);
-											GetTree().CurrentScene.AddChild(label);
-											await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
-											Tween tween = GetTree().CreateTween();
-											tween.Parallel().TweenProperty(label, "scale", new Vector2(0.5f, 0.5f), 0.5);
-											tween.Parallel().TweenProperty(label, "global_position", new Vector2(60, 6), 0.5);
-											tween.TweenCallback(Callable.From(label.QueueFree));
-										}
-										break;   // 默认情况即itemType为Money
-								}
-
+								HandleItem();  // 用到两个await，要放后面
 							}
 							await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
 							SwitchMode(HookMode.wave);
@@ -153,7 +117,7 @@ public partial class Hook : Node2D
 		ModeChanged(HookStatus, status);
 		HookStatus = status;
 	}
-	private void ModeChanged(HookMode from, HookMode to)
+	private async void ModeChanged(HookMode from, HookMode to)
 	{
 		switch (from)  // 状态结术
 		{
@@ -204,8 +168,13 @@ public partial class Hook : Node2D
 					HookHasItem = false;
 					ItemValue = 0;
 					ItemWeight = 0;
-					Player.Pause();
-					Player.Frame = 0;
+					if (GetParent<Player>().Animation == "strength")
+					{
+						await ToSignal(GetParent<Player>(), Player.SignalName.AnimationFinished);
+					}
+					GetParent<Player>().Animation = "default";
+					GetParent<Player>().Pause();
+					GetParent<Player>().Frame = 0;
 					GetNode<Sprite2D>("Sprite").Frame = 0;
 				}
 				break;
@@ -213,14 +182,15 @@ public partial class Hook : Node2D
 				{
 					direction = new Vector2((float)-Math.Sin(Rotation), (float)Math.Cos(Rotation)).Normalized();
 					GetNode<AnimationPlayer>("HookAnimation").Pause();
-					Player.Pause();
-					Player.Frame = 2;
+					GetParent<Player>().Animation = "default";
+					GetParent<Player>().Pause();
+					GetParent<Player>().Frame = 2;
 					GetNode<AudioStreamPlayer>("GoHook").Play();
 				}
 				break;
 			case HookMode.back:
 				{
-					Player.Play();
+					GetParent<Player>().Play("default");
 					GetNode<AudioStreamPlayer>("BackHook").Play();
 					CallDeferred(MethodName.BokehHook);             // 延迟调用虚化钩子，否则碰撞时会报错
 				}
@@ -312,5 +282,56 @@ public partial class Hook : Node2D
 
 		if (item is not TNT)                    // 如果是tnt，则让它自己爆炸
 			item.QueueFree();
+	}
+	private async void HandleItem()
+	{
+		GetNode<AudioStreamPlayer>("MoneyGain").Play();
+		switch (itemType)
+		{
+			case Type.Dynamite:
+				{
+					Sprite2D sprite2D = new Sprite2D();
+					sprite2D.Texture = DynamiteUI;
+					sprite2D.Scale = new Vector2(1.5f, 1.5f);
+					AddChild(sprite2D);
+					sprite2D.Position = new Vector2(0, 20);
+					sprite2D.GlobalRotation = 0;
+					await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
+					Tween tween = GetTree().CreateTween();
+					tween.Parallel().TweenProperty(sprite2D, "scale", new Vector2(0.5f, 0.5f), 0.3);
+					tween.Parallel().TweenProperty(sprite2D, "global_position", GetParent<Node2D>().Position + new Vector2(18, 13), 0.3);
+					tween.TweenCallback(Callable.From(sprite2D.QueueFree));
+				}
+				break;
+			case Type.Strength:
+				{
+					GetParent<Player>().Play("strength");
+					GetNode<AudioStreamPlayer>("HighValue").Play();
+					Sprite2D sprite2D = new Sprite2D();
+					sprite2D.Texture = StrengthUI;
+					GetParent().AddChild(sprite2D);
+					sprite2D.Position = new Vector2(-40, 0);
+					await ToSignal(GetParent<Player>(), Player.SignalName.AnimationFinished);
+					// await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
+					sprite2D.QueueFree();
+				}
+				break;
+			default:
+				{
+					Label label = new Label();
+					label.Text = "$" + ItemValue;
+					label.GlobalPosition = GlobalPosition - new Vector2(0, 10);
+					label.Set("theme_override_colors/font_color", Colors.Green);
+					label.Set("theme_override_font_sizes/font_size", 12);
+					GetTree().CurrentScene.AddChild(label);
+					await ToSignal(GetTree().CreateTimer(0.5), SceneTreeTimer.SignalName.Timeout);
+					Tween tween = GetTree().CreateTween();
+					tween.Parallel().TweenProperty(label, "scale", new Vector2(0.5f, 0.5f), 0.5);
+					tween.Parallel().TweenProperty(label, "global_position", new Vector2(60, 6), 0.5);
+					tween.TweenCallback(Callable.From(label.QueueFree));
+				}
+				break;   // 默认情况即itemType为Money
+		}
+
 	}
 }

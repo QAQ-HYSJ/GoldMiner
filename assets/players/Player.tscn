@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b2vso27ndhaib"]
+[gd_scene load_steps=26 format=3 uid="uid://b2vso27ndhaib"]
 
 [ext_resource type="Texture2D" uid="uid://c4nv4mskuue66" path="res://resources/images/miner_sheet.png" id="1_tqxxm"]
 [ext_resource type="Script" path="res://assets/players/Player.cs" id="2_fu4jm"]
@@ -26,6 +26,22 @@ region = Rect2(32, 0, 32, 40)
 atlas = ExtResource("1_tqxxm")
 region = Rect2(64, 0, 32, 40)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3npb8"]
+atlas = ExtResource("1_tqxxm")
+region = Rect2(192, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rku2c"]
+atlas = ExtResource("1_tqxxm")
+region = Rect2(224, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybo7p"]
+atlas = ExtResource("1_tqxxm")
+region = Rect2(192, 0, 32, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cgda"]
+atlas = ExtResource("1_tqxxm")
+region = Rect2(224, 0, 32, 40)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_kiv0h"]
 animations = [{
 "frames": [{
@@ -41,6 +57,35 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3npb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rku2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybo7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cgda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3npb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rku2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3npb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rku2c")
+}],
+"loop": false,
+"name": &"strength",
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_50lyd"]
@@ -87,8 +132,6 @@ _data = {
 [node name="Player" type="AnimatedSprite2D"]
 position = Vector2(160, 20)
 sprite_frames = SubResource("SpriteFrames_kiv0h")
-frame = 2
-frame_progress = 0.400866
 script = ExtResource("2_fu4jm")
 
 [node name="Hook" type="Node2D" parent="."]

@@ -10,10 +10,12 @@ public partial class Bag : Item
         if (rand == 1)
         {
             type = Type.Dynamite;
+            Weight = 30;
         }
         else if (rand == 2)
         {
             type = Type.Strength;
+            Weight = 30;
         }
         else
         {
