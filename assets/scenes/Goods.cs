@@ -33,6 +33,7 @@ public partial class Goods : Control
             int num = GD.RandRange(0, 5);
             GetChild<TextureRect>(num).Visible = true;
             prices[num] = GD.RandRange(1, 999);
+            GetChild<TextureRect>(num).GetNode<Label>("Label").Text = "$" + prices[num];
         }
         GetParent().GetNode<Label>("Label").Text = "";
     }
@@ -44,15 +45,19 @@ public partial class Goods : Control
             {
                 if (GetChild<TextureRect>(i).GetRect().HasPoint(inputEventMouseButton.Position) && GetChild<TextureRect>(i).Visible)  // 且可见
                 {
-                    switch (i)
+                    if (Global.Money > prices[i])
                     {
-                        case 0: Global.player1DynamiteNum++; if (Global.gameMode) Global.player2DynamiteNum++; break;
-                        case 1: Global.HasBuyStrengthBuff = true; break;
-                        case 2: Global.LuckyBuff = true; break;
-                        case 3: Global.GemPolishBuff = true; break;
-                        case 4: Global.RockBuff = true; break;
+                        switch (i)
+                        {
+                            case 0: Global.player1DynamiteNum++; if (Global.gameMode) Global.player2DynamiteNum++; break;
+                            case 1: Global.HasBuyStrengthBuff = true; break;
+                            case 2: Global.LuckyBuff = true; break;
+                            case 3: Global.GemPolishBuff = true; break;
+                            case 4: Global.RockBuff = true; break;
+                        }
+                        GetChild<TextureRect>(i).Visible = false;
+                        Global.Money -= prices[i];
                     }
-                    GetChild<TextureRect>(i).Visible = false;
                 }
             }
         }

@@ -42,7 +42,7 @@ public partial class Save : GodotObject
             {
                 {"Money", Global.Money},
                 {"Level", Global.currentLevelNum},
-                {"InShop", Global.InShope}
+                // {"InShop", Global.InShope}
             };
             data[numb.ToString()] = temp;
         }

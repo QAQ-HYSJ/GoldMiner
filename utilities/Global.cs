@@ -14,7 +14,7 @@ public partial class Global : Node
 	/// false单人模式 true双人模式
 	/// </summary>
 	public static bool gameMode { get; set; }
-	public static bool InShope { get; set; }
+	// public static bool InShope { get; set; }
 	public static bool GemPolishBuff = false;
 	public static bool RockBuff = false;
 	public static bool LuckyBuff = false;

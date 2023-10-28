@@ -6,7 +6,7 @@ public partial class Begin : TextureRect
 {
 	public override void _Ready()
 	{
-		Global.InShope = false;
+		// Global.InShope = false;
 		if (Global.currentLevelNum < 10)
 			Global.goal = 375 + (135 * (1 + Global.currentLevelNum) * Global.currentLevelNum) + 5 * Global.currentLevelNum;
 		else
