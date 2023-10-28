@@ -18,6 +18,7 @@ anchors_preset = -1
 anchor_right = 0.5
 offset_left = 10.0
 offset_right = -10.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 12
 text = "当前："
 
@@ -29,6 +30,7 @@ offset_left = 10.0
 offset_top = 17.0
 offset_right = -10.0
 offset_bottom = 37.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 12
 text = "目标："
 
@@ -38,6 +40,7 @@ offset_left = 273.0
 offset_top = 1.0
 offset_right = 316.0
 offset_bottom = 27.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 12
 text = "第n关"
 
@@ -47,6 +50,7 @@ offset_left = 235.0
 offset_top = 16.0
 offset_right = 299.0
 offset_bottom = 41.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 12
 text = "剩余时间"
 horizontal_alignment = 2

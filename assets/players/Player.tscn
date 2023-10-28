@@ -106,7 +106,7 @@ collision_layer = 2
 collision_priority = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hook/HitBox"]
-position = Vector2(-0.00165462, 12.0253)
+position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_50lyd")
 
 [node name="HookAnimation" type="AnimationPlayer" parent="Hook"]

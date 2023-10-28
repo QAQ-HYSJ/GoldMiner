@@ -18,7 +18,7 @@
 [node name="Contents" type="Node2D"]
 
 [node name="Bone" parent="." instance=ExtResource("1_4gdrd")]
-position = Vector2(65, 91)
+position = Vector2(33, 149)
 
 [node name="Skull" parent="." instance=ExtResource("2_0ku5c")]
 position = Vector2(119, 173)
@@ -51,13 +51,13 @@ position = Vector2(151, 139)
 position = Vector2(179, 106)
 
 [node name="TNT" parent="." instance=ExtResource("12_ssw7i")]
-position = Vector2(110, 133)
+position = Vector2(141, 201)
 
 [node name="TNT4" parent="." instance=ExtResource("12_ssw7i")]
 position = Vector2(284, 181)
 
 [node name="TNT5" parent="." instance=ExtResource("12_ssw7i")]
-position = Vector2(301, 112)
+position = Vector2(316, 140)
 
 [node name="Bag" parent="." instance=ExtResource("13_1fux4")]
 position = Vector2(217, 102)
@@ -66,13 +66,22 @@ position = Vector2(217, 102)
 position = Vector2(189, 156)
 
 [node name="DiamondMouse2" parent="." instance=ExtResource("14_1mfi6")]
-position = Vector2(116, 103)
+position = Vector2(171, 203)
 
 [node name="Diamond2" parent="." instance=ExtResource("3_g28et")]
 position = Vector2(255, 217)
 
 [node name="Bag2" parent="." instance=ExtResource("13_1fux4")]
-position = Vector2(92, 87)
+position = Vector2(41, 111)
 
 [node name="Bag3" parent="." instance=ExtResource("13_1fux4")]
-position = Vector2(258, 88)
+position = Vector2(153, 99)
+
+[node name="Bag4" parent="." instance=ExtResource("13_1fux4")]
+position = Vector2(252, 96)
+
+[node name="Bag5" parent="." instance=ExtResource("13_1fux4")]
+position = Vector2(285, 97)
+
+[node name="Bag6" parent="." instance=ExtResource("13_1fux4")]
+position = Vector2(112, 133)
