@@ -5,7 +5,7 @@ public partial class Shop : TextureRect
 {
 	public override void _Ready()
 	{
-		Global.currentLevel ++;
+		Global.currentLevelNum ++;
 		Global.InShope = true;
 
 		Global.GemPolishBuff = false;

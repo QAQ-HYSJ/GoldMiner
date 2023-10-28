@@ -19,7 +19,7 @@ public partial class HUD : Control
 	{
 		money.Text = "当前：$" + Global.Money;
 		goal.Text = "目标：$" + Global.goal;
-		level.Text = "第" + Global.currentLevel + "关";
+		level.Text = "第" + Global.currentLevelNum + "关";
 		time.Text = "剩余时间：" + (int)Global.level.LeftTime;
 	}
 	private void On_Pause_Pressed()

@@ -41,7 +41,7 @@ public partial class Save : GodotObject
             Dictionary<string, Variant> temp = new Dictionary<string, Variant>()
             {
                 {"Money", Global.Money},
-                {"Level", Global.currentLevel},
+                {"Level", Global.currentLevelNum},
                 {"InShop", Global.InShope}
             };
             data[numb.ToString()] = temp;

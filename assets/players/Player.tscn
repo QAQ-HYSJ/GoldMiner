@@ -158,7 +158,6 @@ _data = {
 [node name="Player" type="AnimatedSprite2D"]
 position = Vector2(160, 20)
 sprite_frames = SubResource("SpriteFrames_kiv0h")
-animation = &"throw_dynamite"
 script = ExtResource("2_fu4jm")
 
 [node name="Hook" type="Node2D" parent="."]

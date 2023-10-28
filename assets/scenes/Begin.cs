@@ -7,19 +7,11 @@ public partial class Begin : TextureRect
 	public override void _Ready()
 	{
 		Global.InShope = false;
-		Global.goal += 650;
+		if (Global.currentLevelNum < 10)
+			Global.goal = 375 + (135 * (1 + Global.currentLevelNum) * Global.currentLevelNum) + 5 * Global.currentLevelNum;
+		else
+			Global.goal = 12575 + 2705 * (Global.currentLevelNum - 9);
 		GetNode<Label>("Pannel/Money").Text = "$" + Global.goal;
-
-		// Dictionary<string, Variant> data = Save.LoadGame(1);
-		// if(data.Count == 0)
-		// {
-		// 	GD.Print("空档");
-		// }
-		// else
-		// {
-        //     data.TryGetValue("Money", out Variant money);
-        //     GD.Print(Global.Money = (int)money);
-		// }
 	}
 
 	private void On_AudioStreamPlayer_Finished()
