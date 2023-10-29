@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgmll1ddhs1db"]
+[gd_scene load_steps=3 format=3 uid="uid://cgmll1ddhs1db"]
 
 [ext_resource type="Script" path="res://assets/items/StoneBig.cs" id="1_txdcb"]
 [ext_resource type="Texture2D" uid="uid://b63dplydefesl" path="res://resources/images/rock_big.png" id="2_nu30i"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1oub"]
-size = Vector2(31.8198, 27.9334)
 
 [node name="StoneBig" type="Area2D"]
 collision_mask = 2
@@ -17,5 +14,5 @@ sizeLevel = 1
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_nu30i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_h1oub")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -14, 6, -14, 16, 0, 16, 14, -13, 13, -16, 3)

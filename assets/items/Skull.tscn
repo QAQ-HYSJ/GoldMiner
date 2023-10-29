@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bq3tqihja381y" path="res://resources/images/skull.png" id="3_v7gv1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xaow5"]
+radius = 8.5
 
 [node name="Skull" type="Area2D"]
 collision_mask = 2
@@ -17,4 +18,5 @@ sizeLevel = 1
 texture = ExtResource("3_v7gv1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
 shape = SubResource("CircleShape2D_xaow5")

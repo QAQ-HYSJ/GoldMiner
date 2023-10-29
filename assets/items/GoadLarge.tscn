@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dwxtoen10kdoi" path="res://resources/images/gold_big.png" id="3_eqjxn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_60u3m"]
-radius = 15.6793
+radius = 16.0
 
 [node name="GoadLarge" type="Area2D"]
 collision_mask = 2

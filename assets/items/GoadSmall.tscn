@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://eiin2jcv8gtt" path="res://resources/images/gold_mini.png" id="2_x0dmn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f1co7"]
-radius = 5.09902
+radius = 5.0
 
 [node name="GoadSmall" type="Area2D"]
 collision_mask = 2

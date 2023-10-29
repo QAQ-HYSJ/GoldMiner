@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://assets/items/DiamondMouse.cs" id="1_vnna2"]
 [ext_resource type="Texture2D" uid="uid://dkkdwvd73d300" path="res://resources/images/mole_with_diamond_sheet.png" id="2_lohid"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hah5f"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ps02l"]
+size = Vector2(16, 11)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8u0bt"]
 atlas = ExtResource("2_lohid")
@@ -71,7 +72,7 @@ Offect = Vector2(0, 5)
 sizeLevel = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_hah5f")
+shape = SubResource("RectangleShape2D_ps02l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1ageo")

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dvkqhn0w167jd" path="res://resources/images/rock_mini.png" id="3_n60uo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5a674"]
-size = Vector2(15, 11)
+size = Vector2(15, 10)
 
 [node name="StoneSmall" type="Area2D"]
 collision_mask = 2
@@ -18,5 +18,5 @@ sizeLevel = 1
 texture = ExtResource("3_n60uo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0.5)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_5a674")

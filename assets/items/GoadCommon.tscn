@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c4xxpuq6engr2" path="res://resources/images/gold_normal.png" id="2_s35rk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_daqvx"]
-radius = 7.46815
+radius = 7.0
 
 [node name="GoadCommon" type="Area2D"]
 collision_mask = 2

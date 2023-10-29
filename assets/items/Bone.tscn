@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bjneceki5nmhy" path="res://resources/images/bone.png" id="3_0k4h1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g05b0"]
+size = Vector2(18, 12)
 
 [node name="Bone" type="Area2D"]
 collision_mask = 2

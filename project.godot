@@ -16,10 +16,6 @@ config/features=PackedStringArray("4.1", "C#", "Mobile")
 boot_splash/show_image=false
 config/icon="res://icon.png"
 
-[autoload]
-
-Event="*res://utilities/Event.cs"
-
 [display]
 
 window/size/viewport_width=320

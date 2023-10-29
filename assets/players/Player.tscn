@@ -115,7 +115,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_50lyd"]
-size = Vector2(12.9967, 5.05069)
+size = Vector2(13, 5)
 
 [sub_resource type="Animation" id="Animation_kkv3k"]
 length = 0.001
@@ -163,7 +163,6 @@ script = ExtResource("2_fu4jm")
 [node name="Hook" type="Node2D" parent="."]
 position = Vector2(-7, 10)
 script = ExtResource("3_n0uo4")
-metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="Hook"]
 position = Vector2(0, 7)
@@ -238,4 +237,4 @@ visible = false
 position = Vector2(34, 13)
 texture = ExtResource("12_3wcis")
 
-[connection signal="area_entered" from="Hook/HitBox" to="Hook" method="On_HitBox_AreaEntered" flags=18]
+[connection signal="area_entered" from="Hook/HitBox" to="Hook" method="On_HitBox_AreaEntered"]

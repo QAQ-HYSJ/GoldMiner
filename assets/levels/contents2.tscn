@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ih0byw6h0ds7"]
+[gd_scene load_steps=4 format=3 uid="uid://ih0byw6h0ds7"]
 
 [ext_resource type="PackedScene" uid="uid://btau1yy4oit0g" path="res://assets/items/GoadBig.tscn" id="1_2o8yf"]
+[ext_resource type="PackedScene" uid="uid://b76ibfyqebemd" path="res://assets/items/Mouse.tscn" id="2_nqyms"]
+[ext_resource type="PackedScene" uid="uid://h00mb8b51o5y" path="res://assets/items/GoadLarge.tscn" id="3_teh34"]
 
 [node name="Contents" type="Node2D"]
 
@@ -15,3 +17,9 @@ position = Vector2(112.127, 144.83)
 
 [node name="GoadBig4" parent="." instance=ExtResource("1_2o8yf")]
 position = Vector2(175.531, 118.801)
+
+[node name="Mouse" parent="." instance=ExtResource("2_nqyms")]
+position = Vector2(225, 181)
+
+[node name="GoadLarge" parent="." instance=ExtResource("3_teh34")]
+position = Vector2(31, 167)

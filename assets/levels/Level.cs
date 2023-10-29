@@ -52,7 +52,6 @@ public partial class Level : Node2D
 	}
 	private void On_Timer_Timeout()
 	{
-		GetNode<Event>("/root/Event").EmitSignal(Event.SignalName.Timeout);
 		Global.player1DynamiteNum = player1.DynamiteNum;
 		Global.player2DynamiteNum = player2.DynamiteNum;
 		GetTree().ChangeSceneToFile("res://assets/scenes/End.tscn");

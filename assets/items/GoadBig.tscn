@@ -3,9 +3,7 @@
 [ext_resource type="Script" path="res://assets/items/Item.cs" id="1_1jlql"]
 [ext_resource type="Texture2D" uid="uid://bvfufu7m6b1x8" path="res://resources/images/gold_normal_plus.png" id="1_tgty8"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4q0ki"]
-radius = 9.76734
-height = 19.5347
+[sub_resource type="CircleShape2D" id="CircleShape2D_4xu0o"]
 
 [node name="GoadBig" type="Area2D"]
 collision_mask = 2
@@ -20,4 +18,5 @@ sizeLevel = 1
 texture = ExtResource("1_tgty8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_4q0ki")
+position = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_4xu0o")

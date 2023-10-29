@@ -61,6 +61,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cs88i"]
+size = Vector2(16, 11)
 
 [node name="Mouse" type="Area2D"]
 collision_mask = 2

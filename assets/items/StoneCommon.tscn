@@ -1,9 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dei8arjquncaf"]
+[gd_scene load_steps=3 format=3 uid="uid://dei8arjquncaf"]
 
 [ext_resource type="Script" path="res://assets/items/StoneCommon.cs" id="1_kf8h4"]
 [ext_resource type="Texture2D" uid="uid://w0i0ac2vqg6q" path="res://resources/images/rock_normal.png" id="2_x1pu6"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_vkbvp"]
 
 [node name="StoneCommon" type="Area2D"]
 collision_mask = 2
@@ -16,5 +14,6 @@ sizeLevel = 1
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_x1pu6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_vkbvp")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, 0.5)
+polygon = PackedVector2Array(0, -10, -11, 2, -11, 7, 11, 8.5, 11, -2, 5, -10)

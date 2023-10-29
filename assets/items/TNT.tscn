@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cs64phbkwxaa1" path="res://resources/images/bigger_explosive_fx_sheet.png" id="5_wrbn1"]
 [ext_resource type="AudioStream" uid="uid://bc4revbhb7lji" path="res://resources/audios/explosive.wav" id="6_y3y01"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_grb80"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n5jbq"]
+radius = 12.0
+height = 34.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rfah5"]
 atlas = ExtResource("5_wrbn1")
@@ -116,7 +118,7 @@ sizeLevel = 1
 texture = ExtResource("1_fonyb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_grb80")
+shape = SubResource("CapsuleShape2D_n5jbq")
 
 [node name="Explosion" type="AnimatedSprite2D" parent="."]
 visible = false

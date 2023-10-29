@@ -14,4 +14,5 @@ Offect = Vector2(0, 12)
 texture = ExtResource("2_bhbh2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_f5sfj")
