@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmh0virs1hlxp"]
+
+[ext_resource type="PackedScene" uid="uid://dmweim5muyvbw" path="res://assets/items/StoneSmall.tscn" id="1_j8gta"]
+[ext_resource type="PackedScene" uid="uid://dei8arjquncaf" path="res://assets/items/StoneCommon.tscn" id="2_giceb"]
+[ext_resource type="PackedScene" uid="uid://dl3xcgmrrvu8g" path="res://assets/items/GoadSmall.tscn" id="3_onm86"]
+[ext_resource type="PackedScene" uid="uid://c720ctiyelq7" path="res://assets/items/GoadCommon.tscn" id="4_rsdhw"]
+[ext_resource type="PackedScene" uid="uid://btau1yy4oit0g" path="res://assets/items/GoadBig.tscn" id="5_62ikv"]
+[ext_resource type="PackedScene" uid="uid://3bdr3t5eoxxt" path="res://assets/items/Bag.tscn" id="6_0d7s2"]
+[ext_resource type="PackedScene" uid="uid://b76ibfyqebemd" path="res://assets/items/Mouse.tscn" id="7_q34a1"]
+
+[node name="L4-1" type="Node2D"]
+
+[node name="StoneSmall" parent="." instance=ExtResource("1_j8gta")]
+position = Vector2(189, 146)
+
+[node name="StoneCommon" parent="." instance=ExtResource("2_giceb")]
+position = Vector2(73, 88)
+
+[node name="StoneCommon2" parent="." instance=ExtResource("2_giceb")]
+position = Vector2(259, 99)
+
+[node name="StoneCommon3" parent="." instance=ExtResource("2_giceb")]
+position = Vector2(56, 197)
+
+[node name="GoadSmall" parent="." instance=ExtResource("3_onm86")]
+position = Vector2(63, 80)
+
+[node name="GoadSmall2" parent="." instance=ExtResource("3_onm86")]
+position = Vector2(209, 95)
+
+[node name="GoadSmall3" parent="." instance=ExtResource("3_onm86")]
+position = Vector2(217, 104)
+
+[node name="GoadSmall4" parent="." instance=ExtResource("3_onm86")]
+position = Vector2(222, 118)
+
+[node name="GoadCommon" parent="." instance=ExtResource("4_rsdhw")]
+position = Vector2(181, 117)
+
+[node name="GoadBig" parent="." instance=ExtResource("5_62ikv")]
+position = Vector2(84, 146)
+
+[node name="GoadBig2" parent="." instance=ExtResource("5_62ikv")]
+position = Vector2(174, 183)
+
+[node name="Bag" parent="." instance=ExtResource("6_0d7s2")]
+position = Vector2(240, 110)
+
+[node name="Bag2" parent="." instance=ExtResource("6_0d7s2")]
+position = Vector2(56, 143)
+
+[node name="Bag3" parent="." instance=ExtResource("6_0d7s2")]
+position = Vector2(214, 144)
+
+[node name="Mouse" parent="." instance=ExtResource("7_q34a1")]
+position = Vector2(138, 182)
+
+[node name="Mouse2" parent="." instance=ExtResource("7_q34a1")]
+position = Vector2(100, 70)
+
+[node name="Mouse3" parent="." instance=ExtResource("7_q34a1")]
+position = Vector2(146, 85)

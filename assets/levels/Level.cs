@@ -9,10 +9,10 @@ public partial class Level : Node2D
 	public override void _Ready()
 	{
 		Global.level = this;
+		PackedScene PlayerTree = ResourceLoader.Load<PackedScene>("res://assets/players/Player.tscn");
 		// 加载玩家
 		if (Global.gameMode)
 		{
-			PackedScene PlayerTree = ResourceLoader.Load<PackedScene>("res://assets/players/Player.tscn");
 			player1 = PlayerTree.Instantiate<Player>();
 			player2 = PlayerTree.Instantiate<Player>();
 			player1.Position = new Vector2(120, 20);
@@ -28,10 +28,12 @@ public partial class Level : Node2D
 		}
 		else
 		{
-			AddChild(ResourceLoader.Load<PackedScene>("res://assets/players/Player.tscn").Instantiate<Player>());
+			player1 = PlayerTree.Instantiate<Player>();
+			AddChild(player1);
+			player1.DynamiteNum = Global.player1DynamiteNum;
 		}
 		// 加载关卡内容
-		AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/contents1.tscn").Instantiate<Node2D>());
+		LoadLevel();
 
 		// 加载HUD
 		AddChild(ResourceLoader.Load<PackedScene>("res://assets/HUD/HUD.tscn").Instantiate<Control>());
@@ -53,7 +55,27 @@ public partial class Level : Node2D
 	private void On_Timer_Timeout()
 	{
 		Global.player1DynamiteNum = player1.DynamiteNum;
-		Global.player2DynamiteNum = player2.DynamiteNum;
+		if (Global.gameMode)
+			Global.player2DynamiteNum = player2.DynamiteNum;
 		GetTree().ChangeSceneToFile("res://assets/scenes/End.tscn");
+	}
+	private void LoadLevel()
+	{
+		if (Global.currentLevelNum == 1)
+		{
+			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L1-1.tscn").Instantiate<Node2D>());
+		}
+		else if (Global.currentLevelNum == 2)
+		{
+			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L2-1.tscn").Instantiate<Node2D>());
+		}
+		else if (Global.currentLevelNum == 3)
+		{
+			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L3-1.tscn").Instantiate<Node2D>());
+		}
+		else if( Global.currentLevelNum == 4)
+		{
+			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L4-1.tscn").Instantiate<Node2D>());
+		}
 	}
 }
