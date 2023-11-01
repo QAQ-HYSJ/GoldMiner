@@ -8,10 +8,9 @@ public partial class Level : Node2D
 	private Player player2;
 	public override void _Ready()
 	{
-		Global.level = this;
 		PackedScene PlayerTree = ResourceLoader.Load<PackedScene>("res://assets/players/Player.tscn");
 		// 加载玩家
-		if (Global.gameMode)
+		if (Data.Singleton.gameMode)
 		{
 			player1 = PlayerTree.Instantiate<Player>();
 			player2 = PlayerTree.Instantiate<Player>();
@@ -23,14 +22,14 @@ public partial class Level : Node2D
 			player2.DynamiteKeyCode = "player2Dynamite";
 			AddChild(player1);
 			AddChild(player2);
-			player1.DynamiteNum = Global.player1DynamiteNum;
-			player2.DynamiteNum = Global.player2DynamiteNum;
+			player1.DynamiteNum = Data.Singleton.TempPlayer1DynamiteNum;
+			player2.DynamiteNum = Data.Singleton.TempPlayer2DynamiteNum;
 		}
 		else
 		{
 			player1 = PlayerTree.Instantiate<Player>();
 			AddChild(player1);
-			player1.DynamiteNum = Global.player1DynamiteNum;
+			player1.DynamiteNum = Data.Singleton.TempPlayer1DynamiteNum;
 		}
 		// 加载关卡内容
 		LoadLevel();
@@ -38,7 +37,7 @@ public partial class Level : Node2D
 		// 加载HUD
 		AddChild(ResourceLoader.Load<PackedScene>("res://assets/HUD/HUD.tscn").Instantiate<Control>());
 
-		if (Global.gameMode)
+		if (Data.Singleton.gameMode)
 		{
 			GetNode<Timer>("Timer").WaitTime = 30;
 		}
@@ -54,34 +53,34 @@ public partial class Level : Node2D
 	}
 	private void On_Timer_Timeout()
 	{
-		Global.player1DynamiteNum = player1.DynamiteNum;
-		if (Global.gameMode)
-			Global.player2DynamiteNum = player2.DynamiteNum;
+		Data.Singleton.TempPlayer1DynamiteNum = player1.DynamiteNum;
+		if (Data.Singleton.gameMode)
+			Data.Singleton.TempPlayer2DynamiteNum = player2.DynamiteNum;
 		GetTree().ChangeSceneToFile("res://assets/scenes/End.tscn");
 	}
 	private void LoadLevel()
 	{
-		if (Global.currentLevelNum == 1)
+		if (Data.Singleton.LevelNum == 1)
 		{
 			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L1-1.tscn").Instantiate());
 		}
-		else if (Global.currentLevelNum == 2)
+		else if (Data.Singleton.LevelNum == 2)
 		{
 			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L2-1.tscn").Instantiate());
 		}
-		else if (Global.currentLevelNum == 3)
+		else if (Data.Singleton.LevelNum == 3)
 		{
 			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L3-1.tscn").Instantiate());
 		}
-		else if (Global.currentLevelNum == 4)
+		else if (Data.Singleton.LevelNum == 4)
 		{
 			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L4-1.tscn").Instantiate());
 		}
-		else if (Global.currentLevelNum == 5)
+		else if (Data.Singleton.LevelNum == 5)
 		{
 			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L5-1.tscn").Instantiate());
 		}
-		else if (Global.currentLevelNum == 6)
+		else if (Data.Singleton.LevelNum == 6)
 		{
 			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L6-1.tscn").Instantiate());
 		}

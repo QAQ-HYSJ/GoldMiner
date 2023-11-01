@@ -5,7 +5,7 @@ public partial class Diamond : Item
 {
     public override void _Ready()
     {
-        if(Global.GemPolishBuff)
+        if(Data.Singleton.GemPolishBuff)
             Value = 900;
     }
 }

@@ -5,7 +5,7 @@ public partial class StoneBig : Item
 {
     public override void _Ready()
     {
-        if(Global.RockBuff)
+        if(Data.Singleton.RockBuff)
             Value = 200;
     }
 }

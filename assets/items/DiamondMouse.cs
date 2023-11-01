@@ -11,7 +11,7 @@ public partial class DiamondMouse : Item
 		direction = Direction.idle;
 		GetNode<Timer>("Timer").WaitTime = 1;
 		GetNode<Timer>("Timer").Start();
-		if (Global.GemPolishBuff)
+		if (Data.Singleton.GemPolishBuff)
 			Value = 902;
 	}
 	public override void _Process(double delta)

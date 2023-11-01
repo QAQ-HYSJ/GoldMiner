@@ -5,7 +5,7 @@ public partial class StoneCommon : Item
 {
     public override void _Ready()
     {
-        if (Global.RockBuff)
+        if (Data.Singleton.RockBuff)
             Value = 40;
     }
 }

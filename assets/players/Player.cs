@@ -14,7 +14,7 @@ public partial class Player : AnimatedSprite2D
 	}
 	public override void _Ready()
 	{
-		if (Global.HasBuyStrengthBuff)
+		if (Data.Singleton.HasBuyStrengthBuff)
 			StrengthBuff = true;
 		Updata();
 	}

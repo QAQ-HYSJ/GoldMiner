@@ -5,13 +5,13 @@ public partial class Shop : TextureRect
 {
 	public override void _Ready()
 	{
-		Global.currentLevelNum ++;
+		Data.Singleton.LevelNum ++;
 		// Global.InShope = true;
 
-		Global.GemPolishBuff = false;
-		Global.RockBuff = false;
-		Global.LuckyBuff = false;
-		Global.HasBuyStrengthBuff = false;
+		Data.Singleton.GemPolishBuff = false;
+		Data.Singleton.RockBuff = false;
+		Data.Singleton.LuckyBuff = false;
+		Data.Singleton.HasBuyStrengthBuff = false;
 	}
 
 	private void On_Button_Pressed()

@@ -17,10 +17,10 @@ public partial class HUD : Control
 
 	public override void _Process(double delta)
 	{
-		money.Text = "当前：$" + Global.Money;
-		goal.Text = "目标：$" + Global.goal;
-		level.Text = "第" + Global.currentLevelNum + "关";
-		time.Text = "剩余时间：" + (int)Global.level.LeftTime;
+		money.Text = "当前：$" + Data.Singleton.Money;
+		goal.Text = "目标：$" + Data.Singleton.goal;
+		level.Text = "第" + Data.Singleton.LevelNum + "关";
+		time.Text = "剩余时间：" + (int)(GetTree().CurrentScene as Level).LeftTime;
 	}
 	private void On_Pause_Pressed()
 	{

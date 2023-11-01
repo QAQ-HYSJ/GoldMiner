@@ -7,11 +7,11 @@ public partial class Begin : TextureRect
 	public override void _Ready()
 	{
 		// Global.InShope = false;
-		if (Global.currentLevelNum < 10)
-			Global.goal = 375 + (135 * (1 + Global.currentLevelNum) * Global.currentLevelNum) + 5 * Global.currentLevelNum;
+		if (Data.Singleton.LevelNum < 10)
+			Data.Singleton.goal = 375 + (135 * (1 + Data.Singleton.LevelNum) * Data.Singleton.LevelNum) + 5 * Data.Singleton.LevelNum;
 		else
-			Global.goal = 12575 + 2705 * (Global.currentLevelNum - 9);
-		GetNode<Label>("Pannel/Money").Text = "$" + Global.goal;
+			Data.Singleton.goal = 12575 + 2705 * (Data.Singleton.LevelNum - 9);
+		GetNode<Label>("Pannel/Money").Text = "$" + Data.Singleton.goal;
 	}
 
 	private void On_AudioStreamPlayer_Finished()

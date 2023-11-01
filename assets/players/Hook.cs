@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
+public enum HookMode { go, back, wave }
 public partial class Hook : Node2D
 {
 	public HookMode HookStatus;
@@ -150,7 +151,7 @@ public partial class Hook : Node2D
 								break;
 							default:
 								{
-									Global.Money += ItemValue;
+									Data.Singleton.Money += ItemValue;
 								}
 								break;   // 默认情况即itemType为Money
 						}

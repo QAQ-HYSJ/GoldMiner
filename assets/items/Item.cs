@@ -1,6 +1,8 @@
 using Godot;
 using System;
 
+public enum Type { Dynamite, Strength, Money };
+
 [GlobalClass]
 public partial class Item : Area2D
 {

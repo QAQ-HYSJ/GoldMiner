@@ -16,6 +16,10 @@ config/features=PackedStringArray("4.1", "C#", "Mobile")
 boot_splash/show_image=false
 config/icon="res://icon.png"
 
+[autoload]
+
+Data="*res://assets/data/Data.cs"
+
 [display]
 
 window/size/viewport_width=320

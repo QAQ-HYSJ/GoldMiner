@@ -45,18 +45,18 @@ public partial class Goods : Control
             {
                 if (GetChild<TextureRect>(i).GetRect().HasPoint(inputEventMouseButton.Position) && GetChild<TextureRect>(i).Visible)  // 且可见
                 {
-                    if (Global.Money > prices[i])
+                    if (Data.Singleton.Money > prices[i])
                     {
                         switch (i)
                         {
-                            case 0: Global.player1DynamiteNum++; if (Global.gameMode) Global.player2DynamiteNum++; break;
-                            case 1: Global.HasBuyStrengthBuff = true; break;
-                            case 2: Global.LuckyBuff = true; break;
-                            case 3: Global.GemPolishBuff = true; break;
-                            case 4: Global.RockBuff = true; break;
+                            case 0: Data.Singleton.TempPlayer1DynamiteNum++; if (Data.Singleton.gameMode) Data.Singleton.TempPlayer2DynamiteNum++; break;
+                            case 1: Data.Singleton.HasBuyStrengthBuff = true; break;
+                            case 2: Data.Singleton.LuckyBuff = true; break;
+                            case 3: Data.Singleton.GemPolishBuff = true; break;
+                            case 4: Data.Singleton.RockBuff = true; break;
                         }
                         GetChild<TextureRect>(i).Visible = false;
-                        Global.Money -= prices[i];
+                        Data.Singleton.Money -= prices[i];
                     }
                 }
             }
