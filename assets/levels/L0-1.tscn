@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxnra35qa8t28"]
+
+[ext_resource type="PackedScene" uid="uid://3bdr3t5eoxxt" path="res://assets/items/Bag.tscn" id="1_abff8"]
+
+[node name="L0-1" type="Node2D"]
+
+[node name="Bag" parent="." instance=ExtResource("1_abff8")]
+position = Vector2(44, 133)
+
+[node name="Bag2" parent="." instance=ExtResource("1_abff8")]
+position = Vector2(266, 145)
+
+[node name="Bag3" parent="." instance=ExtResource("1_abff8")]
+position = Vector2(92, 171)
+
+[node name="Bag4" parent="." instance=ExtResource("1_abff8")]
+position = Vector2(247, 214)
+
+[node name="Bag5" parent="." instance=ExtResource("1_abff8")]
+position = Vector2(14, 157)
+
+[node name="Bag6" parent="." instance=ExtResource("1_abff8")]
+position = Vector2(301, 109)
+
+[node name="Bag7" parent="." instance=ExtResource("1_abff8")]
+position = Vector2(303, 164)
+
+[node name="Bag8" parent="." instance=ExtResource("1_abff8")]
+position = Vector2(126, 212)
+
+[node name="Bag9" parent="." instance=ExtResource("1_abff8")]
+position = Vector2(161, 216)
+
+[node name="Bag10" parent="." instance=ExtResource("1_abff8")]
+position = Vector2(42, 205)
+
+[node name="Bag11" parent="." instance=ExtResource("1_abff8")]
+position = Vector2(208, 189)
+
+[node name="Bag12" parent="." instance=ExtResource("1_abff8")]
+position = Vector2(40, 90)

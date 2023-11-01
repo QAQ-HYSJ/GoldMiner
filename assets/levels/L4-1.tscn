@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmh0virs1hlxp"]
+[gd_scene load_steps=9 format=3 uid="uid://dmh0virs1hlxp"]
 
 [ext_resource type="PackedScene" uid="uid://dmweim5muyvbw" path="res://assets/items/StoneSmall.tscn" id="1_j8gta"]
 [ext_resource type="PackedScene" uid="uid://dei8arjquncaf" path="res://assets/items/StoneCommon.tscn" id="2_giceb"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://btau1yy4oit0g" path="res://assets/items/GoadBig.tscn" id="5_62ikv"]
 [ext_resource type="PackedScene" uid="uid://3bdr3t5eoxxt" path="res://assets/items/Bag.tscn" id="6_0d7s2"]
 [ext_resource type="PackedScene" uid="uid://b76ibfyqebemd" path="res://assets/items/Mouse.tscn" id="7_q34a1"]
+[ext_resource type="PackedScene" uid="uid://tng7a313sw3p" path="res://assets/items/DiamondMouse.tscn" id="8_4pnnj"]
 
 [node name="L4-1" type="Node2D"]
 
@@ -14,7 +15,7 @@
 position = Vector2(189, 146)
 
 [node name="StoneCommon" parent="." instance=ExtResource("2_giceb")]
-position = Vector2(73, 88)
+position = Vector2(77, 96)
 
 [node name="StoneCommon2" parent="." instance=ExtResource("2_giceb")]
 position = Vector2(259, 99)
@@ -26,10 +27,10 @@ position = Vector2(56, 197)
 position = Vector2(63, 80)
 
 [node name="GoadSmall2" parent="." instance=ExtResource("3_onm86")]
-position = Vector2(209, 95)
+position = Vector2(198, 91)
 
 [node name="GoadSmall3" parent="." instance=ExtResource("3_onm86")]
-position = Vector2(217, 104)
+position = Vector2(220, 89)
 
 [node name="GoadSmall4" parent="." instance=ExtResource("3_onm86")]
 position = Vector2(222, 118)
@@ -38,7 +39,7 @@ position = Vector2(222, 118)
 position = Vector2(181, 117)
 
 [node name="GoadBig" parent="." instance=ExtResource("5_62ikv")]
-position = Vector2(84, 146)
+position = Vector2(91, 148)
 
 [node name="GoadBig2" parent="." instance=ExtResource("5_62ikv")]
 position = Vector2(174, 183)
@@ -60,3 +61,12 @@ position = Vector2(100, 70)
 
 [node name="Mouse3" parent="." instance=ExtResource("7_q34a1")]
 position = Vector2(146, 85)
+
+[node name="GoadBig3" parent="." instance=ExtResource("5_62ikv")]
+position = Vector2(143, 205)
+
+[node name="GoadBig4" parent="." instance=ExtResource("5_62ikv")]
+position = Vector2(93, 180)
+
+[node name="DiamondMouse" parent="." instance=ExtResource("8_4pnnj")]
+position = Vector2(284, 190)

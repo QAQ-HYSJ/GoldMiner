@@ -68,4 +68,4 @@ position = Vector2(229, 154)
 position = Vector2(97, 190)
 
 [node name="GoadSmall7" parent="." instance=ExtResource("3_38ypg")]
-position = Vector2(213, 179)
+position = Vector2(208, 170)

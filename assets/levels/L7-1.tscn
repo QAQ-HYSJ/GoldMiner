@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://cectkfaewvt1i"]
+
+[ext_resource type="PackedScene" uid="uid://dmjnsm8w0aod4" path="res://assets/items/TNT.tscn" id="1_c20l7"]
+[ext_resource type="PackedScene" uid="uid://j603r58o2jpb" path="res://assets/items/Diamond.tscn" id="2_astay"]
+[ext_resource type="PackedScene" uid="uid://b76ibfyqebemd" path="res://assets/items/Mouse.tscn" id="3_g6wcm"]
+[ext_resource type="PackedScene" uid="uid://tng7a313sw3p" path="res://assets/items/DiamondMouse.tscn" id="4_fs7te"]
+
+[node name="L7-1" type="Node2D"]
+
+[node name="TNT" parent="." instance=ExtResource("1_c20l7")]
+position = Vector2(180, 197)
+
+[node name="TNT2" parent="." instance=ExtResource("1_c20l7")]
+position = Vector2(94, 202)
+
+[node name="TNT3" parent="." instance=ExtResource("1_c20l7")]
+position = Vector2(58, 143)
+
+[node name="TNT4" parent="." instance=ExtResource("1_c20l7")]
+position = Vector2(214, 144)
+
+[node name="TNT5" parent="." instance=ExtResource("1_c20l7")]
+position = Vector2(163, 102)
+
+[node name="TNT6" parent="." instance=ExtResource("1_c20l7")]
+position = Vector2(103, 99)
+
+[node name="Diamond" parent="." instance=ExtResource("2_astay")]
+position = Vector2(136, 230)
+
+[node name="Diamond2" parent="." instance=ExtResource("2_astay")]
+position = Vector2(245, 152)
+
+[node name="Diamond3" parent="." instance=ExtResource("2_astay")]
+position = Vector2(16, 159)
+
+[node name="Diamond4" parent="." instance=ExtResource("2_astay")]
+position = Vector2(134, 77)
+
+[node name="Diamond5" parent="." instance=ExtResource("2_astay")]
+position = Vector2(214, 107)
+
+[node name="Diamond6" parent="." instance=ExtResource("2_astay")]
+position = Vector2(47, 109)
+
+[node name="Mouse" parent="." instance=ExtResource("3_g6wcm")]
+position = Vector2(35, 80)
+
+[node name="Mouse2" parent="." instance=ExtResource("3_g6wcm")]
+position = Vector2(241, 74)
+
+[node name="DiamondMouse" parent="." instance=ExtResource("4_fs7te")]
+position = Vector2(290, 120)
+
+[node name="DiamondMouse2" parent="." instance=ExtResource("4_fs7te")]
+position = Vector2(121, 194)
+
+[node name="DiamondMouse3" parent="." instance=ExtResource("4_fs7te")]
+position = Vector2(190, 164)
+
+[node name="Diamond7" parent="." instance=ExtResource("2_astay")]
+position = Vector2(36, 230)
+
+[node name="Diamond8" parent="." instance=ExtResource("2_astay")]
+position = Vector2(252, 216)

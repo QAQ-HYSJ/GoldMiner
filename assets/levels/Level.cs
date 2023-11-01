@@ -60,29 +60,18 @@ public partial class Level : Node2D
 	}
 	private void LoadLevel()
 	{
-		if (Data.Singleton.LevelNum == 1)
+		switch (Data.Singleton.LevelNum % 10)
 		{
-			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L1-1.tscn").Instantiate());
-		}
-		else if (Data.Singleton.LevelNum == 2)
-		{
-			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L2-1.tscn").Instantiate());
-		}
-		else if (Data.Singleton.LevelNum == 3)
-		{
-			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L3-1.tscn").Instantiate());
-		}
-		else if (Data.Singleton.LevelNum == 4)
-		{
-			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L4-1.tscn").Instantiate());
-		}
-		else if (Data.Singleton.LevelNum == 5)
-		{
-			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L5-1.tscn").Instantiate());
-		}
-		else if (Data.Singleton.LevelNum == 6)
-		{
-			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L6-1.tscn").Instantiate());
+			case 0: AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L0-1.tscn").Instantiate()); break;
+			case 1: AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L1-1.tscn").Instantiate()); break;
+			case 2: AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L2-1.tscn").Instantiate()); break;
+			case 3: AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L3-1.tscn").Instantiate()); break;
+			case 4: AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L4-1.tscn").Instantiate()); break;
+			case 5: AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L5-1.tscn").Instantiate()); break;
+			case 6: AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L6-1.tscn").Instantiate()); break;
+			case 7: AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L7-1.tscn").Instantiate()); break;
+			case 8: AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L8-1.tscn").Instantiate()); break;
+			case 9: AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L9-1.tscn").Instantiate()); break;
 		}
 	}
 }

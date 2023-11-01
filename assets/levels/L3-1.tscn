@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://026wnpc8isd"]
+[gd_scene load_steps=8 format=3 uid="uid://026wnpc8isd"]
 
 [ext_resource type="PackedScene" uid="uid://dmweim5muyvbw" path="res://assets/items/StoneSmall.tscn" id="1_bd5o6"]
 [ext_resource type="PackedScene" uid="uid://dei8arjquncaf" path="res://assets/items/StoneCommon.tscn" id="2_dd6wf"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c720ctiyelq7" path="res://assets/items/GoadCommon.tscn" id="4_qlpix"]
 [ext_resource type="PackedScene" uid="uid://h00mb8b51o5y" path="res://assets/items/GoadLarge.tscn" id="5_puxjv"]
 [ext_resource type="PackedScene" uid="uid://3bdr3t5eoxxt" path="res://assets/items/Bag.tscn" id="6_srdxw"]
+[ext_resource type="PackedScene" uid="uid://j603r58o2jpb" path="res://assets/items/Diamond.tscn" id="7_ah6ws"]
 
 [node name="L3-1" type="Node2D"]
 
@@ -56,3 +57,9 @@ position = Vector2(154, 201)
 
 [node name="Bag" parent="." instance=ExtResource("6_srdxw")]
 position = Vector2(38, 98)
+
+[node name="Bag2" parent="." instance=ExtResource("6_srdxw")]
+position = Vector2(283, 171)
+
+[node name="Diamond" parent="." instance=ExtResource("7_ah6ws")]
+position = Vector2(29, 182)

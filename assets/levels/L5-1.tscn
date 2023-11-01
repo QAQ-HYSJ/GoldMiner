@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgpqi8ow6p7km"]
+[gd_scene load_steps=10 format=3 uid="uid://dgpqi8ow6p7km"]
 
 [ext_resource type="PackedScene" uid="uid://b76ibfyqebemd" path="res://assets/items/Mouse.tscn" id="1_jxxas"]
 [ext_resource type="PackedScene" uid="uid://tng7a313sw3p" path="res://assets/items/DiamondMouse.tscn" id="2_cgfc8"]
+[ext_resource type="PackedScene" uid="uid://dmjnsm8w0aod4" path="res://assets/items/TNT.tscn" id="3_n0uua"]
+[ext_resource type="PackedScene" uid="uid://cgmll1ddhs1db" path="res://assets/items/StoneBig.tscn" id="4_g4eb8"]
+[ext_resource type="PackedScene" uid="uid://dmweim5muyvbw" path="res://assets/items/StoneSmall.tscn" id="5_in55q"]
+[ext_resource type="PackedScene" uid="uid://btau1yy4oit0g" path="res://assets/items/GoadBig.tscn" id="6_5f7fi"]
+[ext_resource type="PackedScene" uid="uid://dei8arjquncaf" path="res://assets/items/StoneCommon.tscn" id="7_mikpi"]
+[ext_resource type="PackedScene" uid="uid://dl3xcgmrrvu8g" path="res://assets/items/GoadSmall.tscn" id="8_2i6aq"]
+[ext_resource type="PackedScene" uid="uid://h00mb8b51o5y" path="res://assets/items/GoadLarge.tscn" id="9_gf145"]
 
 [node name="L5-1" type="Node2D"]
 
@@ -11,29 +18,59 @@ position = Vector2(111, 71)
 [node name="Mouse2" parent="." instance=ExtResource("1_jxxas")]
 position = Vector2(234, 65)
 
-[node name="Mouse3" parent="." instance=ExtResource("1_jxxas")]
-position = Vector2(191, 136)
-
-[node name="Mouse4" parent="." instance=ExtResource("1_jxxas")]
-position = Vector2(32, 73)
-
-[node name="Mouse5" parent="." instance=ExtResource("1_jxxas")]
-position = Vector2(84, 106)
-
 [node name="DiamondMouse" parent="." instance=ExtResource("2_cgfc8")]
 position = Vector2(138, 135)
 
 [node name="DiamondMouse2" parent="." instance=ExtResource("2_cgfc8")]
-position = Vector2(59, 191)
+position = Vector2(73, 137)
 
-[node name="DiamondMouse3" parent="." instance=ExtResource("2_cgfc8")]
-position = Vector2(41, 170)
+[node name="TNT" parent="." instance=ExtResource("3_n0uua")]
+position = Vector2(120, 168)
 
-[node name="DiamondMouse4" parent="." instance=ExtResource("2_cgfc8")]
-position = Vector2(149, 72)
+[node name="StoneBig" parent="." instance=ExtResource("4_g4eb8")]
+position = Vector2(250, 161)
 
-[node name="DiamondMouse5" parent="." instance=ExtResource("2_cgfc8")]
-position = Vector2(125, 195)
+[node name="StoneSmall" parent="." instance=ExtResource("5_in55q")]
+position = Vector2(38, 133)
 
-[node name="DiamondMouse6" parent="." instance=ExtResource("2_cgfc8")]
-position = Vector2(212, 161)
+[node name="GoadBig" parent="." instance=ExtResource("6_5f7fi")]
+position = Vector2(179, 176)
+
+[node name="GoadBig2" parent="." instance=ExtResource("6_5f7fi")]
+position = Vector2(28, 195)
+
+[node name="GoadBig3" parent="." instance=ExtResource("6_5f7fi")]
+position = Vector2(284, 189)
+
+[node name="StoneCommon" parent="." instance=ExtResource("7_mikpi")]
+position = Vector2(73, 104)
+
+[node name="StoneCommon2" parent="." instance=ExtResource("7_mikpi")]
+position = Vector2(294, 155)
+
+[node name="StoneCommon3" parent="." instance=ExtResource("7_mikpi")]
+position = Vector2(39, 160)
+
+[node name="StoneCommon4" parent="." instance=ExtResource("7_mikpi")]
+position = Vector2(158, 120)
+
+[node name="GoadSmall" parent="." instance=ExtResource("8_2i6aq")]
+position = Vector2(77, 189)
+
+[node name="GoadSmall2" parent="." instance=ExtResource("8_2i6aq")]
+position = Vector2(14, 164)
+
+[node name="GoadSmall3" parent="." instance=ExtResource("8_2i6aq")]
+position = Vector2(194, 141)
+
+[node name="GoadSmall4" parent="." instance=ExtResource("8_2i6aq")]
+position = Vector2(201, 198)
+
+[node name="GoadSmall5" parent="." instance=ExtResource("8_2i6aq")]
+position = Vector2(208, 131)
+
+[node name="GoadBig4" parent="." instance=ExtResource("6_5f7fi")]
+position = Vector2(162, 211)
+
+[node name="GoadLarge" parent="." instance=ExtResource("9_gf145")]
+position = Vector2(71, 217)
