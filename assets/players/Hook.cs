@@ -334,7 +334,8 @@ public partial class Hook : Node2D
 					Tween tween = GetTree().CreateTween();
 					tween.Parallel().TweenProperty(label, "scale", new Vector2(0.5f, 0.5f), 0.5);
 					tween.Parallel().TweenProperty(label, "global_position", new Vector2(60, 6), 0.5);
-					tween.TweenCallback(Callable.From(label.QueueFree));
+					await ToSignal(tween, Tween.SignalName.Finished);
+					label.QueueFree();
 				}
 				break;   // 默认情况即itemType为Money
 		}
