@@ -1,31 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://jtxtnyqtpigx"]
+[gd_scene load_steps=3 format=3 uid="uid://jtxtnyqtpigx"]
 
 [ext_resource type="Script" path="res://assets/scenes/FastStart.cs" id="1_2sucj"]
+[ext_resource type="Texture2D" uid="uid://8l3i7wi8qd2j" path="res://resources/images/bg_start_menu.png" id="1_xpygt"]
 
-[node name="FastStart" type="Control"]
-layout_mode = 3
+[node name="FastStart" type="TextureRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("1_xpygt")
 script = ExtResource("1_2sucj")
 
 [node name="Single" type="Button" parent="."]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 58.0
-offset_right = 86.0
-offset_bottom = 89.0
+offset_left = 20.0
+offset_top = 150.0
+offset_right = 92.0
+offset_bottom = 181.0
 text = "单人模式"
 
 [node name="Double" type="Button" parent="."]
 layout_mode = 0
-offset_left = 113.0
-offset_top = 58.0
-offset_right = 157.0
-offset_bottom = 81.0
+offset_left = 20.0
+offset_top = 190.0
+offset_right = 92.0
+offset_bottom = 221.0
 text = "双人模式"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 225.0
+offset_right = 319.0
+offset_bottom = 240.0
+theme_override_font_sizes/font_size = 8
+text = "Made with Godot"
+vertical_alignment = 2
 
 [connection signal="pressed" from="Single" to="." method="On_Single_Pressed"]
 [connection signal="pressed" from="Double" to="." method="On_Double_Pressed"]

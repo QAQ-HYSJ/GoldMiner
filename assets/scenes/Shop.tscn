@@ -153,6 +153,15 @@ theme_override_font_sizes/font_size = 12
 text = "物品描述"
 autowrap_mode = 3
 
+[node name="Money" type="Label" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 64.0
+offset_right = 108.0
+offset_bottom = 90.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "当前：$xxx"
+
 [connection signal="pressed" from="Button" to="." method="On_Button_Pressed"]
 [connection signal="mouse_entered" from="Goods/TextureRect" to="Goods" method="On_TextureRect_MouseEntered" binds= [0]]
 [connection signal="mouse_exited" from="Goods/TextureRect" to="Goods" method="On_TextureRect_MouseExited"]

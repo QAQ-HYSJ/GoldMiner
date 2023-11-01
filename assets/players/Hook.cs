@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public enum HookMode { go, back, wave }
 public partial class Hook : Node2D
 {
-	public HookMode HookStatus;
+	private HookMode HookStatus;
 	private Vector2 direction;
 	public Vector2 OriginPoint { get; } = new Vector2(-7, 11);
 	private List<Item> items = new List<Item>();                // 钩中了物品，将其加入列表中，再进行处理，防止钩中多个

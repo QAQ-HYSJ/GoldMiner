@@ -21,6 +21,10 @@ public partial class HUD : Control
 		goal.Text = "目标：$" + Data.Singleton.goal;
 		level.Text = "第" + Data.Singleton.LevelNum + "关";
 		time.Text = "剩余时间：" + (int)(GetTree().CurrentScene as Level).LeftTime;
+		if (GetTree().Paused)
+			GetNode<Button>("Pause").Text = "▷";
+		else
+			GetNode<Button>("Pause").Text = "||";
 	}
 	private void On_Pause_Pressed()
 	{

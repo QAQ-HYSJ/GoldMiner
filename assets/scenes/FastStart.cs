@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class FastStart : Control
+public partial class FastStart : TextureRect
 {
 	private void On_Single_Pressed()
 	{
