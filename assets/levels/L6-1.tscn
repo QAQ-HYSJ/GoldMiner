@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://bej4r2r00f05e"]
+
+[ext_resource type="PackedScene" uid="uid://3bdr3t5eoxxt" path="res://assets/items/Bag.tscn" id="1_8kk16"]
+
+[node name="L6-1" type="Node2D"]
+
+[node name="Bag" parent="." instance=ExtResource("1_8kk16")]
+position = Vector2(253, 217)
+
+[node name="Bag2" parent="." instance=ExtResource("1_8kk16")]
+position = Vector2(271, 157)
+
+[node name="Bag3" parent="." instance=ExtResource("1_8kk16")]
+position = Vector2(168, 126)
+
+[node name="Bag4" parent="." instance=ExtResource("1_8kk16")]
+position = Vector2(32, 202)
+
+[node name="Bag5" parent="." instance=ExtResource("1_8kk16")]
+position = Vector2(99, 108)
+
+[node name="Bag6" parent="." instance=ExtResource("1_8kk16")]
+position = Vector2(225, 90)
+
+[node name="Bag7" parent="." instance=ExtResource("1_8kk16")]
+position = Vector2(143, 194)
+
+[node name="Bag8" parent="." instance=ExtResource("1_8kk16")]
+position = Vector2(194, 173)
+
+[node name="Bag9" parent="." instance=ExtResource("1_8kk16")]
+position = Vector2(49, 157)
+
+[node name="Bag10" parent="." instance=ExtResource("1_8kk16")]
+position = Vector2(102, 158)

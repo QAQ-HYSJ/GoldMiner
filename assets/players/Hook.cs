@@ -220,7 +220,7 @@ public partial class Hook : Node2D
 		{
 			AnimatedSprite2D animatedSprite2D = new AnimatedSprite2D
 			{
-				SpriteFrames = item.GetNode<AnimatedSprite2D>("AnimatedSprite2D").SpriteFrames,
+				SpriteFrames = (SpriteFrames)item.GetNode<AnimatedSprite2D>("AnimatedSprite2D").SpriteFrames.Duplicate(),
 				Position = item.Offect,
 				ZIndex = -1
 			};
@@ -228,11 +228,11 @@ public partial class Hook : Node2D
 			animatedSprite2D.SpriteFrames.SetAnimationSpeed("default", 30);
 			animatedSprite2D.Play();
 		}
-		else if (item is DiamondMouse)      // 如果是老鼠
+		else if (item is DiamondMouse)      // 如果是钻石鼠
 		{
 			AnimatedSprite2D animatedSprite2D = new AnimatedSprite2D
 			{
-				SpriteFrames = item.GetNode<AnimatedSprite2D>("AnimatedSprite2D").SpriteFrames,
+				SpriteFrames = (SpriteFrames)item.GetNode<AnimatedSprite2D>("AnimatedSprite2D").SpriteFrames.Duplicate(),
 				Position = item.Offect,
 				ZIndex = -1
 			};

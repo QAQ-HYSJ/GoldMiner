@@ -63,19 +63,27 @@ public partial class Level : Node2D
 	{
 		if (Global.currentLevelNum == 1)
 		{
-			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L1-1.tscn").Instantiate<Node2D>());
+			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L1-1.tscn").Instantiate());
 		}
 		else if (Global.currentLevelNum == 2)
 		{
-			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L2-1.tscn").Instantiate<Node2D>());
+			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L2-1.tscn").Instantiate());
 		}
 		else if (Global.currentLevelNum == 3)
 		{
-			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L3-1.tscn").Instantiate<Node2D>());
+			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L3-1.tscn").Instantiate());
 		}
-		else if( Global.currentLevelNum == 4)
+		else if (Global.currentLevelNum == 4)
 		{
-			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L4-1.tscn").Instantiate<Node2D>());
+			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L4-1.tscn").Instantiate());
+		}
+		else if (Global.currentLevelNum == 5)
+		{
+			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L5-1.tscn").Instantiate());
+		}
+		else if (Global.currentLevelNum == 6)
+		{
+			AddChild(ResourceLoader.Load<PackedScene>("res://assets/levels/L6-1.tscn").Instantiate());
 		}
 	}
 }

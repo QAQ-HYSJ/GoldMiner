@@ -74,7 +74,6 @@ sizeLevel = 1
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ud6cj")
 autoplay = "default"
-frame_progress = 0.185292
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cs88i")

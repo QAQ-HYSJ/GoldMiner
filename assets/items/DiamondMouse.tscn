@@ -76,7 +76,6 @@ shape = SubResource("RectangleShape2D_ps02l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1ageo")
-frame_progress = 0.0113767
 
 [node name="Timer" type="Timer" parent="."]
 

@@ -8,7 +8,6 @@ public partial class Mouse : Item
 	private int Counter = 0;
 	public override void _Ready()
 	{
-		GetNode<AnimatedSprite2D>("AnimatedSprite2D").SpriteFrames.SetAnimationSpeed("default", 5);
 		direction = Direction.idle;
 		GetNode<Timer>("Timer").WaitTime = 1;
 		GetNode<Timer>("Timer").Start();

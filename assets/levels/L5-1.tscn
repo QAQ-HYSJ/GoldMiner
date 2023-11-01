@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgpqi8ow6p7km"]
+
+[ext_resource type="PackedScene" uid="uid://b76ibfyqebemd" path="res://assets/items/Mouse.tscn" id="1_jxxas"]
+[ext_resource type="PackedScene" uid="uid://tng7a313sw3p" path="res://assets/items/DiamondMouse.tscn" id="2_cgfc8"]
+
+[node name="L5-1" type="Node2D"]
+
+[node name="Mouse" parent="." instance=ExtResource("1_jxxas")]
+position = Vector2(111, 71)
+
+[node name="Mouse2" parent="." instance=ExtResource("1_jxxas")]
+position = Vector2(234, 65)
+
+[node name="Mouse3" parent="." instance=ExtResource("1_jxxas")]
+position = Vector2(191, 136)
+
+[node name="Mouse4" parent="." instance=ExtResource("1_jxxas")]
+position = Vector2(32, 73)
+
+[node name="Mouse5" parent="." instance=ExtResource("1_jxxas")]
+position = Vector2(84, 106)
+
+[node name="DiamondMouse" parent="." instance=ExtResource("2_cgfc8")]
+position = Vector2(138, 135)
+
+[node name="DiamondMouse2" parent="." instance=ExtResource("2_cgfc8")]
+position = Vector2(59, 191)
+
+[node name="DiamondMouse3" parent="." instance=ExtResource("2_cgfc8")]
+position = Vector2(41, 170)
+
+[node name="DiamondMouse4" parent="." instance=ExtResource("2_cgfc8")]
+position = Vector2(149, 72)
+
+[node name="DiamondMouse5" parent="." instance=ExtResource("2_cgfc8")]
+position = Vector2(125, 195)
+
+[node name="DiamondMouse6" parent="." instance=ExtResource("2_cgfc8")]
+position = Vector2(212, 161)
