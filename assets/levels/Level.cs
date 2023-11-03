@@ -20,6 +20,10 @@ public partial class Level : Node2D
 			player1.DynamiteKeyCode = "player1Dynamite";
 			player2.HookKeyCode = "player2Go";
 			player2.DynamiteKeyCode = "player2Dynamite";
+			player2.GetNode<Button>("CanvasLayer/Hook").Position = new Vector2(270, 62);
+			player2.GetNode<Button>("CanvasLayer/Dynamite").Position = new Vector2(270, 41);
+			player2.GetNode<Button>("CanvasLayer/Hook").Text = "出钩↓";
+			player2.GetNode<Button>("CanvasLayer/Dynamite").Text = "出钩↑";
 			AddChild(player1);
 			AddChild(player2);
 			player1.DynamiteNum = Data.Singleton.TempPlayer1DynamiteNum;

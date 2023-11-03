@@ -20,11 +20,11 @@ public partial class Player : AnimatedSprite2D
 	}
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionJustPressed(HookKeyCode))
+		if (Input.IsActionJustPressed(HookKeyCode) || GetNode<Button>("CanvasLayer/Hook").ButtonPressed)
 		{
 			GetNode<Hook>("Hook").GoHook();
 		}
-		if (Input.IsActionJustPressed(DynamiteKeyCode))
+		if (Input.IsActionJustPressed(DynamiteKeyCode) || GetNode<Button>("CanvasLayer/Dynamite").ButtonPressed)
 		{
 			GetNode<Hook>("Hook").ThrowDynamite();
 		}
