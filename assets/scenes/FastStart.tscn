@@ -14,29 +14,79 @@ script = ExtResource("1_2sucj")
 
 [node name="Single" type="Button" parent="."]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 150.0
-offset_right = 92.0
-offset_bottom = 181.0
+offset_left = 24.0
+offset_top = 42.0
+offset_right = 96.0
+offset_bottom = 73.0
 text = "单人模式"
 
 [node name="Double" type="Button" parent="."]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 190.0
-offset_right = 92.0
-offset_bottom = 221.0
+offset_left = 25.0
+offset_top = 79.0
+offset_right = 97.0
+offset_bottom = 110.0
 text = "双人模式"
 
-[node name="Label" type="Label" parent="."]
+[node name="Describe" type="Button" parent="."]
 layout_mode = 0
-offset_left = 252.0
-offset_top = 225.0
-offset_right = 319.0
-offset_bottom = 240.0
+offset_left = 40.0
+offset_top = 113.0
+offset_right = 85.0
+offset_bottom = 144.0
+text = "说 明"
+
+[node name="About" type="Button" parent="."]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 149.0
+offset_right = 86.0
+offset_bottom = 180.0
+text = "关 于"
+
+[node name="DescribeBoard" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 55.0
+offset_top = 46.0
+offset_right = 297.0
+offset_bottom = 184.0
+color = Color(0.662745, 0.623529, 0.215686, 1)
+
+[node name="Label" type="Label" parent="DescribeBoard"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 20.0
+offset_right = 310.0
+offset_bottom = 161.0
 theme_override_font_sizes/font_size = 8
-text = "Made with Godot"
-vertical_alignment = 2
+text = "点击下半区域出钩，点击上半区域扔雷管
+或者使用按键
+玩家1：s出钩 w扔雷管
+玩家2： ↓出钩 ↑指雷管"
+
+[node name="AboutBoard" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 24.0
+offset_top = 64.0
+offset_right = 301.0
+offset_bottom = 174.0
+color = Color(0.682353, 0.568627, 0.27451, 1)
+
+[node name="Label" type="Label" parent="AboutBoard"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 212.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 8
+text = "原作者：Malcolm Michaels, Daniel Glover
+源代码：https://github.com/QAQ-HYSJ/GoadMiner
+
+Made with Godot"
 
 [connection signal="pressed" from="Single" to="." method="On_Single_Pressed"]
 [connection signal="pressed" from="Double" to="." method="On_Double_Pressed"]
+[connection signal="pressed" from="Describe" to="." method="On_Describe_Pressed"]
+[connection signal="pressed" from="About" to="." method="On_About_Pressed"]

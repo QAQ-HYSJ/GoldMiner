@@ -237,22 +237,4 @@ visible = false
 position = Vector2(34, 13)
 texture = ExtResource("12_3wcis")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Hook" type="Button" parent="CanvasLayer"]
-offset_left = 7.0
-offset_top = 62.0
-offset_right = 36.0
-offset_bottom = 82.0
-theme_override_font_sizes/font_size = 8
-text = "出钩S"
-
-[node name="Dynamite" type="Button" parent="CanvasLayer"]
-offset_left = 6.0
-offset_top = 41.0
-offset_right = 38.0
-offset_bottom = 61.0
-theme_override_font_sizes/font_size = 8
-text = "雷管W"
-
 [connection signal="area_entered" from="Hook/HitBox" to="Hook" method="On_HitBox_AreaEntered"]

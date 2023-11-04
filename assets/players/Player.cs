@@ -5,6 +5,8 @@ public partial class Player : AnimatedSprite2D
 {
 	[Export] public string HookKeyCode = "player1Go";
 	[Export] public string DynamiteKeyCode = "player1Dynamite";
+	[Export] public Rect2 HookClickArea = new Rect2(0, 120, 320, 120);
+	[Export] public Rect2 DynamiteClickArea = new Rect2(0, 0, 320, 120);
 	public bool StrengthBuff = false;
 	private int _dynamiteNum = 0;
 	public int DynamiteNum
@@ -20,11 +22,11 @@ public partial class Player : AnimatedSprite2D
 	}
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionJustPressed(HookKeyCode) || GetNode<Button>("CanvasLayer/Hook").ButtonPressed)
+		if (Input.IsActionJustPressed(HookKeyCode) || (Input.IsMouseButtonPressed(MouseButton.Left) && HookClickArea.HasPoint(GetGlobalMousePosition())))
 		{
 			GetNode<Hook>("Hook").GoHook();
 		}
-		if (Input.IsActionJustPressed(DynamiteKeyCode) || GetNode<Button>("CanvasLayer/Dynamite").ButtonPressed)
+		if (Input.IsActionJustPressed(DynamiteKeyCode) || (Input.IsMouseButtonPressed(MouseButton.Left) && DynamiteClickArea.HasPoint(GetGlobalMousePosition())))
 		{
 			GetNode<Hook>("Hook").ThrowDynamite();
 		}
