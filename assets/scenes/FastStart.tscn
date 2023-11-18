@@ -63,7 +63,7 @@ theme_override_font_sizes/font_size = 8
 text = "点击下半区域出钩，点击上半区域扔雷管
 或者使用按键
 玩家1：s出钩 w扔雷管
-玩家2： ↓出钩 ↑指雷管"
+玩家2： ↓出钩 ↑扔雷管"
 
 [node name="AboutBoard" type="ColorRect" parent="."]
 visible = false
@@ -82,7 +82,7 @@ offset_right = 212.0
 offset_bottom = 62.0
 theme_override_font_sizes/font_size = 8
 text = "原作者：Malcolm Michaels, Daniel Glover
-源代码：https://github.com/QAQ-HYSJ/GoadMiner
+源代码：https://github.com/QAQ-HYSJ/GoldMiner
 
 Made with Godot"
 
